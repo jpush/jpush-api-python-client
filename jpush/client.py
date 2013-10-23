@@ -5,7 +5,7 @@ import hashlib
 import urllib
 import urllib2
 
-API_URL = "http://api.jpush.cn:8800/sendmsg/v2/sendmsg"
+API_URL = "http://api.jpush.cn:8800/v2/push"
 KEY_PARAMS = [
     "sendno",
     "app_key",

@@ -8,7 +8,7 @@ from jpush import __version__
 setup(
     name='jpush',
     version=__version__,
-    description='Python client library for JPush APIs',
+    description='JPush\'s officially supported Python client library',
     keywords=('JPush', 'JPush API'),
     license='MIT License',
     long_description=open("README.rst", "r").read(),
