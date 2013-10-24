@@ -37,13 +37,15 @@ class JPushClient:
 
     def _gen_content(self, msg_title, msg_content, msg_type, extras):
         """Generate message content"""
-        content = {"extras": extras}
+        content = {}
         if msg_type == 1:   # notification
             content["n_title"] = msg_title
             content["n_content"] = msg_content
+            content["n_extras"] = extras
         else:           # custom message
             content["title"] = msg_title
             content["message"] = msg_content
+            content["extras"] = extras
         return json.dumps(content, separators=(',', ':'))
 
     def _gen_verification_code(self, sendno, receiver_type, receiver_value):
