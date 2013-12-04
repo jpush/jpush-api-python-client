@@ -21,15 +21,13 @@ KEY_PARAMS = [
 
 class JPushClient:
     """JPush Python Client Class"""
-    def __init__(self, username, master_secret, callback_url=""):
-        self.username = username
+    def __init__(self, master_secret, callback_url=""):
         self.master_secret = master_secret
         self.callback_url = callback_url
 
     def _gen_params(self, kargs):
         """Generate Post params"""
         params = {}
-        params["username"] = self.username
         params["callback_url"] = self.callback_url
         for k in KEY_PARAMS:
             params[k] = kargs.get(k)

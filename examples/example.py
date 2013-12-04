@@ -6,11 +6,10 @@ from jpush import JPushClient
 
 
 sendno = int(time.time())
-username = 'username'
 app_key = 'appkey'
 master_secret = 'master_secret'
 
-jpush_client = JPushClient(username, master_secret)
+jpush_client = JPushClient(master_secret)
 
 # Send message by tag
 jpush_client.send_notification_by_tag('tagapi', app_key, sendno, 'des',
