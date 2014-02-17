@@ -34,3 +34,11 @@ jpush_client.send_notification_by_appkey(app_key, sendno, 'des',
 jpush_client.send_custom_msg_by_appkey(app_key, sendno, 'des',
                                        'appkey msg title',
                                        'appkey msg content', 'android')
+
+# Send message by registration_id
+jpush_client.send_notification_by_registrationid('regidapi', app_key, sendno, 'des',
+                                        'registration id notify title',
+                                        'registration id notify content', 'android')
+jpush_client.send_custom_msg_by_registrationid('regidapi', app_key, sendno, 'des',
+                                      'registration_id msg title',
+                                      'registration_id msg content', 'android')

@@ -160,3 +160,32 @@ class JPushClient:
                                                         receiver_value)
         params = self._gen_params(locals())
         self._send_msg(params)
+
+    def send_notification_by_registrationid(self, registrationid, app_key, sendno, senddes, msgtitle,
+                                 msg_content, platform, extras={}):
+        '''Send notification by registraion id'''
+        receiver_type = 5
+        msg_type = 1
+        msg_content = self._gen_content(msgtitle, msg_content,
+                                        msg_type, extras)
+        receiver_value = tag
+        verification_code = self._gen_verification_code(sendno,
+                                                        receiver_type,
+                                                        receiver_value)
+        params = self._gen_params(locals())
+        self._send_msg(params)
+
+    def send_custom_msg_by_registrationid(self, registrationid, app_key, sendno, senddes,
+                               msgtitle, msg_content,
+                               platform, extras={}):
+        '''Send custom message by registration id'''
+        receiver_type = 5
+        msg_type = 2
+        msg_content = self._gen_content(msgtitle, msg_content,
+                                        msg_type, extras)
+        receiver_value = tag
+        verification_code = self._gen_verification_code(sendno,
+                                                        receiver_type,
+                                                        receiver_value)
+        params = self._gen_params(locals())
+        self._send_msg(params)
