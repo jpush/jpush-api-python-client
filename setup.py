@@ -14,8 +14,8 @@ setup(
     long_description=open("README.rst", "r").read(),
 
     url='https://github.com/jpush/jpush-api-python-client',
-    author='linbo',
-    author_email='llbgurs@gmail.com',
+    author='hupantingxue',
+    author_email='hupantingxue@126.com',
 
     packages=['jpush'],
     platforms='any',
