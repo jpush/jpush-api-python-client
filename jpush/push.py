@@ -168,7 +168,7 @@ class JPushClient:
         msg_type = 1
         msg_content = self._gen_content(msgtitle, msg_content,
                                         msg_type, extras)
-        receiver_value = tag
+        receiver_value = registrationid
         verification_code = self._gen_verification_code(sendno,
                                                         receiver_type,
                                                         receiver_value)
@@ -183,7 +183,7 @@ class JPushClient:
         msg_type = 2
         msg_content = self._gen_content(msgtitle, msg_content,
                                         msg_type, extras)
-        receiver_value = tag
+        receiver_value = registrationid
         verification_code = self._gen_verification_code(sendno,
                                                         receiver_type,
                                                         receiver_value)
