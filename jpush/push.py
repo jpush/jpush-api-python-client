@@ -7,6 +7,7 @@ import json
 import hashlib
 import urllib
 import urllib2
+import logging
 
 API_URL = "http://api.jpush.cn:8800/v2/push"
 KEY_PARAMS = [
@@ -63,9 +64,9 @@ class JPushClient:
         try:
             api_post = urllib2.urlopen(data=urllib.urlencode(params),
                                        url=API_URL, timeout=5)
-            print api_post.read()
+            logging.debug(api_post.read())
         except Exception, e:
-            print e, e.read()
+            logging.exception(e)
 
     #Deprecated"
     def send_notification_by_imei(self, imei, app_key, sendno, senddes,
