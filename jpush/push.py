@@ -31,6 +31,9 @@ class JPushClient:
             req.add_header("Authorization", "Basic %s" % base64string)
             api_post = urllib2.urlopen(req,  urllib.urlencode(params), timeout=5)
             print api_post.read()
+        except urllib2.HTTPError as e:
+            error_message = e.read()
+            print error_message
         except Exception as e:
             print 'send message fail ', e
     
