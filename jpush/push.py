@@ -21,14 +21,16 @@ class JPushClient:
         '''Push API for all kinds of message and notification,
            dict params restore all parameters'''
         try:
-            send_param=json.loads(params)
+            send_param=json.dumps(params)
+        except Exception as e:
+            print 'params should be json object ', e
+
+        try:
             base64string = base64.encodestring('%s:%s' % (self.app_key, self.master_secret))[:-1]
             req = urllib2.Request(API_URL)
             req.add_header("Authorization", "Basic %s" % base64string)
-            api_post = urllib2.urlopen(req,  urllib.urlencode(send_param), timeout=5)
+            api_post = urllib2.urlopen(req,  urllib.urlencode(params), timeout=5)
             print api_post.read()
-        except ValueError as e:
-            print 'params should be json format ', e
         except Exception as e:
             print 'send message fail ', e
     
