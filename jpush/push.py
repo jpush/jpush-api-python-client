@@ -29,6 +29,7 @@ class JPushClient:
             base64string = base64.encodestring('%s:%s' % (self.app_key, self.master_secret))[:-1]
             req = urllib2.Request(API_URL)
             req.add_header("Authorization", "Basic %s" % base64string)
+			req.add_header("Content-Type", "application/json")
             api_post = urllib2.urlopen(req,  urllib.urlencode(params), timeout=5)
             print api_post.read()
         except urllib2.HTTPError as e:
