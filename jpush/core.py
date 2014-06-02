@@ -4,7 +4,7 @@ import warnings
 
 import requests
 
-from . import common, __about__
+from . import common
 from .push import Push
 
 logger = logging.getLogger('jpush')
