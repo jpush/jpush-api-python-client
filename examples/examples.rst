@@ -16,7 +16,7 @@ Simple broadcast to all devices
    push = jpush.create_push()
    push.audience = jpush.all_
    push.notification = jpush.notification(alert="Hello, world!")
-   push.device_types = jpush.all_
+   push.platform = jpush.all_
    push.send()
 
 
@@ -33,12 +33,12 @@ Complex audience with iOS & Android specifics
    )
    push.notification = jpush.notification(
       ios=jpush.ios(
-         alert="Kim Jong-Un wins U.S. Open",
+         alert="JPush ios test",
          badge="+1",
          extra={"articleid": "123456"}
       ),
       android=jpush.android(
-         alert="Breaking Special Android News! Glorious Leader Kim Jong-Un wins U.S. Open!",
+         alert="Breaking Special Android News!",
          extra={"articleid": "http://m.example.com/123456"}
       )
    )
@@ -54,6 +54,6 @@ Single iOS push
    push = jpush.create_push()
    push.audience = jpush.registration_id('fffffffffff')
    push.notification = jpush.notification(
-       ios=jpush.ios(alert="Kim Jong-Un is following you on Twitter"))
+       ios=jpush.ios(alert="JPush powers your apps"))
    push.platform = jpush.platform('ios')
    push.send()
