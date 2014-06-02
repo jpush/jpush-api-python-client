@@ -3,7 +3,6 @@ import re
 # Valid autobadge values: auto, +N, -N
 VALID_AUTOBADGE = re.compile(r'^(auto|[+-][\d]+)$')
 
-
 def notification(alert=None, ios=None, android=None, winphone=None):
     """Create a notification payload.
 
@@ -137,7 +136,7 @@ def platform(*types):
     >>> platform('ios', 'symbian')
     Traceback (most recent call last):
         ...
-    ValueError: Invalid device type 'symbian'
+    ValueError: Invalid platform 'symbian'
 
     """
     if len(types) == 1 and types[0] == 'all':
@@ -146,3 +145,7 @@ def platform(*types):
         if t not in ('ios', 'android', 'winphone'):
             raise ValueError("Invalid platform '%s'" % t)
     return [t for t in types]
+
+def options(options):
+    """Create options object."""
+	return {"options": options}

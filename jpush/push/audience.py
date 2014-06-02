@@ -1,13 +1,6 @@
 import re
 
-DEVICE_TOKEN_FORMAT = re.compile(r'^[0-9a-fA-F]{64}$')
-PIN_FORMAT = re.compile(r'^[0-9a-fA-F]{8}$')
-UUID_FORMAT = re.compile(
-    r'^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}'
-    r'-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$')
-
-
-# Value selectors; device IDs, aliases, tags, etc.
+# Value selectors; aliases, tags, etc.
 
 def tag(tag):
     """Select a single tag."""
