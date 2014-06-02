@@ -5,9 +5,9 @@ JPush Python Client
 A Python client for the JPush REST APIs
 
 ------------
-dependencies
+Dependencies
 ------------
-To use jpush python client, you need to install requests, the python http package;
+You need to install requests, the python http package, to use jpush python client;
 
 .. code-block:: sh
 
