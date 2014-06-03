@@ -22,8 +22,7 @@ class JPush(object):
             version=None, params=None):
 
         headers = {}
-        if content_type:
-            headers['content-type'] = content_type
+        headers['content-type'] = 'application/json'
 
         logger.debug("Making %s request to %s. Headers:\n\t%s\nBody:\n\t%s",
             method, url, '\n\t'.join(
