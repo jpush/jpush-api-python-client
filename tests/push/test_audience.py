@@ -2,7 +2,7 @@ import unittest
 import sys
 sys.path.append('../..')
 
-import jpush as jpush 
+import jpush as jpush
 
 class TestAudience(unittest.TestCase):
 

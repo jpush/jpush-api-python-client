@@ -20,7 +20,7 @@ def notification(alert=None, ios=None, android=None, winphone=None):
     if android is not None:
         payload['android'] = android
     if winphone is not None:
-        payload['winphone'] = winphone 
+        payload['winphone'] = winphone
     if not payload:
         raise ValueError("Notification body may not be empty")
     return payload
@@ -57,7 +57,7 @@ def ios(alert=None, badge=None, sound=None, content_available=False,
     if sound is not None:
         payload['sound'] = sound
     else:
-        payload['sound'] = 'default' 
+        payload['sound'] = 'default'
     if content_available:
         payload['content-available'] = 1
     if extra is not None:
@@ -83,7 +83,7 @@ def android(alert, title=None, builder_id=None, extras=None):
     if title is not None:
         payload['title'] = collapse_key
     if builder_id is not None:
-        payload['builder_id'] = builder_id 
+        payload['builder_id'] = builder_id
     if extra is not None:
         payload['extra'] = extra
     return payload
@@ -101,11 +101,11 @@ def winphone(alert, title=None, _open_page=None, extras=None):
     if alert is not None:
         payload['alert'] = alert
     if title is not None:
-        payload['title'] = title 
+        payload['title'] = title
     if _open_page is not None:
-        payload['_open_page'] = _open_page 
+        payload['_open_page'] = _open_page
     if extras is not None:
-        payload['extras'] = extras 
+        payload['extras'] = extras
     return payload
 
 def message(msg_content, title=None, content_type=None, extras=None):
@@ -121,11 +121,11 @@ def message(msg_content, title=None, content_type=None, extras=None):
         'msg_content': msg_content,
     }
     if title is not None:
-        payload['title'] = title 
+        payload['title'] = title
     if content_type is not None:
         payload['content_type'] = content_type
     if extras is not None:
-        payload['extras'] = extras 
+        payload['extras'] = extras
     return payload
 
 def platform(*types):
@@ -148,4 +148,4 @@ def platform(*types):
 
 def options(options):
     """Create options object."""
-	return {"options": options}
+    return {"options": options}

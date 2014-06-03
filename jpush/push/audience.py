@@ -25,4 +25,4 @@ def audience(*children):
     {'audience': {'tag': 'sports'}, {'tag_and': 'business'}}
 
     """
-    return {"audience": {child for child in children}}
+    return {"audience": [child for child in children]}
