@@ -6,14 +6,14 @@ Common setup:
 .. code-block:: python
 
    import jpush as jpush
-   jpush = jpush.JPush(app_key, master_secret)
+   _jpush = jpush.JPush(app_key, master_secret)
 
 Simple broadcast to all devices
 -------------------------------
 
 .. code-block:: python
 
-   push = jpush.create_push()
+   push = _jpush.create_push()
    push.audience = jpush.all_
    push.notification = jpush.notification(alert="Hello, world!")
    push.platform = jpush.all_
@@ -25,7 +25,7 @@ Complex audience with iOS & Android specifics
 
 .. code-block:: python
 
-   push = jpush.create_push()
+   push = _jpush.create_push()
    push.audience = jpush.audience(
       jpush.tag("breakingnews"),
       jpush.tag_and("sports"),
@@ -51,7 +51,7 @@ Single iOS push
 
 .. code-block:: python
 
-   push = jpush.create_push()
+   push = _jpush.create_push()
    push.audience = jpush.registration_id('fffffffffff')
    push.notification = jpush.notification(
        ios=jpush.ios(alert="JPush powers your apps"))
