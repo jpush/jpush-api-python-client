@@ -9,7 +9,7 @@ class Push(object):
     """A push notification. Set audience, message, etc, and send."""
 
     def __init__(self, jpush):
-        self._jpush = jpush 
+        self._jpush = jpush
         self.audience = None
         self.notification = None
         self.platform = None

@@ -22,7 +22,12 @@ def audience(*children):
     """Select audience that match all of the given selectors.
 
     >>> audience(tag('sports'), tag_and('business'))
-    {'audience': {'tag': 'sports'}, {'tag_and': 'business'}}
+    {'audience': {'tag':'sports', 'tag_and':'business'}}
 
     """
-    return {"audience": [child for child in children]}
+    if len(types) == 1 and types[0] == 'all':
+        return {'audience':'all'}
+    for t in types:
+        if t not in ('tag', 'tag_and', 'alias', 'registration_id'):
+            raise ValueError("Invalid platform '%s'" % t)
+    return [t for t in types]

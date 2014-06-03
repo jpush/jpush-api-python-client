@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
-
-from setuptools import setup
-
-
+try:
+    from setuptools import setup
+except (ImportError):
+    from distutils.core import setup
 from jpush import __version__
+
 
 setup(
     name='jpush',
@@ -17,7 +18,7 @@ setup(
     author='hupantingxue',
     author_email='hupantingxue@126.com',
 
-    packages=['jpush'],
+    packages=['jpush', 'jpush.push'],
     platforms='any',
     classifiers=[
         'Environment :: Console',
@@ -25,5 +26,9 @@ setup(
         'License :: OSI Approved :: MIT License',
         'Operating System :: OS Independent',
         'Programming Language :: Python',
+    ],
+
+    install_requires=[
+        'requests>=1.2',
     ],
 )
