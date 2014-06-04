@@ -20,7 +20,7 @@ class Push(object):
     def payload(self):
         data = {
             "audience": self.audience,
-            "paltform": self.platform,
+            "platform": self.platform,
         }
         if (self.notification is None) and (self.message is None):
             raise ValueError("Notification and message cannot be both empty")
