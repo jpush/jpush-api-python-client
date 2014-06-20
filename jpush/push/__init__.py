@@ -14,6 +14,8 @@ from .payload import (
     platform,
     notification,
     message,
+    audience,
+    options,
 )
 
 # Common selector for audience & platform 
@@ -23,7 +25,6 @@ all_ = "all"
 
 Used in both ``audience`` and ``platform``.
 """
-
 
 __all__ = [
     all_,
@@ -35,4 +36,6 @@ __all__ = [
     notification,
     message,
     platform,
+    audience,
+    options,
 ]

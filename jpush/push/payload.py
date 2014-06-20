@@ -84,7 +84,7 @@ def android(alert, title=None, builder_id=None, extras=None):
         payload['title'] = title
     if builder_id is not None:
         payload['builder_id'] = builder_id
-    if extra is not None:
+    if extras is not None:
         payload['extras'] = extras
     return payload
 
@@ -149,3 +149,20 @@ def platform(*types):
 def options(options):
     """Create options object."""
     return {"options": options}
+
+def audience(*types):
+    """Select audience that match all of the given selectors.
+
+    >>> audience(tag('sports'), tag_and('business'))
+    {'audience': {'tag':['sports'], 'tag_and':['business']}}
+
+    """
+    if 1 == len(types) and 'all' == types[0]:
+        return "all"
+    audience = {}
+    for t in types:
+        for key in t:
+            if key not in ('tag', 'tag_and', 'alias', 'registration_id'):
+                raise ValueError("Invalid audience '%s'" % t)
+            audience[key] = t[key]
+    return audience

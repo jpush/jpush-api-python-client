@@ -16,7 +16,9 @@ from .push import (
     ios,
     android,
     winphone,
-	platform,
+    platform,
+    audience,
+    options,
     message,
 )
 
@@ -36,6 +38,8 @@ __all__ = [
     winphone,
     message,
     platform,
+    audience,
+    options,
 ]
 
 # Silence urllib3 INFO logging by default

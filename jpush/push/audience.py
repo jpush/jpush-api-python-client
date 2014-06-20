@@ -2,32 +2,22 @@ import re
 
 # Value selectors; aliases, tags, etc.
 
-def tag(tag):
+def tag(*tags):
     """Select a single tag."""
-    return {"tag": tag}
+    vtag = [t for t in tags]
+    return {"tag": vtag}
 
-def tag_and(tag_and):
+def tag_and(*tag_ands):
     """Select a single tag_and."""
-    return {"tag_and": tag_and}
+    vtag_and = [t for t in tag_ands]
+    return {"tag_and": vtag_and}
 
-def alias(alias):
+def alias(*alias):
     """Select a single alias."""
-    return {"alias": alias}
+    valias = [t for t in alias]
+    return {"alias": valias}
 
-def registration_id(registration_id):
+def registration_id(*reg_ids):
     """Select a (list of) registration_id(s)."""
-    return {"registration_id": registration_id}
-
-def audience(*children):
-    """Select audience that match all of the given selectors.
-
-    >>> audience(tag('sports'), tag_and('business'))
-    {'audience': {'tag':'sports', 'tag_and':'business'}}
-
-    """
-    if len(types) == 1 and types[0] == 'all':
-        return {'audience':'all'}
-    for t in types:
-        if t not in ('tag', 'tag_and', 'alias', 'registration_id'):
-            raise ValueError("Invalid platform '%s'" % t)
-    return [t for t in types]
+    vregistration_id = [t for t in reg_ids]
+    return {"registration_id": vregistration_id}
