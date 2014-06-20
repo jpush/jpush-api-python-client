@@ -34,12 +34,12 @@ Complex audience with iOS & Android specifics
    push.notification = jpush.notification(
       ios=jpush.ios(
          alert="JPush ios test",
-         badge="+1",
-         extra={"articleid": "123456"}
+         badge="1",
+         extras={"articleid": "123456"}
       ),
       android=jpush.android(
          alert="Breaking Special Android News!",
-         extra={"articleid": "http://m.example.com/123456"}
+         extras={"articleid": "http://m.example.com/123456"}
       )
    )
    push.platform = jpush.platform('ios', 'android')

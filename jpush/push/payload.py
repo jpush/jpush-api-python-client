@@ -60,7 +60,7 @@ def ios(alert=None, badge=None, sound=None, content_available=False,
         payload['sound'] = 'default'
     if content_available:
         payload['content-available'] = 1
-    if extra is not None:
+    if extras is not None:
         payload['extras'] = extras
     return payload
 
@@ -73,9 +73,8 @@ def android(alert, title=None, builder_id=None, extras=None):
     :keyword alert: String alert text.
     :keyword title: String
     :keyword builder_id: Integer
-    :keyword delay_while_idle: Boolean
-    :keyword extra: A set of key/value pairs to include in the push payload
-        sent to the device. All values must be strings.
+    :keyword extras: A set of key/value pairs to include in the push payload
+        sent to the device.
     """
     payload = {}
     if alert is not None:
