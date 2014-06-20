@@ -37,7 +37,7 @@ class Push(object):
 
         :returns: :py:class:`PushResponse` object with ``push_ids`` and
             other response data.
-        :raises AirshipFailure: Request failed.
+        :raises JPushFailure: Request failed.
         :raises Unauthorized: Authentication failed.
 
         """

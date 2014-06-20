@@ -3,17 +3,17 @@ import re
 # Value selectors; aliases, tags, etc.
 
 def tag(*tags):
-    """Select a single tag."""
+    """Select a (list of) tag(s)."""
     vtag = [t for t in tags]
     return {"tag": vtag}
 
 def tag_and(*tag_ands):
-    """Select a single tag_and."""
+    """Select a (list of) tag_and(s)."""
     vtag_and = [t for t in tag_ands]
     return {"tag_and": vtag_and}
 
 def alias(*alias):
-    """Select a single alias."""
+    """Select a (list of) alias(es)."""
     valias = [t for t in alias]
     return {"alias": valias}
 
