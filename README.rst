@@ -43,4 +43,4 @@ Detailes refer to `examples <https://github.com/jpush/jpush-api-python-client/bl
 --------
 Thanks to
 --------
-`crystal-wei <https://github.com/crystal-wei>` for reporting the jpush-api-python-client issues;
+`crystal-wei <https://github.com/crystal-wei>`_ for reporting the jpush-api-python-client issues;
