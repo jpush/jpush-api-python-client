@@ -39,3 +39,8 @@ or from source:
 Examples
 --------
 Detailes refer to `examples <https://github.com/jpush/jpush-api-python-client/blob/master/examples>`_
+
+--------
+Thanks to
+--------
+`crystal-wei <https://github.com/crystal-wei>` for reporting the jpush-api-python-client issues;
