@@ -3,7 +3,7 @@ import logging
 
 
 BASE_URL = "https://api.jpush.cn/"
-PUSH_URL = BASE_URL + 'v3/push/'
+PUSH_URL = BASE_URL + 'v3/push'
 
 logger = logging.getLogger('jpush')
 

@@ -81,11 +81,11 @@ def android(alert, title=None, builder_id=None, extras=None):
     if alert is not None:
         payload['alert'] = alert
     if title is not None:
-        payload['title'] = collapse_key
+        payload['title'] = title
     if builder_id is not None:
         payload['builder_id'] = builder_id
     if extra is not None:
-        payload['extra'] = extra
+        payload['extras'] = extras
     return payload
 
 
