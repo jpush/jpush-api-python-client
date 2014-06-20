@@ -1,22 +1,46 @@
-# JPush API Python Client
+===================
+JPush Python Client
+===================
 
-JPush REST APIs 的 Python 语言版本开发包。由 JPush 官方维护。
+A Python client for the JPush REST APIs
 
-## 安装
+------------
+Dependencies
+------------
+You need to install requests, the python http library, to use jpush python client;
 
-通过 pip 命令：
+.. code-block:: sh
+
+    $ sudo pip install requests 
+
+------------
+Installation
+------------
+To install jpush-api-python-client, simply:
+
+.. code-block:: sh
 
     $ sudo pip install jpush
 
-或者使用 easy_install：
+or alternatively install via easy_install:
+
+.. code-block:: sh
 
     $ sudo easy_install jpush
 
-或者直接从源代码安装：
+
+or from source:
+
+.. code-block:: sh
 
     $ sudo python setup.py install
 
-## 示例
+--------
+Examples
+--------
+Details refer to `examples <https://github.com/jpush/jpush-api-python-client/blob/master/examples>`_
 
-详情参考：[Examples](https://github.com/jpush/jpush-api-python-client/blob/master/examples)
-
+--------
+Thanks to
+--------
+`crystal-wei <https://github.com/crystal-wei>`_ for reporting the jpush-api-python-client issues;
