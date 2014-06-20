@@ -22,6 +22,9 @@ class JPush(object):
             version=None, params=None):
 
         headers = {}
+        headers['user-agent'] = 'jpush-api-python-client'
+        headers['connection'] = 'keep-alive'
+        headers['charset'] = 'utf-8'
         headers['content-type'] = 'application/json'
 
         logger.debug("Making %s request to %s. Headers:\n\t%s\nBody:\n\t%s",
