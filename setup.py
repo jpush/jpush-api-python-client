@@ -12,7 +12,7 @@ setup(
     description='JPush\'s officially supported Python client library',
     keywords=('JPush', 'JPush API', 'Android Push', 'iOS Push'),
     license='MIT License',
-    long_description=open("README.rst", "r").read(),
+    long_description=open("README", "r").read(),
 
     url='https://github.com/jpush/jpush-api-python-client',
     author='jpush',
