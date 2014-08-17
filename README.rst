@@ -1,5 +1,7 @@
 .. image:: https://travis-ci.org/jpush/jpush-api-python-client.svg?branch=master
     :target: https://travis-ci.org/jpush/jpush-api-python-client
+.. image:: https://badge.fury.io/gh/jpush%2Fjpush-api-python-client.svg
+    :target: http://badge.fury.io/gh/jpush%2Fjpush-api-python-client
 
 =======================
 JPush API Python Client
