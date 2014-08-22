@@ -4,3 +4,9 @@ python:
   - "2.7"
   - "3.2"
   - "3.3"
+
+# command to install dependencies
+install: "pip install requests"
+
+# command to run tests
+script: nosetests
