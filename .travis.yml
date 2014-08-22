@@ -6,7 +6,9 @@ python:
   - "3.3"
 
 # command to install dependencies
-install: "pip install requests"
+install:
+  - pip install .
+  - pip install requests
 
 # command to run tests
 script: nosetests -w tests/push/
