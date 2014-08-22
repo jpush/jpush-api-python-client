@@ -1,10 +1,11 @@
+#-*- coding:utf-8 -*-
 import unittest
 import jpush as jpush
 
 class TestMessage(unittest.TestCase):
 
     def test_simple_alert(self):
-        self.assertEqual(jpush.notification(alert='Hello'), {'alert':'Hello'})
+        self.assertEqual(jpush.notification(alert='中文'), {'alert':'中文'})
 
     def test_ios(self):
         self.assertEqual(

@@ -45,13 +45,13 @@ def ios(alert=None, badge=None, sound=None, content_available=False,
     """
     payload = {}
     if alert is not None:
-        if not isinstance(alert, basestring) or isinstance(alert, dict):
+        if not isinstance(alert, str) or isinstance(alert, dict):
             raise ValueError("iOS alert must be a string or dictionary")
         payload['alert'] = alert
     if badge is not None:
-        if not (isinstance(badge, basestring) or isinstance(badge, int)):
+        if not (isinstance(badge, str) or isinstance(badge, int)):
             raise ValueError("iOS badge must be an integer or string")
-        if isinstance(badge, basestring) and not VALID_AUTOBADGE.match(badge):
+        if isinstance(badge, str) and not VALID_AUTOBADGE.match(badge):
             raise ValueError("Invalid iOS autobadge value")
         payload['badge'] = badge
     if sound is not None:
@@ -94,7 +94,7 @@ def winphone(alert, title=None, _open_page=None, extras=None):
     Must include exactly one of ``alert``, ``title``, ``_open_page``, or ``extras``.
 
     """
-    if len(filter(None, (alert, _open_page, title))) != 1:
+    if len(list(filter(None, (alert, _open_page, title)))) != 1:
         raise ValueError("MPNS payload must have one notification type.")
     payload = {}
     if alert is not None:
