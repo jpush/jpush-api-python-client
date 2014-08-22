@@ -9,4 +9,4 @@ python:
 install: "pip install requests"
 
 # command to run tests
-script: nosetests
+script: nosetests -w tests/push/
