@@ -94,7 +94,7 @@ def winphone(alert, title=None, _open_page=None, extras=None):
     Must include exactly one of ``alert``, ``title``, ``_open_page``, or ``extras``.
 
     """
-    if len(filter(None, (alert, toast, tile))) != 1:
+    if len(filter(None, (alert, _open_page, title))) != 1:
         raise ValueError("MPNS payload must have one notification type.")
     payload = {}
     if alert is not None:
