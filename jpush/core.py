@@ -6,7 +6,7 @@ import requests
 
 from . import common
 from .push import Push
-from .devcie import Device
+from .device import Device
 
 logger = logging.getLogger('jpush')
 
