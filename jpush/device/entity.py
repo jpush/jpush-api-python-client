@@ -27,14 +27,14 @@ def remove(*types):
     vremove = [v for v in types]
     return {"remove": vremove}
 
-def tag(*types):
+def device_tag(*types):
     """Get a tag object
 
-    >>> tag("")
+    >>> device_tag("")
     {'tag': ''}
-    >>> tag("tag1")
+    >>> device_tag("tag1")
     {'tag': 'tag1'}
-    >>> tag(add("tag1", "tag2"), remove("tag3", "tag4"))
+    >>> device_tag(add("tag1", "tag2"), remove("tag3", "tag4"))
     {'tag': {'add': ['tag1', 'tag2'], 'remove': ['tag3', 'tag4']}}
     """
     tag = {}
@@ -49,14 +49,14 @@ def tag(*types):
             tag["tag"][key] = t[key]
     return tag
 
-def alias(*types):
+def device_alias(*types):
     """Get an alias object
 
-    >>> alias("")
+    >>> device_alias("")
     {'alias': ''}
-    >>> alias("alias1")
+    >>> device_alias("alias1")
     {'alias': 'alias1'}
-    >>> alias(add("alias1", "alias2"), remove("alias3", "alias4"))
+    >>> device_alias(add("alias1", "alias2"), remove("alias3", "alias4"))
     {'alias': {'add': ['alias1', 'alias2'], 'remove': ['alias3', 'alias4']}}
     """
     alias = {}
@@ -71,14 +71,14 @@ def alias(*types):
             alias["alias"][key] = t[key]
     return alias
 
-def registration_id(*types):
+def device_regid(*types):
     """Get a registration_id object
 
-    >>> registration_id("")
+    >>> device_regid("")
     {'registration_id': ''}
-    >>> registration_id("registration_id1")
+    >>> device_regid("registration_id1")
     {'registration_id': 'registration_id1'}
-    >>> registration_id(add("registration_id1", "registration_id2"), remove("registration_id3", "registration_id4"))
+    >>> device_regid(add("registration_id1", "registration_id2"), remove("registration_id3", "registration_id4"))
     {'registration_id': {'add': ['registration_id1', 'registration_id2'], 'remove': ['registration_id3', 'registration_id4']}}
     """
     registration_id = {}
@@ -95,4 +95,4 @@ def registration_id(*types):
 
 if "__main__" == __name__:
     print add("1", "2")
-    print tag(add("a", "b"), remove('1', '2'))
+    print device_tag(add("a", "b"), remove('1', '2'))

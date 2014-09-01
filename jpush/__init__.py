@@ -22,6 +22,14 @@ from .push import (
     message,
 )
 
+from .device import (
+    add,
+    remove,
+    device_tag,
+    device_alias,
+    device_regid,
+)
+
 __all__ = [
     JPush,
     JPushFailure,

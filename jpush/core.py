@@ -6,6 +6,7 @@ import requests
 
 from . import common
 from .push import Push
+from .devcie import Device
 
 logger = logging.getLogger('jpush')
 
@@ -63,3 +64,7 @@ class JPush(object):
     def create_push(self):
         """Create a Push notification."""
         return Push(self)
+
+    def create_device(self):
+        """Create a Device information."""
+        return Device(self)

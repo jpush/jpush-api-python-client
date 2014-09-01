@@ -5,6 +5,11 @@ import logging
 BASE_URL = "https://api.jpush.cn/"
 PUSH_URL = BASE_URL + 'v3/push'
 
+DEVICE_BASEURL = "https://device.jpush.cn/"
+DEVICE_URL = DEVICE_BASEURL + "v3/device/"
+TAG_URL = DEVICE_BASEURL + "v3/tag/"
+ALIAS_URL = DEVICE_BASEURL + "v3/alias/"
+
 logger = logging.getLogger('jpush')
 
 class Unauthorized(Exception):
