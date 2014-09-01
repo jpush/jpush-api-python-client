@@ -18,7 +18,7 @@ setup(
     author='jpush',
     author_email='support@jpush.cn',
 
-    packages=['jpush', 'jpush.push'],
+    packages=['jpush', 'jpush.push', 'jpush.device'],
     platforms='any',
     classifiers=[
         'Environment :: Console',

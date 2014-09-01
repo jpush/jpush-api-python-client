@@ -8,6 +8,7 @@ PUSH_URL = BASE_URL + 'v3/push'
 DEVICE_BASEURL = "https://device.jpush.cn/"
 DEVICE_URL = DEVICE_BASEURL + "v3/device/"
 TAG_URL = DEVICE_BASEURL + "v3/tag/"
+TAGLIST_URL = TAG_URL + "list/"
 ALIAS_URL = DEVICE_BASEURL + "v3/alias/"
 
 logger = logging.getLogger('jpush')

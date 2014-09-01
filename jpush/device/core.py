@@ -1,9 +1,11 @@
 #!/usr/bin/env python
-#from jpush import common
+from jpush import common
+import json
 
 DEVICE_BASEURL = "https://device.jpush.cn/"
 DEVICE_URL = DEVICE_BASEURL + "v3/device/"
 TAG_URL = DEVICE_BASEURL + "v3/tag/"
+TAGLIST_URL = TAG_URL + "list/"
 ALIAS_URL = DEVICE_BASEURL + "v3/alias/"
 
 class Device(object):
@@ -14,20 +16,46 @@ class Device(object):
         self._jpush = jpush 
         self.entity = None
 
-    def send(self, method, url, body, params, content_type=None, version=3):
+    def send(self, method, url, body, content_type=None, version=3):
         """Send the request
         
         """
         response = self._jpush._request(method, body,
             url, content_type, version=3)
-        data = response.json()
         return DeviceResponse(response)
 
-    def get_deviceinfo(self, registration_id):
-        """Get deviceinfo with registration id
+    def get_taglist(self):
+        """Get deviceinfo with registration id.
         """
-        url = DEVICE_URL + registration_id
-        info = self.send("GET", None, None)
+        url = common.TAGLIST_URL
+        info = self.send("GET", url, None)
+        print info
+
+
+    def get_deviceinfo(self, registration_id):
+        """Get deviceinfo with registration id.
+        """
+        url = common.DEVICE_URL + registration_id + "/"
+        info = self.send("GET", url, None)
+        print info
+
+    def set_deviceinfo(self, registration_id, entity):
+        """Update deviceinfo with registration id.
+        """
+        url = common.DEVICE_URL + registration_id + "/"
+        body = json.dumps(entity)
+        print url, body
+        info = self.send("POST", url, body)
+        print info
+
+
+    def delete_tag(self, registration_id, tag):
+        """Delete registration id tag.
+        """
+        url = common.DEVICE_URL + registration_id + "/"
+        body = json.dumps(entity)
+        print url, body
+        info = self.send("POST", url, body)
         print info
 
 class DeviceResponse(object):
@@ -41,8 +69,11 @@ class DeviceResponse(object):
     payload = None
 
     def __init__(self, response):
-        data = response.json()
-        self.payload = data
+        if 0 != len(response.content):
+            data = response.json()
+            self.payload = data
+        elif 200 == response.status_code:
+            self.payload = "success"
 
     def __str__(self):
         return "Device response Payload: {0}".format(self.payload)

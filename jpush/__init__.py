@@ -22,7 +22,7 @@ from .push import (
     message,
 )
 
-from device import (
+from .device import (
     Device,
     add,
     remove,
