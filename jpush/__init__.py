@@ -22,7 +22,7 @@ from .push import (
     message,
 )
 
-from .device import (
+from device import (
     Device,
     add,
     remove,
@@ -49,6 +49,12 @@ __all__ = [
     platform,
     audience,
     options,
+    Device,
+    add,
+    remove,
+    device_tag,
+    device_alias,
+    device_regid,
 ]
 
 # Silence urllib3 INFO logging by default

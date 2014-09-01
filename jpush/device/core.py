@@ -1,5 +1,10 @@
 #!/usr/bin/env python
-from jpush import common
+#from jpush import common
+
+DEVICE_BASEURL = "https://device.jpush.cn/"
+DEVICE_URL = DEVICE_BASEURL + "v3/device/"
+TAG_URL = DEVICE_BASEURL + "v3/tag/"
+ALIAS_URL = DEVICE_BASEURL + "v3/alias/"
 
 class Device(object):
     """Device info query/update..
@@ -21,7 +26,7 @@ class Device(object):
     def get_deviceinfo(self, registration_id):
         """Get deviceinfo with registration id
         """
-        url = common.DEVICE_URL + registration_id
+        url = DEVICE_URL + registration_id
         info = self.send("GET", None, None)
         print info
 
