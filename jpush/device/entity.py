@@ -75,22 +75,22 @@ def device_regid(*types):
     """Get a registration_id object
 
     >>> device_regid("")
-    {'registration_id': ''}
+    {'registration_ids': ''}
     >>> device_regid("registration_id1")
-    {'registration_id': 'registration_id1'}
+    {'registration_ids': 'registration_id1'}
     >>> device_regid(add("registration_id1", "registration_id2"), remove("registration_id3", "registration_id4"))
-    {'registration_id': {'add': ['registration_id1', 'registration_id2'], 'remove': ['registration_id3', 'registration_id4']}}
+    {'registration_ids': {'add': ['registration_id1', 'registration_id2'], 'remove': ['registration_id3', 'registration_id4']}}
     """
     registration_id = {}
     if 1 == len(types) and isinstance(types[0], (str, unicode)):
-        registration_id["registration_id"] = types[0]
+        registration_id["registration_ids"] = types[0]
         return registration_id
-    registration_id["registration_id"] = {}
+    registration_id["registration_ids"] = {}
     for t in types:
         for key in t:
             if key not in ('add', 'remove'):
                 raise ValueError("Invalid registration_id '%s'" % t)
-            registration_id["registration_id"][key] = t[key]
+            registration_id["registration_ids"][key] = t[key]
     return registration_id
 
 if "__main__" == __name__:
