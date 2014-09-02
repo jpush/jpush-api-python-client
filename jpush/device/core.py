@@ -31,7 +31,6 @@ class Device(object):
         info = self.send("GET", url, None)
         print info
 
-
     def get_deviceinfo(self, registration_id):
         """Get deviceinfo with registration id.
         """
