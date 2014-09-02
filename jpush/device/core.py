@@ -28,14 +28,15 @@ class Device(object):
         """Get deviceinfo with registration id.
         """
         url = common.TAGLIST_URL
-        info = self.send("GET", url, None)
-        print info
+        body = None
+        info = self.send("GET", url, body)
 
     def get_deviceinfo(self, registration_id):
         """Get deviceinfo with registration id.
         """
         url = common.DEVICE_URL + registration_id + "/"
-        info = self.send("GET", url, None)
+        body = None
+        info = self.send("GET", url, body)
         print info
 
     def set_deviceinfo(self, registration_id, entity):
