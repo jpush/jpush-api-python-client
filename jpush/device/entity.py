@@ -94,5 +94,5 @@ def device_regid(*types):
     return registration_id
 
 if "__main__" == __name__:
-    print add("1", "2")
-    print device_tag(add("a", "b"), remove('1', '2'))
+    print (add("1", "2"))
+    print (device_tag(add("a", "b"), remove('1', '2')))
