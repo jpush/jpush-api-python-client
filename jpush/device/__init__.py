@@ -1,6 +1,6 @@
-from core import Device 
+from .core import Device 
 
-from entity import (
+from .entity import (
     add,
     remove,
     device_tag,
