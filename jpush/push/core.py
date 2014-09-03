@@ -45,8 +45,7 @@ class Push(object):
         response = self._jpush._request('POST', body,
             common.PUSH_URL, 'application/json', version=3)
 
-        data = response.json()
-
+        print (response.content) 
         return PushResponse(response)
 
 

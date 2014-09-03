@@ -13,6 +13,12 @@ class TestMessage(unittest.TestCase):
             {'ios': {'sound': 'a.caf', 'extras': {'k1': 'v1'}, 'badge': '+1', 'alert': 'Hello'}}
         )
 
+    def test_iossilent(self):
+        self.assertEqual(
+            jpush.notification(ios=jpush.ios(alert="Hello", badge="+1", extras={'k1':'v1'}, sound_disable=True)),
+            {'ios': {'extras': {'k1': 'v1'}, 'badge': '+1', 'alert': 'Hello'}}
+        )
+
     def test_android(self):
         self.assertEqual(
             jpush.notification(android=jpush.android(alert="Hello", extras={'k2':'v2'})),

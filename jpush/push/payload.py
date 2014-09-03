@@ -27,7 +27,7 @@ def notification(alert=None, ios=None, android=None, winphone=None):
 
 
 def ios(alert=None, badge=None, sound=None, content_available=False,
-        extras=None):
+        extras=None, sound_disable=False):
     """iOS/APNS specific platform override payload.
 
     :keyword alert: iOS format alert, as either a string or dictionary.
@@ -37,6 +37,7 @@ def ios(alert=None, badge=None, sound=None, content_available=False,
         for Newsstand iOS applications.
     :keyword extra: A set of key/value pairs to include in the push payload
         sent to the device.
+    :keyword sound_disalbe: Disable sound to implement slient push.
 
     >>> ios(alert='Hello!', sound='cat.caf',
     ...     extra={'articleid': '12345'})
@@ -54,16 +55,16 @@ def ios(alert=None, badge=None, sound=None, content_available=False,
         if isinstance(badge, str) and not VALID_AUTOBADGE.match(badge):
             raise ValueError("Invalid iOS autobadge value")
         payload['badge'] = badge
-    if sound is not None:
-        payload['sound'] = sound
-    else:
-        payload['sound'] = 'default'
+    if not sound_disable:
+        if sound is not None:
+            payload['sound'] = sound
+        else:
+            payload['sound'] = 'default'
     if content_available:
         payload['content-available'] = 1
     if extras is not None:
         payload['extras'] = extras
     return payload
-
 
 def android(alert, title=None, builder_id=None, extras=None):
     """Android specific platform override payload.

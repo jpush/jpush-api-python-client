@@ -6,5 +6,5 @@ push = _jpush.create_push()
 push.audience = jpush.all_
 push.notification = jpush.notification(alert="Hello, world!")
 push.platform = jpush.all_
-push.options = {"time_to_live":86400, "send no":12345,"apns_production":True}
+push.options = {"time_to_live":86400, "sendno":12345,"apns_production":True}
 push.send()
