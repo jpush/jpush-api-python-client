@@ -4,6 +4,7 @@ python:
   - "2.7"
   - "3.2"
   - "3.3"
+  - "3.4"
 
 # command to install dependencies
 install:
@@ -11,4 +12,4 @@ install:
   - pip install .
 
 # command to run tests
-script: nosetests -w tests/push/
+script: nosetests -w tests/push/  --verbosity=2 
