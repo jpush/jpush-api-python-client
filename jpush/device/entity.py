@@ -31,22 +31,22 @@ def device_tag(*types):
     """Get a tag object
 
     >>> device_tag("")
-    {'tag': ''}
+    {'tags': ''}
     >>> device_tag("tag1")
-    {'tag': 'tag1'}
+    {'tags': 'tag1'}
     >>> device_tag(add("tag1", "tag2"), remove("tag3", "tag4"))
-    {'tag': {'add': ['tag1', 'tag2'], 'remove': ['tag3', 'tag4']}}
+    {'tags': {'add': ['tag1', 'tag2'], 'remove': ['tag3', 'tag4']}}
     """
     tag = {}
     if 1 == len(types) and isinstance(types[0], (str, unicode)):
-        tag["tag"] = types[0]
+        tag["tags"] = types[0]
         return tag
-    tag["tag"] = {}
+    tag["tags"] = {}
     for t in types:
         for key in t:
             if key not in ('add', 'remove'):
                 raise ValueError("Invalid tag '%s'" % t)
-            tag["tag"][key] = t[key]
+            tag["tags"][key] = t[key]
     return tag
 
 def device_alias(*types):
