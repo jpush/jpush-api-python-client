@@ -2,12 +2,6 @@
 from jpush import common
 import json
 
-DEVICE_BASEURL = "https://device.jpush.cn/"
-DEVICE_URL = DEVICE_BASEURL + "v3/device/"
-TAG_URL = DEVICE_BASEURL + "v3/tag/"
-TAGLIST_URL = TAG_URL + "list/"
-ALIAS_URL = DEVICE_BASEURL + "v3/alias/"
-
 class Device(object):
     """Device info query/update..
 
@@ -71,7 +65,7 @@ class Device(object):
     def check_taguserexist(self, tag, registration_id):
         """Check registration id whether in tag.
         """
-        url = common.TAG_URL + tag + "/exist/"
+        url = common.TAG_URL + tag + "/registration_ids/" + registration_id
         body = registration_id
         print (url), (registration_id)
         info = self.send("GET", url, body)
