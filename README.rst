@@ -49,14 +49,22 @@ or from source:
 
     $ sudo python setup.py install
 
+------------
+Run Tests
+------------
+To run jpush-api-python-client tests, simply:
+
+.. code-block:: sh
+
+    $ nosetests -w tests/  --verbosity=2
+
 --------
 Examples
 --------
-Details refer to `examples <https://github.com/jpush/jpush-api-python-client/blob/master/examples>`_
+    You can see more examples in `examples <https://github.com/jpush/jpush-api-python-client/blob/master/examples>`_
 
 Simple iOS Push
 ---------------
-  See more push examples in `Push Examples <https://github.com/jpush/jpush-api-python-client/tree/master/examples/push>`
     >>> import jpush as jpush
     >>> from conf import app_key, master_secret
     >>> _jpush = jpush.JPush(app_key, master_secret)
@@ -70,7 +78,6 @@ Simple iOS Push
 
 Get taglist
 -----------------
-  See more devices api examples in `Push Examples <https://github.com/jpush/jpush-api-python-client/tree/master/examples/device>`
     >>> import jpush as jpush
     >>> from conf import app_key, master_secret
     >>> _jpush = jpush.JPush(app_key, master_secret)
