@@ -54,6 +54,33 @@ Examples
 --------
 Details refer to `examples <https://github.com/jpush/jpush-api-python-client/blob/master/examples>`_
 
+Simple iOS Push
+---------------
+    >>> import jpush as jpush
+    >>> from conf import app_key, master_secret
+    >>> _jpush = jpush.JPush(app_key, master_secret)
+    >>> push = _jpush.create_push()
+    >>> push.audience = jpush.all_
+    >>> ios_msg = jpush.ios(alert="Hello, IOS JPush!", badge="+1", sound="a.caf", extras={'k1':'v1'})
+    >>> push.notification = jpush.notification(alert="Hello, JPush!", android=android_msg, ios=ios_msg)
+    >>> push.platform = jpush.platform("ios")
+    >>> push.send()
+
+
+Get taglist
+-----------------
+    >>> import jpush as jpush
+    >>> from conf import app_key, master_secret
+    >>> _jpush = jpush.JPush(app_key, master_secret)
+    >>> device = _jpush.create_device()
+    >>> device.get_taglist()
+
+--------
+Questions
+--------
+The best place to ask questions is our Q&A site:
+http://www.jpush.cn/qa/
+
 --------
 Thanks to
 --------
