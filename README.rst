@@ -14,9 +14,9 @@ JPush API Python Client
 
 JPush's officially supported Python client library for accessing JPush APIs. 
 
-JPush Rest API Documents: <a href="http://docs.jpush.cn/display/dev/REST+API">http://docs.jpush.cn/display/dev/REST+API</a>
+JPush Rest API Documents: :http://docs.jpush.cn/display/dev/REST+API`http://docs.jpush.cn/display/dev/REST+API`
 
-You can download the latest release file here: <a href="https://github.com/jpush/jpush-api-python-client/releases">Releases</a>
+You can download the latest release file here: :Releases:`https://github.com/jpush/jpush-api-python-client/releases`
 
 ------------
 Dependencies
