@@ -56,6 +56,7 @@ Details refer to `examples <https://github.com/jpush/jpush-api-python-client/blo
 
 Simple iOS Push
 ---------------
+  See more push examples in `Push Examples <https://github.com/jpush/jpush-api-python-client/tree/master/examples/push>`
     >>> import jpush as jpush
     >>> from conf import app_key, master_secret
     >>> _jpush = jpush.JPush(app_key, master_secret)
@@ -69,6 +70,7 @@ Simple iOS Push
 
 Get taglist
 -----------------
+  See more devices api examples in `Push Examples <https://github.com/jpush/jpush-api-python-client/tree/master/examples/device>`
     >>> import jpush as jpush
     >>> from conf import app_key, master_secret
     >>> _jpush = jpush.JPush(app_key, master_secret)
