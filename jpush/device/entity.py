@@ -1,5 +1,9 @@
 #!/usr/bin/env python
 #-*- coding:utf8 -*-
+import sys
+
+if 2 != sys.version_info[0]:
+    unicode = str
 
 def add(*types):
     """Select a (list of) to be added objects(s)

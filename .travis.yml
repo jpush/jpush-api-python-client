@@ -12,4 +12,4 @@ install:
   - pip install .
 
 # command to run tests
-script: nosetests -w tests/push/  --verbosity=2
+script: nosetests tests/push tests/devices --verbosity=2 
