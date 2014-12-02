@@ -59,7 +59,7 @@ To run jpush-api-python-client tests, simply:
 
 .. code-block:: sh
 
-    $ nosetests -w tests/  --verbosity=2
+    $ nosetests tests/push tests/devices --verbosity=2 
 
 --------
 Examples
