@@ -1,6 +1,9 @@
 #!/usr/bin/env python
 #-*- coding:utf8 -*-
 
+if not unicode:
+    unicode = str
+
 def add(*types):
     """Select a (list of) to be added objects(s)
 
