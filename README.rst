@@ -49,9 +49,12 @@ or from source:
 
     $ sudo python setup.py install
 
-------------
-Run Tests
-------------
+-------
+Testing
+-------
+For running the tests, you need the standard `unittest` module, shipped
+with Python. 
+
 To run jpush-api-python-client tests, simply:
 
 .. code-block:: sh
@@ -72,6 +75,7 @@ Simple iOS Push
     >>> push.audience = jpush.all_
     >>> ios_msg = jpush.ios(alert="Hello, IOS JPush!", badge="+1", sound="a.caf", extras={'k1':'v1'})
     >>> push.notification = jpush.notification(alert="Hello, JPush!", android=android_msg, ios=ios_msg)
+    >>> push.options = {"time_to_live":86400, "sendno":12345,"apns_production":True}
     >>> push.platform = jpush.platform("ios")
     >>> push.send()
 
