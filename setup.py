@@ -3,8 +3,8 @@ try:
     from setuptools import setup
 except (ImportError):
     from distutils.core import setup
-from jpush import __version__
 
+__version__ = '3.0.2'
 
 setup(
     name='jpush',
