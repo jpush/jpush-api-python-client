@@ -19,15 +19,6 @@ JPush Rest API Documents: `http://docs.jpush.cn/display/dev/REST+API <http://doc
 You can download the latest release file here: `Releases <https://github.com/jpush/jpush-api-python-client/releases>`_
 
 ------------
-Dependencies
-------------
-You need to install requests, the python http library, to use jpush python client.
-
-.. code-block:: sh
-
-    $ sudo pip install requests 
-
-------------
 Installation
 ------------
 To install jpush-api-python-client, simply:
