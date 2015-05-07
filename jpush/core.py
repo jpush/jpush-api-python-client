@@ -10,6 +10,7 @@ from .device import Device
 
 logger = logging.getLogger('jpush')
 
+
 class JPush(object):
 
     def __init__(self, key, secret):
@@ -20,26 +21,35 @@ class JPush(object):
         self.session.auth = (key, secret)
 
     def _request(self, method, body, url, content_type=None,
-            version=None, params=None):
+                 version=None, params=None):
 
         headers = {}
         headers['user-agent'] = 'jpush-api-python-client'
         headers['connection'] = 'keep-alive'
         headers['content-type'] = 'application/json;charset:utf-8'
 
-        logger.debug("Making %s request to %s. Headers:\n\t%s\nBody:\n\t%s",
-            method, url, '\n\t'.join(
-                '%s: %s' % (key, value) for (key, value) in headers.items()),
-            body)
+        logger.debug(
+            "Making %s request to %s. Headers:\n\t%s\nBody:\n\t%s",
+            method, url,
+            '\n\t'.join(
+                '%s: %s' % (key, value)
+                for (key, value) in headers.items()
+            ),
+            body
+        )
 
         response = self.session.request(
             method, url, data=body, params=params, headers=headers)
 
-        logger.debug("Received %s response. Headers:\n\t%s\nBody:\n\t%s",
-            response.status_code, '\n\t'.join(
-                '%s: %s' % (key, value) for (key, value)
-                in response.headers.items()),
-            response.content)
+        logger.debug(
+            "Received %s response. Headers:\n\t%s\nBody:\n\t%s",
+            response.status_code,
+            '\n\t'.join(
+                '%s: %s' % (key, value)
+                for (key, value) in response.headers.items()
+            ),
+            response.content
+        )
 
         if response.status_code == 401:
             raise common.Unauthorized
@@ -59,7 +69,7 @@ class JPush(object):
             DeprecationWarning)
         body = json.dumps(payload)
         self._request('POST', body, common.PUSH_URL,
-            'application/json', version=1)
+                      'application/json', version=1)
 
     def create_push(self):
         """Create a Push notification."""
