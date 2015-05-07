@@ -144,7 +144,7 @@ class BaseSDK(object):
         try:
             self._check_errors(resp, status_code)
         except Exception, e:
-            logging.error(e)
+            logging.debug(e)
 
         return resp.json_content
 
@@ -157,7 +157,7 @@ class BaseSDK(object):
         try:
             self._check_errors(resp, status_code)
         except Exception, e:
-            logging.error(e)
+            logging.debug(e)
             return False
         else:
             return True
