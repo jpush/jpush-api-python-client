@@ -2,20 +2,19 @@
 from jpush import common
 import json
 
+
 class Device(object):
     """Device info query/update..
-
     """
     def __init__(self, jpush):
-        self._jpush = jpush 
+        self._jpush = jpush
         self.entity = None
 
     def send(self, method, url, body, content_type=None, version=3):
         """Send the request
-        
         """
-        response = self._jpush._request(method, body,
-            url, content_type, version=3)
+        response = self._jpush._request(method, body, url,
+                                        content_type, version=3)
         return DeviceResponse(response)
 
     def get_taglist(self):
@@ -92,7 +91,8 @@ class Device(object):
         print (url), (body)
         info = self.send("GET", url, body)
         print (info)
-    
+
+
 class DeviceResponse(object):
     """Response to a successful device request send.
 

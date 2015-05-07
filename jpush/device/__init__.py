@@ -1,4 +1,4 @@
-from .core import Device 
+from .core import Device
 
 from .entity import (
     add,
