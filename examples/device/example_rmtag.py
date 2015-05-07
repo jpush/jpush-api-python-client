@@ -1,4 +1,4 @@
-#-*- encoding:utf-8 -*-
+# -*- encoding:utf-8 -*-
 
 import jpush as jpush
 from conf import app_key, master_secret
