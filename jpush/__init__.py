@@ -1,4 +1,3 @@
-"""Python package for using the JPush API"""
 from .core import JPush
 from .common import JPushFailure, Unauthorized
 
@@ -60,4 +59,6 @@ __all__ = [
 # Silence urllib3 INFO logging by default
 
 import logging
-logging.getLogger('requests.packages.urllib3.connectionpool').setLevel(logging.WARNING)
+logging.getLogger(
+    'requests.packages.urllib3.connectionpool'
+).setLevel(logging.WARNING)
