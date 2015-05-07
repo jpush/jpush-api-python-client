@@ -5,6 +5,7 @@ from jpush import common
 
 logger = logging.getLogger('jpush')
 
+
 class Push(object):
     """A push notification. Set audience, message, etc, and send."""
 
@@ -43,9 +44,11 @@ class Push(object):
         """
         body = json.dumps(self.payload)
         response = self._jpush._request('POST', body,
-            common.PUSH_URL, 'application/json', version=3)
+                                        common.PUSH_URL,
+                                        'application/json',
+                                        version=3)
 
-        print (response.content) 
+        print (response.content)
         return PushResponse(response)
 
     def send_validate(self):
@@ -59,9 +62,11 @@ class Push(object):
         """
         body = json.dumps(self.payload)
         response = self._jpush._request('POST', body,
-            common.VALIDATE_PUSH_URL, 'application/json', version=3)
+                                        common.VALIDATE_PUSH_URL,
+                                        'application/json',
+                                        version=3)
 
-        print (response.content) 
+        print (response.content)
         return PushResponse(response)
 
 

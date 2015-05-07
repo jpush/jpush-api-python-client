@@ -18,7 +18,7 @@ from .payload import (
     options,
 )
 
-# Common selector for audience & platform 
+# Common selector for audience & platform
 
 all_ = "all"
 """Select all, to do a broadcast.
