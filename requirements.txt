@@ -1,0 +1,8 @@
+# for jmessage
+pycurl==7.19.5.1
+
+# for jpush
+requests==2.7.0
+
+# for test
+nose==1.3.6
