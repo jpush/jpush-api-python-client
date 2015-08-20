@@ -2,7 +2,7 @@
 from .core import JPush
 from .common import JPushFailure, Unauthorized
 
-__version__ = '3.0.2'
+__version__ = '3.1.0'
 VERSION = tuple(map(int,  __version__.split('.')))
 
 from .push import (
