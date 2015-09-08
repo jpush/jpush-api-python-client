@@ -1,14 +1,20 @@
 # -*- coding: utf-8 -*-
+import re
+import ast
 try:
     from setuptools import setup
 except (ImportError):
     from distutils.core import setup
-from jpush import __version__
 
+_version_re = re.compile(r'__version__\s+=\s+(.*)')
+
+with open('jpush/__init__.py', 'rb') as f:
+    version = str(ast.literal_eval(_version_re.search(
+        f.read().decode('utf-8')).group(1)))
 
 setup(
     name='jpush',
-    version=__version__,
+    version=version,
     description='JPush\'s officially supported Python client library',
     keywords=('JPush', 'JPush API', 'Android Push', 'iOS Push'),
     license='MIT License',
