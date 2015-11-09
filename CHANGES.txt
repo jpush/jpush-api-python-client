@@ -1,3 +1,9 @@
 Version 3.1.0
 -----------
+**Released 2015 Nov 9**
+Fix device api some bugs;
+
+
+Version 3.1.0
+-----------
 **Released 2015 August 20**
