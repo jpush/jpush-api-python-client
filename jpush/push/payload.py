@@ -3,6 +3,20 @@ import re
 # Valid autobadge values: auto, +N, -N
 VALID_AUTOBADGE = re.compile(r'^(auto|[+-][\d]+)$')
 
+def is_string(s):
+    try:
+        import six
+        string_types = six.string_types
+    except ImportError as e:
+        import sys
+        if sys.version_info[0] <= 2:
+            string_types = basestring
+        else:
+            string_types = str
+    return isinstance(s, string_types)
+
+
+
 def notification(alert=None, ios=None, android=None, winphone=None):
     """Create a notification payload.
 
@@ -46,13 +60,13 @@ def ios(alert=None, badge=None, sound=None, content_available=False,
     """
     payload = {}
     if alert is not None:
-        if not isinstance(alert, str) or isinstance(alert, dict):
+        if not is_string(alert) or isinstance(alert, dict):
             raise ValueError("iOS alert must be a string or dictionary")
         payload['alert'] = alert
     if badge is not None:
-        if not (isinstance(badge, str) or isinstance(badge, int)):
+        if not (is_string(badge) or isinstance(badge, int)):
             raise ValueError("iOS badge must be an integer or string")
-        if isinstance(badge, str) and not VALID_AUTOBADGE.match(badge):
+        if is_string(badge) and not VALID_AUTOBADGE.match(badge):
             raise ValueError("Invalid iOS autobadge value")
         payload['badge'] = badge
     if not sound_disable:
