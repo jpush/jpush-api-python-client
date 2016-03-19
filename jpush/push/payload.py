@@ -66,7 +66,7 @@ def ios(alert=None, badge=None, sound=None, content_available=False,
         payload['extras'] = extras
     return payload
 
-def android(alert, title=None, builder_id=None, extras=None):
+def android(alert=None, title=None, builder_id=None, extras=None):
     """Android specific platform override payload.
 
     All keyword arguments are optional.
@@ -89,7 +89,7 @@ def android(alert, title=None, builder_id=None, extras=None):
     return payload
 
 
-def winphone(alert, title=None, _open_page=None, extras=None):
+def winphone(alert=None, title=None, _open_page=None, extras=None):
     """MPNS specific platform override payload.
 
     Must include exactly one of ``alert``, ``title``, ``_open_page``, or ``extras``.
