@@ -12,6 +12,11 @@ TAG_URL = DEVICE_BASEURL + "v3/tags/"
 TAGLIST_URL = TAG_URL
 ALIAS_URL = DEVICE_BASEURL + "v3/aliases/"
 
+REPORT_BASEURL="https://report.jpush.cn/"
+RECEIVED_URL=REPORT_BASEURL+"v3/received"
+MESSAGES_URL=REPORT_BASEURL+"v3/messages?msg_ids="
+USERS_URL=REPORT_BASEURL+"v3/users?"
+
 logger = logging.getLogger('jpush')
 
 class Unauthorized(Exception):

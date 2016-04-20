@@ -33,6 +33,10 @@ from .device import (
     device_mobile,
 )
 
+from .report import (
+    Report,
+)
+
 __all__ = [
     JPush,
     JPushFailure,
@@ -58,6 +62,7 @@ __all__ = [
     device_tag,
     device_alias,
     device_regid,
+    Report,
 ]
 
 # Silence urllib3 INFO logging by default
