@@ -53,6 +53,11 @@ def device_tag(*types):
             tag["tags"][key] = t[key]
     return tag
 
+def device_mobile(device_mobile):
+    mobile={}
+    mobile["mobile"]=device_mobile
+    return mobile
+
 def device_alias(*types):
     """Get an alias object
 

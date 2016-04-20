@@ -20,6 +20,7 @@ from .push import (
     audience,
     options,
     message,
+    smsmessage,
 )
 
 from .device import (
@@ -29,6 +30,7 @@ from .device import (
     device_tag,
     device_alias,
     device_regid,
+    device_mobile,
 )
 
 __all__ = [
@@ -46,6 +48,7 @@ __all__ = [
     android,
     winphone,
     message,
+    smsmessage,
     platform,
     audience,
     options,

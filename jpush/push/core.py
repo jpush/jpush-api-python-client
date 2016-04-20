@@ -15,12 +15,14 @@ class Push(object):
         self.platform = None
         self.options = None
         self.message = None
+        self.smsmessage=None
 
     @property
     def payload(self):
         data = {
             "audience": self.audience,
             "platform": self.platform,
+            "sms_message":self.smsmessage,
         }
         if (self.notification is None) and (self.message is None):
             raise ValueError("Notification and message cannot be both empty")

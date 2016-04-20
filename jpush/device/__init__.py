@@ -6,6 +6,7 @@ from .entity import (
     device_tag,
     device_alias,
     device_regid,
+    device_mobile,
 )
 
 __all__ = [
@@ -15,4 +16,5 @@ __all__ = [
     device_tag,
     device_alias,
     device_regid,
+    device_mobile,
 ]

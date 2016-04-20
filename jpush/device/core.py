@@ -45,6 +45,15 @@ class Device(object):
         print (url), (body), (info)
         return info
 
+    def set_devicemobile(self, registration_id, entity):
+        """Update deviceinfo with registration id.
+        """
+        url = common.DEVICE_URL + registration_id + "/"
+        body = json.dumps(entity)
+        info = self.send("POST", url, body)
+        print (url), (body), (info)
+        return info
+
     def delete_tag(self, tag, platform=None):
         """Delete registration id tag.
         """

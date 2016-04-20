@@ -1,2 +1,2 @@
-app_key = u'dd1066407b044738b6479275'
-master_secret = u'2b38ce69b1de2a7fa95706ea'
+app_key = u'6be9204c30b9473e87bad4dc'
+master_secret = u'8aae478411e89f7682ed5af6'

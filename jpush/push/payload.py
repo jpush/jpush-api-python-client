@@ -128,6 +128,14 @@ def message(msg_content, title=None, content_type=None, extras=None):
         payload['extras'] = extras
     return payload
 
+
+def smsmessage(content,delay_time):
+    payload = {}
+    payload["content"]=content
+    payload["delay_time"]=delay_time
+    return payload
+
+
 def platform(*types):
     """Create a platform specifier.
 
