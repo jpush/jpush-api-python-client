@@ -28,7 +28,7 @@ class Push(object):
         if self.notification is not None:
             data['notification'] = self.notification
         if self.smsmessage is not None:
-            data['sms_message'] = self.sms_message
+            data['sms_message'] = self.smsmessage
         if self.options is not None:
             data['options'] = self.options
         if self.message is not None:
