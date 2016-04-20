@@ -3,4 +3,4 @@ from conf import app_key, master_secret
 _jpush = jpush.JPush(app_key, master_secret)
 
 report=_jpush.create_report();
-report.get_received("3289406737")
+report.get_messages("3289406737")
