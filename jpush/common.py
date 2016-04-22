@@ -17,6 +17,8 @@ RECEIVED_URL=REPORT_BASEURL+"v3/received?msg_ids="
 MESSAGES_URL=REPORT_BASEURL+"v3/messages?msg_ids="
 USERS_URL=REPORT_BASEURL+"v3/users?"
 
+BASE_SCHEDULEURL="https://api.jpush.cn/v3/schedules/"
+BASE_LISTURL="https://api.jpush.cn/v3/schedules?page="
 logger = logging.getLogger('jpush')
 
 class Unauthorized(Exception):

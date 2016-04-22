@@ -8,6 +8,7 @@ from . import common
 from .push import Push
 from .device import Device
 from .report import Report
+from .schedule import Schedule
 logger = logging.getLogger('jpush')
 
 class JPush(object):
@@ -72,3 +73,7 @@ class JPush(object):
     def create_report(self):
         """Create a Push notification."""
         return Report(self)
+
+    def create_schedule(self):
+        """Create a Push notification."""
+        return Schedule(self)
