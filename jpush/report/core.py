@@ -33,6 +33,14 @@ class Report(object):
         print (messages)
         return messages
 
+    def get_users(self, time_unit,start,duration):
+        url = common.USERS_URL + "time_unit="+time_unit+"&start="+start+"&duration="+duration
+        print  url
+        body = None
+        users = self.send("GET", url, body)
+        print (users)
+        return users
+
 class ReportResponse(object):
     """Response to a successful device request send.
 
@@ -51,4 +59,4 @@ class ReportResponse(object):
             self.payload = "success"
 
     def __str__(self):
-        return "Device response Payload: {0}".format(self.payload)
+        return "Report response Payload: {0}".format(self.payload)
