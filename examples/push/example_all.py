@@ -8,4 +8,7 @@ push.audience = jpush.all_
 push.notification = jpush.notification(alert="Hello,python sdk!")
 push.platform = jpush.all_
 core.logger.debug('logger debug message test')
+
 push.send()
+
+
