@@ -3,4 +3,4 @@ build/
 dist/
 jpush.egg-info/
 .idea/
-
+jpush.log

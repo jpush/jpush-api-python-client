@@ -9,10 +9,16 @@ from .push import Push
 from .device import Device
 from .report import Report
 from .schedule import Schedule
+
+
 logger = logging.getLogger('jpush')
+logging.basicConfig(level = logging.DEBUG,
+                    format = '%(asctime)s %(filename)s[line:%(lineno)d] %(levelname)s %(message)s',
+                    datefmt = '%a, %d %b %Y %H:%M:%S',
+                    filename = 'log/jpush.log',
+                    filemode = 'w')
 
 class JPush(object):
-
     def __init__(self, key, secret):
         self.key = key
         self.secret = secret
