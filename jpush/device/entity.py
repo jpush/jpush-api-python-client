@@ -53,10 +53,12 @@ def device_tag(*types):
             tag["tags"][key] = t[key]
     return tag
 
+
 def device_mobile(device_mobile):
     mobile={}
     mobile["mobile"]=device_mobile
     return mobile
+
 
 def device_alias(*types):
     """Get an alias object
@@ -79,6 +81,7 @@ def device_alias(*types):
                 raise ValueError("Invalid alias '%s'" % t)
             alias["alias"][key] = t[key]
     return alias
+
 
 def device_regid(*types):
     """Get a registration_id object

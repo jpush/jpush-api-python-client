@@ -5,6 +5,7 @@ from jpush import common
 
 logger = logging.getLogger('jpush')
 
+
 class Report(object):
     """JPush Report API V3"""
     def __init__(self, jpush):
@@ -25,7 +26,6 @@ class Report(object):
         print (received)
         return received
 
-
     def get_messages(self, msg_ids):
         url = common.MESSAGES_URL + msg_ids
         body = None
@@ -40,6 +40,7 @@ class Report(object):
         users = self.send("GET", url, body)
         print (users)
         return users
+
 
 class ReportResponse(object):
     """Response to a successful device request send.

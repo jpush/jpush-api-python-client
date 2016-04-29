@@ -11,11 +11,11 @@ def schedulepayload(name=None, enabled=None, trigger=None, push=None):
     if push is not None:
         schedulepayload['push'] = push
     if not schedulepayload:
-        raise ValueError("schedulepayload may not be empty")
+        raise ValueError("schedule payload may not be empty")
     return schedulepayload
 
 
-def trigger(time,start=None, end=None,time_unit=None,frequency=None,point=None):
+def trigger(time, start=None, end=None,time_unit=None,frequency=None,point=None):
     if(start==None and end==None and time_unit==None and frequency==None):
         trigger={}
         single={}
