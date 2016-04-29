@@ -21,8 +21,14 @@ BASE_SCHEDULEURL="https://api.jpush.cn/v3/schedules/"
 BASE_LISTURL="https://api.jpush.cn/v3/schedules?page="
 logger = logging.getLogger('jpush')
 
+
 class Unauthorized(Exception):
     """Raised when we get a 401 from the server"""
+    def __init__(self, value):
+        self.value = value
+
+    def __str__(self):
+        return repr(self.value)
 
 
 class JPushFailure(Exception):
@@ -63,3 +69,53 @@ class JPushFailure(Exception):
 
         return cls(error, error_code, details, response, response.status_code,
             response.content)
+
+
+class APIConnectionException(Exception):
+    def __init__(self, value):
+        self.value = value
+
+    def __str__(self):
+        return repr(self.value)
+
+
+class APIRequestException(Exception):
+    def __init__(self, value):
+        self.value = value
+
+    def __str__(self):
+        return repr(self.value)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
