@@ -16,7 +16,7 @@ logging.basicConfig(level=logging.DEBUG,
                     format = '%(asctime)s %(filename)s[line:%(lineno)d] %(levelname)s %(message)s',
                     datefmt = '%a, %d %b %Y %H:%M:%S',
                     filename = 'jpush.log',
-                    filemode = 'w')
+                    filemode = 'a')
 
 
 class JPush(object):
