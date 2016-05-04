@@ -78,9 +78,9 @@ class JPush(object):
         return Device(self)
 
     def create_report(self):
-        """Create a Push notification."""
+        """Create a Report."""
         return Report(self)
 
     def create_schedule(self):
-        """Create a Push notification."""
+        """Create a Schedule."""
         return Schedule(self)
