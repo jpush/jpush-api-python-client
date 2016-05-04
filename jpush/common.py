@@ -1,6 +1,6 @@
 import json
 import logging
-
+import requests
 
 BASE_URL = "https://api.jpush.cn/"
 PUSH_URL = BASE_URL + 'v3/push'
@@ -47,12 +47,11 @@ class JPushFailure(Exception):
         self.error_code = error_code
         self.details = details
         self.response = response
-        super(JPushFailure, self).__init__(*args)
+        super(self, JPushFailure).__init__(*args)
 
     @classmethod
     def from_response(cls, response):
         """Instantiate a ValidationFailure from a Response object"""
-
         try:
             payload = response.json()
             error = payload.get('error')

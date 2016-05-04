@@ -3,7 +3,6 @@ import logging
 import warnings
 
 import requests
-
 from . import common
 from .push import Push
 from .device import Device
@@ -27,8 +26,7 @@ class JPush(object):
         self.session = requests.Session()
         self.session.auth = (key, secret)
 
-    def _request(self, method, body, url, content_type=None,
-            version=None, params=None):
+    def _request(self, method, body, url, content_type=None, version=None, params=None):
 
         headers = {}
         headers['user-agent'] = 'jpush-api-python-client'
@@ -39,9 +37,12 @@ class JPush(object):
             method, url, '\n\t'.join(
                 '%s: %s' % (key, value) for (key, value) in headers.items()),
             body)
-
-        response = self.session.request(
-            method, url, data=body, params=params, headers=headers)
+        try:
+            response = self.session.request(method, url, data=body, params=params, headers=headers, timeout=30)
+        except requests.exceptions.ConnectTimeout:
+            raise common.APIConnectionException("Connection to api.jpush.cn timed out.")
+        except:
+            raise common.APIConnectionException("Connection to api.jpush.cn error.")
 
         logger.debug("Received %s response. Headers:\n\t%s\nBody:\n\t%s",
             response.status_code, '\n\t'.join(
@@ -50,10 +51,9 @@ class JPush(object):
             response.content)
 
         if response.status_code == 401:
-            raise common.Unauthorized
+            raise common.Unauthorized("Please check your AppKey and Master Secret")
         elif not (200 <= response.status_code < 300):
             raise common.JPushFailure.from_response(response)
-
         return response
 
     def push(self, payload):

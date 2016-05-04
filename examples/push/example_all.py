@@ -10,5 +10,11 @@ push.audience = jpush.all_
 push.notification = jpush.notification(alert="hello python jpush api")
 push.platform = jpush.all_
 core.logger.debug('logger debug message test')
-push.send()
+try:
+    response=push.send()
+except common.Unauthorized:
+    raise common.Unauthorized("Unauthorized")
+except common.APIConnectionException:
+    raise common.APIConnectionException("conn")
+
 

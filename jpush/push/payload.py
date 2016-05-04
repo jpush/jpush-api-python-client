@@ -3,6 +3,7 @@ import re
 # Valid autobadge values: auto, +N, -N
 VALID_AUTOBADGE = re.compile(r'^(auto|[+-][\d]+)$')
 
+
 def notification(alert=None, ios=None, android=None, winphone=None):
     """Create a notification payload.
 

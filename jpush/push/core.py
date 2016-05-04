@@ -61,8 +61,7 @@ class Push(object):
 
         """
         body = json.dumps(self.payload)
-        response = self._jpush._request('POST', body,
-            common.VALIDATE_PUSH_URL, 'application/json', version=3)
+        response = self._jpush._request('POST', body, common.VALIDATE_PUSH_URL, 'application/json', version=3)
 
         print (response.content) 
         return PushResponse(response)
