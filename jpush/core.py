@@ -11,11 +11,6 @@ from .schedule import Schedule
 
 
 logger = logging.getLogger('jpush')
-logging.basicConfig(level=logging.DEBUG,
-                    format = '%(asctime)s %(filename)s[line:%(lineno)d] %(levelname)s %(message)s',
-                    datefmt = '%a, %d %b %Y %H:%M:%S',
-                    filename = 'jpush.log',
-                    filemode = 'a')
 
 
 class JPush(object):
@@ -34,9 +29,7 @@ class JPush(object):
         headers['content-type'] = 'application/json;charset:utf-8'
 
         logger.debug("Making %s request to %s. Headers:\n\t%s\nBody:\n\t%s",
-            method, url, '\n\t'.join(
-                '%s: %s' % (key, value) for (key, value) in headers.items()),
-            body)
+                     method, url, '\n\t'.join('%s: %s' % (key, value) for (key, value) in headers.items()), body)
         try:
             response = self.session.request(method, url, data=body, params=params, headers=headers, timeout=30)
         except requests.exceptions.ConnectTimeout:
@@ -44,11 +37,8 @@ class JPush(object):
         except:
             raise common.APIConnectionException("Connection to api.jpush.cn error.")
 
-        logger.debug("Received %s response. Headers:\n\t%s\nBody:\n\t%s",
-            response.status_code, '\n\t'.join(
-                '%s: %s' % (key, value) for (key, value)
-                in response.headers.items()),
-            response.content)
+        logger.debug("Received %s response. Headers:\n\t%s\nBody:\n\t%s", response.status_code, '\n\t'.join(
+                '%s: %s' % (key, value) for (key, value) in response.headers.items()), response.content)
 
         if response.status_code == 401:
             raise common.Unauthorized("Please check your AppKey and Master Secret")
@@ -66,8 +56,25 @@ class JPush(object):
             "JPush.push() is deprecated. See documentation on upgrading.",
             DeprecationWarning)
         body = json.dumps(payload)
-        self._request('POST', body, common.PUSH_URL,
-            'application/json', version=1)
+        self._request('POST', body, common.PUSH_URL, 'application/json', version=1)
+
+    def  set_logging(self, level):
+        level_list= ["CRITICAL", "ERROR", "WARNING", "INFO", "DEBUG", "NOTSET"]
+        if level in level_list:
+            if(level == "CRITICAL"):
+                logging.basicConfig(level=logging.CRITICAL)
+            if (level == "ERROR"):
+                logging.basicConfig(level=logging.ERROR)
+            if (level == "WARNING"):
+                logging.basicConfig(level=logging.WARNING)
+            if (level == "INFO"):
+                logging.basicConfig(level=logging.INFO)
+            if (level == "DEBUG"):
+                logging.basicConfig(level=logging.DEBUG)
+            if (level == "NOTSET"):
+                logging.basicConfig(level=logging.NOTSET)
+        else:
+            print "set logging level failed ,the level is invalid."
 
     def create_push(self):
         """Create a Push notification."""
