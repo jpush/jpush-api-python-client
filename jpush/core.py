@@ -73,8 +73,6 @@ class JPush(object):
                 logging.basicConfig(level=logging.DEBUG)
             if (level == "NOTSET"):
                 logging.basicConfig(level=logging.NOTSET)
-            else:
-                print "set logging level failed ,the level is invalid."
         else:
             print "set logging level failed ,the level is invalid."
 

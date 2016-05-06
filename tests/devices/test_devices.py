@@ -29,6 +29,8 @@ class TestEntity(unittest.TestCase):
             device.set_deviceinfo(reg_id, entity)
         except common.JPushFailure:
             self.assertEqual(1, 1)
+        except:
+            self.assertEqual(1, 0)
 
     def test_get_device(self):
         reg_id = '090c1f59f89'
@@ -36,6 +38,8 @@ class TestEntity(unittest.TestCase):
             device.get_deviceinfo(reg_id)
         except common.JPushFailure:
             self.assertEqual(1, 1)
+        except:
+            self.assertEqual(1, 0)
 
     def test_remove_alias(self):
         alias = "alias1"
