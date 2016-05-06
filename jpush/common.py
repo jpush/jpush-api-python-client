@@ -66,8 +66,7 @@ class JPushFailure(Exception):
             "Request failed with status %d: '%s %s': %s",
             response.status_code, error_code, error, json.dumps(details))
 
-        return cls(error, error_code, details, response, response.status_code,
-            response.content)
+        return cls(error, error_code, details, response, response.status_code, response.content)
 
 
 class APIConnectionException(Exception):

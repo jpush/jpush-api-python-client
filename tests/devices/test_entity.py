@@ -1,6 +1,7 @@
 import unittest
 import jpush
 
+
 class TestEntity(unittest.TestCase):
 
     def test_basic_entity(self):

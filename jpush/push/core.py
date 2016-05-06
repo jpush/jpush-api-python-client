@@ -5,6 +5,7 @@ from jpush import common
 
 logger = logging.getLogger('jpush')
 
+
 class Push(object):
     """A push notification. Set audience, message, etc, and send."""
 

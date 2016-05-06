@@ -2,6 +2,7 @@
 import unittest
 import jpush as jpush
 
+
 class TestMessage(unittest.TestCase):
 
     def test_simple_alert(self):

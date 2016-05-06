@@ -1,6 +1,7 @@
 import unittest
 import jpush as jpush
 
+
 class TestAudience(unittest.TestCase):
 
     def test_basic_selectors(self):

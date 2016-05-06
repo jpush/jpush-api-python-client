@@ -5,4 +5,6 @@ _jpush = jpush.JPush(app_key, master_secret)
 device = _jpush.create_device()
 reg_id = '1507bfd3f7c466c355c'
 entity = jpush.device_tag(jpush.add("ddd", "tageee"))
-device.set_devicemobile(reg_id, entity)
+result=device.set_devicemobile(reg_id, entity)
+print result.status_code
+print result.payload

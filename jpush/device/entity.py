@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-#-*- coding:utf8 -*-
+# -*- coding:utf8 -*-
 import sys
 
 if 2 != sys.version_info[0]:
