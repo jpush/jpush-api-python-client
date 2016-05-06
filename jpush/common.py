@@ -47,7 +47,7 @@ class JPushFailure(Exception):
         self.error_code = error_code
         self.details = details
         self.response = response
-        super(self, JPushFailure).__init__(*args)
+        # super(self, JPushFailure).__init__(*args)
 
     @classmethod
     def from_response(cls, response):
@@ -67,6 +67,9 @@ class JPushFailure(Exception):
             response.status_code, error_code, error, json.dumps(details))
 
         return cls(error, error_code, details, response, response.status_code, response.content)
+
+    def __str__(self):
+        return repr(self.response.content)
 
 
 class APIConnectionException(Exception):
