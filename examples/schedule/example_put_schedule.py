@@ -8,11 +8,8 @@ push = _jpush.create_push()
 push.audience = jpush.all_
 push.notification = jpush.notification(alert="Hello, world!")
 push.platform = jpush.all_
-
 push=push.payload
 
 trigger=jpush.schedulepayload.trigger("2016-05-17 12:00:00")
-
-schedulepayload=jpush.schedulepayload.schedulepayload("putanewname",True,trigger,push)
-
+schedulepayload=jpush.schedulepayload.schedulepayload("update a new name", True, trigger, push)
 schedule.put_schedule(schedulepayload,"17349f00-0852-11e6-91b1-0021f653c902")
