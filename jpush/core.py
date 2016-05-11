@@ -17,12 +17,10 @@ class JPush(object):
     def __init__(self, key, secret):
         self.key = key
         self.secret = secret
-
         self.session = requests.Session()
         self.session.auth = (key, secret)
 
     def _request(self, method, body, url, content_type=None, version=None, params=None):
-
         headers = {}
         headers['user-agent'] = 'jpush-api-python-client'
         headers['connection'] = 'keep-alive'

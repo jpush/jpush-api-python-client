@@ -1,6 +1,6 @@
 import json
 import logging
-
+from jpush import core
 from jpush import common
 
 logger = logging.getLogger('jpush')
@@ -77,10 +77,15 @@ class PushResponse(object):
 
     """
     payload = None
+    status_code = None
 
     def __init__(self, response):
+        self.status_code = response.status_code
         data = response.json()
         self.payload = data
+
+    def get_status_code(self):
+        return self.status_code
 
     def __str__(self):
         return "Response Payload: {0}".format(self.payload)
