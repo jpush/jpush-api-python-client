@@ -45,14 +45,14 @@ class TestMessage(unittest.TestCase):
             print response.status_code
             self.assertEqual(response.status_code, 200)
         except common.Unauthorized, e:
-            self.assertEqual(isinstance(e, common.Unauthorized), False)
+            self.assertFalse(isinstance(e, common.Unauthorized))
             raise common.Unauthorized("Unauthorized")
         except common.APIConnectionException, e:
-            self.assertEqual(isinstance(e, common.APIConnectionException), False)
+            self.assertFalse(isinstance(e, common.APIConnectionException))
             raise common.APIConnectionException("conn")
         except common.JPushFailure, e:
-            self.assertEqual(isinstance(e, common.JPushFailure), False)
+            self.assertFalse(isinstance(e, common.JPushFailure))
             print "JPushFailure"
         except:
-            self.assertEqual(1, False)
+            self.self.assertFalse(1)
             print "Exception"
