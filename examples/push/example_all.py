@@ -1,5 +1,4 @@
 import jpush as jpush
-from jpush import core
 from conf import app_key, master_secret
 from jpush import common
 

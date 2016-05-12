@@ -1,6 +1,5 @@
 import json
 import logging
-from jpush import core
 from jpush import common
 
 logger = logging.getLogger('jpush')

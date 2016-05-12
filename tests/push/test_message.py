@@ -1,6 +1,8 @@
 # -*- coding:utf-8 -*-
 import unittest
 import jpush as jpush
+from conf import app_key, master_secret
+from jpush import common
 
 
 class TestMessage(unittest.TestCase):
@@ -31,3 +33,26 @@ class TestMessage(unittest.TestCase):
             jpush.notification(winphone=jpush.winphone(alert="Hello", extras={'k3':'v3'})),
             {'winphone': {'extras': {'k3': 'v3'}, 'alert': 'Hello'}}
         )
+
+    def test_push(self):
+        _jpush = jpush.JPush(app_key, master_secret)
+        push = _jpush.create_push()
+        push.audience = jpush.all_
+        push.notification = jpush.notification(alert="hello python jpush api")
+        push.platform = jpush.all_
+        try:
+            response = push.send()
+            print response.status_code
+            self.assertEqual(response.status_code, 200)
+        except common.Unauthorized, e:
+            self.assertEqual(isinstance(e, common.Unauthorized), False)
+            raise common.Unauthorized("Unauthorized")
+        except common.APIConnectionException, e:
+            self.assertEqual(isinstance(e, common.APIConnectionException), False)
+            raise common.APIConnectionException("conn")
+        except common.JPushFailure, e:
+            self.assertEqual(isinstance(e, common.JPushFailure), False)
+            print "JPushFailure"
+        except:
+            self.assertEqual(1, False)
+            print "Exception"
