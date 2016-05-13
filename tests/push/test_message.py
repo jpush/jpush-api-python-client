@@ -54,5 +54,5 @@ class TestMessage(unittest.TestCase):
             self.assertFalse(isinstance(e, common.JPushFailure))
             print "JPushFailure"
         except:
-            self.self.assertFalse(1)
+            self.assertFalse(1)
             print "Exception"

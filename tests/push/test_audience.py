@@ -1,5 +1,7 @@
 import unittest
 import jpush as jpush
+from conf import app_key, master_secret
+from jpush import common
 
 
 class TestAudience(unittest.TestCase):
@@ -13,3 +15,30 @@ class TestAudience(unittest.TestCase):
         )
         for selector, value, result in selectors:
             self.assertEqual(selector(value), result)
+
+    def test_audience(self):
+        _jpush = jpush.JPush(app_key, master_secret)
+
+        push = _jpush.create_push()
+        push.audience = jpush.audience(
+            jpush.tag("tag1", "tag2"),
+            jpush.alias("alias1", "alias2")
+        )
+        push.notification = jpush.notification(alert="Hello world with audience!")
+        push.platform = jpush.all_
+        try:
+            response = push.send()
+            print response.status_code
+            self.assertEqual(response.status_code, 200)
+        except common.Unauthorized, e:
+            self.assertFalse(isinstance(e, common.Unauthorized))
+            raise common.Unauthorized("Unauthorized")
+        except common.APIConnectionException, e:
+            self.assertFalse(isinstance(e, common.APIConnectionException))
+            raise common.APIConnectionException("conn")
+        except common.JPushFailure, e:
+            self.assertFalse(isinstance(e, common.JPushFailure))
+            print "JPushFailure"
+        except:
+            self.assertFalse(1)
+            print "Exception"
