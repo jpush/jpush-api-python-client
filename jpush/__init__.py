@@ -2,9 +2,6 @@
 from .core import JPush
 from .common import JPushFailure, Unauthorized
 
-__version__ = '3.1.2'
-VERSION = tuple(map(int,  __version__.split('.')))
-
 from .push import (
     Push,
     all_,
@@ -35,6 +32,7 @@ from .device import (
 
 from .report import (
     Report,
+    ReportResponse,
 )
 
 from .schedule import (
@@ -68,9 +66,13 @@ __all__ = [
     device_alias,
     device_regid,
     Report,
+    ReportResponse,
     Schedule,
     schedulepayload,
 ]
+
+__version__ = '3.3.1'
+VERSION = tuple(map(int,  __version__.split('.')))
 
 # Silence urllib3 INFO logging by default
 

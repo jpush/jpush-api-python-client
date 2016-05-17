@@ -1,5 +1,4 @@
 import unittest
-from jpush import schedule
 import jpush as jpush
 from conf import app_key, master_secret
 from jpush import common

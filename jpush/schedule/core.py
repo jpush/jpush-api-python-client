@@ -1,7 +1,7 @@
 import json
 import logging
 from jpush import common
-from schedulepayload import *
+
 logger = logging.getLogger('jpush')
 
 

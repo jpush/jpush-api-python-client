@@ -1,5 +1,6 @@
 import re
 from jpush import push
+
 def schedulepayload(name=None, enabled=None, trigger=None, push=None):
     schedulepayload = {}
     if name is not None:

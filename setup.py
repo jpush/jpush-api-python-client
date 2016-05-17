@@ -13,8 +13,8 @@ with open('jpush/__init__.py', 'rb') as f:
         f.read().decode('utf-8')).group(1)))
 
 setup(
-    name='jpush',
-    version='3.2.0',
+    name='jpush-demo',
+    version='3.3.1',
     description='JPush\'s officially supported Python client library',
     keywords=('JPush', 'JPush API', 'Android Push', 'iOS Push'),
     license='MIT License',
@@ -24,7 +24,7 @@ setup(
     author='jpush',
     author_email='support@jpush.cn',
 
-    packages=['jpush', 'jpush.push', 'jpush.device'],
+    packages=['jpush', 'jpush.push', 'jpush.device', 'jpush.report', 'jpush.schedule'],
     platforms='any',
     classifiers=[
         'Environment :: Console',
