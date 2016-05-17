@@ -14,7 +14,7 @@ with open('jpush/__init__.py', 'rb') as f:
 
 setup(
     name='jpush-demo',
-    version='3.3.1',
+    version=version,
     description='JPush\'s officially supported Python client library',
     keywords=('JPush', 'JPush API', 'Android Push', 'iOS Push'),
     license='MIT License',
