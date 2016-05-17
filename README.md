@@ -9,11 +9,11 @@
 
 ## 环境配置
 
-pip方式：
+pip 方式：
 ```
 sudo pip install jpush
 ```
-easy_install方式：
+easy_install 方式：
 ```
 sudo easy_install jpush
 ```
@@ -25,7 +25,7 @@ sudo python setup.py install
 
 ## 代码样例
 
->   代码样例在 jpush-api-python-client 中的 examples 文件夹中，链接：[https://github.com/jpush/jpush-api-python-client/tree/master/examples](https://github.com/jpush/jpush-api-python-client/tree/master/examples) 。
+>   代码样例在 jpush-api-python-client 中的 examples 文件夹中，[点击查看所有 examples ](https://github.com/jpush/jpush-api-python-client/tree/master/examples) 。
 
 >   以下片断来自项目代码里的文件：jpush-api-python-client 中的 examples/push_examples  目录下的 example_all.py
 
@@ -49,6 +49,12 @@ except common.JPushFailure:
     print "JPushFailure"
 except:
     print "Exception"
+```
+## 日志说明
+logging level 默认的是 WARNING ，为了方便调试建议设置为 DEBUG
+设置方法为：
+```
+_jpush.set_logging("DEBUG")
 ```
 
 ## 异常说明

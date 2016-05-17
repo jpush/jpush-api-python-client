@@ -13,7 +13,7 @@ with open('jpush/__init__.py', 'rb') as f:
         f.read().decode('utf-8')).group(1)))
 
 setup(
-    name='jpush-demo',
+    name='jpush',
     version=version,
     description='JPush\'s officially supported Python client library',
     keywords=('JPush', 'JPush API', 'Android Push', 'iOS Push'),
