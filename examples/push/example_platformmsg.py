@@ -1,7 +1,7 @@
 import jpush as jpush
 from conf import app_key, master_secret
 _jpush = jpush.JPush(app_key, master_secret)
-
+_jpush.set_logging("DEBUG")
 push = _jpush.create_push()
 push.audience = jpush.all_
 ios_msg = jpush.ios(alert="Hello, IOS JPush!", badge="+1", sound="a.caf", extras={'k1':'v1'})

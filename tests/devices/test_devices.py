@@ -1,8 +1,9 @@
 import unittest
-from jpush import device
-import jpush as jpush
 from conf import app_key, master_secret
+from jpush import device
 from jpush import common
+import jpush as jpush
+
 
 _jpush = jpush.JPush(app_key, master_secret)
 device = _jpush.create_device()

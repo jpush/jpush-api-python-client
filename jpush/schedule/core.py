@@ -18,15 +18,12 @@ class Schedule(object):
         url=common.BASE_SCHEDULEURL
         body = json.dumps(schedulepayload)
         result = self.send("POST", url, body)
-        print (result)
         return result
 
     def get_schedule_by_id(self, schedule_id):
         url=common.BASE_SCHEDULEURL + schedule_id
-        print url
         body = None
         result = self.send("GET", url, body)
-        print (result)
         return result
 
     def get_schedule_list(self, page_id):
@@ -34,25 +31,20 @@ class Schedule(object):
             url=common.BASE_LISTURL + page_id
         else:
             url = common.BASE_LISTURL
-        print url
         body = None
         result = self.send("GET", url, body)
-        print (result)
         return result
 
     def put_schedule(self, schedulepayload, schedule_id):
         url = common.BASE_SCHEDULEURL + schedule_id
         body = json.dumps(schedulepayload)
         result = self.send("PUT", url, body)
-        print (result)
         return result
 
     def delete_schedule(self,schedule_id):
         url = common.BASE_SCHEDULEURL + schedule_id
-        print  url
         body = None
         result = self.send("DELETE", url, body)
-        print (result)
         return result
 
 

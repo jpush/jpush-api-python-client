@@ -13,7 +13,6 @@ class Report(object):
 
     def send(self, method, url, body, content_type=None, version=3):
         """Send the request
-
         """
         response = self._jpush._request(method, body,url,content_type,version=3)
         return ReportResponse(response)
@@ -22,33 +21,23 @@ class Report(object):
         url=common.RECEIVED_URL+msg_ids
         body = None
         received = self.send("GET", url, body)
-        print (received)
         return received
 
     def get_messages(self, msg_ids):
         url = common.MESSAGES_URL + msg_ids
         body = None
         messages = self.send("GET", url, body)
-        print (messages)
         return messages
 
     def get_users(self, time_unit,start,duration):
         url = common.USERS_URL + "time_unit="+time_unit+"&start="+start+"&duration="+duration
-        print  url
         body = None
         users = self.send("GET", url, body)
-        print (users)
         return users
 
 
 class ReportResponse(object):
-    """Response to a successful device request send.
 
-    Right now this is a fairly simple wrapper around the json payload response,
-    but making it an object gives us some flexibility to add functionality
-    later.
-
-    """
     payload = None
     status_code = None
 

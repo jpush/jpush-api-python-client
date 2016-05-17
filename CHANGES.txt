@@ -1,3 +1,8 @@
+Version 3.2.0
+-----------
+**Released 2015 Nov 9**
+Add push sms message api;
+
 Version 3.1.0
 -----------
 **Released 2015 Nov 9**
