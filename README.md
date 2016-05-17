@@ -5,22 +5,31 @@
 
 对应的 REST API 文档：<http://docs.jpush.io/server/rest_api_v3_push/>
 
+
+
 ## 环境配置
 
+pip方式：
 ```
-pip方式：sudo pip install jpush
+sudo pip install jpush
 ```
+easy_install方式：
 ```
-easy_install方式：sudo easy_install jpush
+sudo easy_install jpush
 ```
+使用源码方式：
 ```
-使用源码方式：sudo python setup.py install
+sudo python setup.py install
 ```
 
+
 ## 代码样例
->代码样例在 jpush-api-python-client 中的 examples 文件夹中，链接：[https://github.com/jpush/jpush-api-python-client/tree/master/examples](https://github.com/jpush/jpush-api-python-client/tree/master/examples) 。
->以下片断来自项目代码里的文件：jpush-api-python-client 中的 examples/push_examples  目录下的 example_all.py
->这个样例演示了消息推送，日志设置，异常处理。
+
+>   代码样例在 jpush-api-python-client 中的 examples 文件夹中，链接：[https://github.com/jpush/jpush-api-python-client/tree/master/examples](https://github.com/jpush/jpush-api-python-client/tree/master/examples) 。
+
+>   以下片断来自项目代码里的文件：jpush-api-python-client 中的 examples/push_examples  目录下的 example_all.py
+
+>   这个样例演示了消息推送，日志设置，异常处理。
 
 ```
 _jpush = jpush.JPush(app_key, master_secret)
@@ -35,7 +44,7 @@ try:
 except common.Unauthorized:
     raise common.Unauthorized("Unauthorized")
 except common.APIConnectionException:
-    raise common.APIConnectionException("conn")
+    raise common.APIConnectionException("conn error")
 except common.JPushFailure:
     print "JPushFailure"
 except:
