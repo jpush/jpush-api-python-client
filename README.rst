@@ -82,8 +82,8 @@ Get taglist
 --------
 Questions
 --------
-The best place to ask questions is our Q&A site:
-http://www.jpush.cn/qa/
+The best place to ask questions is our community site:
+http://community.jpush.cn/
 
 --------
 Thanks to
