@@ -14,7 +14,7 @@ JPush API Python Client
 
 JPush's officially supported Python client library for accessing JPush APIs. 
 
-JPush Rest API Documents: `http://docs.jpush.cn/display/dev/REST+API <http://docs.jpush.cn/display/dev/REST+API/>`_
+JPush Rest API Documents: `http://docs.jpush.io/server/rest_api_v3_push/ <http://docs.jpush.io/server/rest_api_v3_push/>`_
 
 You can download the latest release file here: `Releases <https://github.com/jpush/jpush-api-python-client/releases>`_
 
@@ -65,6 +65,7 @@ Simple iOS Push
     >>> push = _jpush.create_push()
     >>> push.audience = jpush.all_
     >>> ios_msg = jpush.ios(alert="Hello, IOS JPush!", badge="+1", sound="a.caf", extras={'k1':'v1'})
+    >>> android_msg = jpush.android(alert="Hello, android msg")
     >>> push.notification = jpush.notification(alert="Hello, JPush!", android=android_msg, ios=ios_msg)
     >>> push.options = {"time_to_live":86400, "sendno":12345,"apns_production":True}
     >>> push.platform = jpush.platform("ios")
