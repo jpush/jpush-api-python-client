@@ -11,7 +11,6 @@ _jpush.set_logging("DEBUG")
 push.audience = jpush.all_
 push.notification = jpush.notification(alert="hello python jpush api")
 push.platform = jpush.all_
-
 try:
     response=push.send()
 except common.Unauthorized:
