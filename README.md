@@ -7,19 +7,25 @@
 
 ## 环境配置
 
-*   pip方式：sudo pip install jpush
-*   easy_install方式：sudo easy_install jpush
-*   使用源码方式：sudo python setup.py install
+```
+pip方式：sudo pip install jpush
+```
+```
+easy_install方式：sudo easy_install jpush
+```
+```
+使用源码方式：sudo python setup.py install
+```
 
 ## 代码样例
-
+>代码样例在 jpush-api-python-client 中的 examples 文件夹中，链接：[https://github.com/jpush/jpush-api-python-client/tree/master/examples](https://github.com/jpush/jpush-api-python-client/tree/master/examples) 。
 >以下片断来自项目代码里的文件：jpush-api-python-client 中的 examples/push_examples  目录下的 example_all.py
->演示了消息推送，日志设置，异常处理。
+>这个样例演示了消息推送，日志设置，异常处理。
 
 ```
 _jpush = jpush.JPush(app_key, master_secret)
 push = _jpush.create_push()
-# the default logging level is WARNING,if you set the logging level to "DEBUG",it will show the debug logging.
+# if you set the logging level to "DEBUG",it will show the debug logging.
 _jpush.set_logging("DEBUG")
 push.audience = jpush.all_
 push.notification = jpush.notification(alert="hello python jpush api")
