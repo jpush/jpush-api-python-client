@@ -3,3 +3,4 @@ build/
 dist/
 jpush.egg-info/
 .idea/
+docs/

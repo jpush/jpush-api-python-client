@@ -5,8 +5,6 @@
 
 对应的 REST API 文档：<http://docs.jpush.io/server/rest_api_v3_push/>
 
-
-
 ## 环境配置
 
 pip 方式：
@@ -72,12 +70,12 @@ _jpush.set_logging("DEBUG")
 
 参考文档：<http://docs.jpush.io/server/http_status_code/>
 
-Push v3 API 状态码 参考文档：<http://docs.jpush.io/server/rest_api_v3_push/>　
+Push  API 状态码 参考文档：<http://docs.jpush.io/server/rest_api_v3_push/>　
 
 Report API  状态码 参考文档：<http://docs.jpush.io/server/rest_api_v3_report/>
 
 Device API 状态码 参考文档：<http://docs.jpush.io/server/rest_api_v3_device/>
 
-Push Schedule API 状态码 参考文档：<http://docs.jpush.io/server/rest_api_push_schedule/>　
+Schedule API 状态码 参考文档：<http://docs.jpush.io/server/rest_api_push_schedule/>　
 
 [Release页面](https://github.com/jpush/jpush-api-python-client/releases) 有详细的版本发布记录与下载。
