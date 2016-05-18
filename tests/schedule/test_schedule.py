@@ -17,8 +17,15 @@ push=push.payload
 
 class TestEntity(unittest.TestCase):
     def test_post_schedule(self):
-        trigger = jpush.schedulepayload.trigger("2016-05-17 12:00:00")
+        trigger = jpush.schedulepayload.trigger("2016-07-17 12:00:00")
         schedulepayload = jpush.schedulepayload.schedulepayload("name", True, trigger, push)
+        result = schedule.post_schedule(schedulepayload)
+        self.assertEqual(result.status_code, 200)
+
+    def test_post_schedule_periodical(self):
+        trigger = jpush.schedulepayload.trigger("12:00:00",start="2016-07-17 12:00:00", end="2016-09-17 12:00:00",
+                                                time_unit = "WEEK", frequency = 1, point = ["WED","FRI"])
+        schedulepayload = jpush.schedulepayload.schedulepayload("periodical", True, trigger, push)
         result = schedule.post_schedule(schedulepayload)
         self.assertEqual(result.status_code, 200)
 
@@ -42,7 +49,7 @@ class TestEntity(unittest.TestCase):
             pass
 
     def test_put_invalid_schedule(self):
-        trigger = jpush.schedulepayload.trigger("2016-05-17 12:00:00")
+        trigger = jpush.schedulepayload.trigger("2016-07-17 12:00:00")
         schedulepayload = jpush.schedulepayload.schedulepayload("update a new name", True, trigger, push)
         try:
             result = schedule.put_schedule(schedulepayload, "3fc6e2fa-15a6-11e6-83d4-0021f653c902")
@@ -51,7 +58,7 @@ class TestEntity(unittest.TestCase):
             pass
 
     def test_put_schedule(self):
-        trigger = jpush.schedulepayload.trigger("2016-05-17 12:00:00")
+        trigger = jpush.schedulepayload.trigger("2016-07-17 12:00:00")
         schedulepayload = jpush.schedulepayload.schedulepayload("update_a_new_name", True, trigger, push)
         try:
             result = schedule.put_schedule(schedulepayload, "3fc6e2fa-15a6-11e6-83d4-0021f653c902")

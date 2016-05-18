@@ -10,7 +10,7 @@ push.notification = jpush.notification(alert="Hello, world!")
 push.platform = jpush.all_
 push=push.payload
 
-trigger=jpush.schedulepayload.trigger("2016-05-17 12:00:00")
+trigger=jpush.schedulepayload.trigger("2016-07-17 12:00:00")
 schedulepayload=jpush.schedulepayload.schedulepayload("name",True,trigger,push)
 result=schedule.post_schedule(schedulepayload)
 print result.status_code
