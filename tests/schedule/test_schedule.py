@@ -1,8 +1,8 @@
 import unittest
 from jpush import schedule
 import jpush as jpush
-from conf import app_key, master_secret
 from jpush import common
+from tests.conf import app_key, master_secret
 
 _jpush = jpush.JPush(app_key, master_secret)
 schedule = _jpush.create_schedule()

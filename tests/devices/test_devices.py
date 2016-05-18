@@ -1,5 +1,5 @@
 import unittest
-from conf import app_key, master_secret
+from tests.conf import app_key, master_secret
 from jpush import device
 from jpush import common
 import jpush as jpush

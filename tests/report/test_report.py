@@ -1,6 +1,6 @@
 import unittest
 import jpush as jpush
-from conf import app_key, master_secret
+from tests.conf import app_key, master_secret
 from jpush import common
 
 _jpush = jpush.JPush(app_key, master_secret)
