@@ -52,9 +52,9 @@ except common.Unauthorized:
 except common.APIConnectionException:
     raise common.APIConnectionException("conn error")
 except common.JPushFailure:
-    print "JPushFailure"
+    print ("JPushFailure")
 except:
-    print "Exception"
+    print ("Exception")
 ```
 ## 日志说明
 logging level 默认的是 WARNING ，为了方便调试建议设置为 DEBUG

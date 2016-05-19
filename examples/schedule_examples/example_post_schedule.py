@@ -1,6 +1,6 @@
 import jpush as jpush
 
-from examples.conf import app_key, master_secret
+from conf import app_key, master_secret
 _jpush = jpush.JPush(app_key, master_secret)
 _jpush.set_logging("DEBUG")
 schedule = _jpush.create_schedule()
@@ -14,4 +14,4 @@ push=push.payload
 trigger=jpush.schedulepayload.trigger("2016-07-17 12:00:00")
 schedulepayload=jpush.schedulepayload.schedulepayload("name",True,trigger,push)
 result=schedule.post_schedule(schedulepayload)
-print result.status_code
+print (result.status_code)

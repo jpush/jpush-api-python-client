@@ -28,7 +28,7 @@ class TestAudience(unittest.TestCase):
         push.platform = jpush.all_
         try:
             response = push.send()
-            print response.status_code
+
             self.assertEqual(response.status_code, 200)
         except common.Unauthorized, e:
             self.assertFalse(isinstance(e, common.Unauthorized))
@@ -38,7 +38,7 @@ class TestAudience(unittest.TestCase):
             raise common.APIConnectionException("conn")
         except common.JPushFailure, e:
             self.assertFalse(isinstance(e, common.JPushFailure))
-            print "JPushFailure"
+            print ("JPushFailure")
         except:
             self.assertFalse(1)
-            print "Exception"
+            print ("Exception")

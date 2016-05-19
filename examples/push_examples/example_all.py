@@ -1,5 +1,5 @@
 import jpush as jpush
-from examples.conf import app_key, master_secret
+from conf import app_key, master_secret
 from jpush import common
 
 _jpush = jpush.JPush(app_key, master_secret)
