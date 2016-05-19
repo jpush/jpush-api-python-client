@@ -72,7 +72,7 @@ class JPush(object):
             if (level == "NOTSET"):
                 logging.basicConfig(level=logging.NOTSET)
         else:
-            print "set logging level failed ,the level is invalid."
+            print ("set logging level failed ,the level is invalid.")
 
     def create_push(self):
         """Create a Push notification."""

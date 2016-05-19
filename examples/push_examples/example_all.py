@@ -18,6 +18,6 @@ except common.Unauthorized:
 except common.APIConnectionException:
     raise common.APIConnectionException("conn")
 except common.JPushFailure:
-    print "JPushFailure"
+    print ("JPushFailure")
 except:
-    print "Exception"
+    print ("Exception")
