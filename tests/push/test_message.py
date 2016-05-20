@@ -43,13 +43,13 @@ class TestMessage(unittest.TestCase):
         try:
             response = push.send()
             self.assertEqual(response.status_code, 200)
-        except common.Unauthorized, e:
+        except common.Unauthorized as e:
             self.assertFalse(isinstance(e, common.Unauthorized))
             raise common.Unauthorized("Unauthorized")
-        except common.APIConnectionException, e:
+        except common.APIConnectionException as e:
             self.assertFalse(isinstance(e, common.APIConnectionException))
             raise common.APIConnectionException("conn")
-        except common.JPushFailure, e:
+        except common.JPushFailure as e:
             self.assertFalse(isinstance(e, common.JPushFailure))
             print ("JPushFailure")
         except:

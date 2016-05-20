@@ -23,6 +23,6 @@ class TestEntity(unittest.TestCase):
         try:
             result = report.get_users("DAY","2016-04-10","3")
             self.assertEqual(result.status_code, 200)
-        except common.JPushFailure, e:
+        except common.JPushFailure as e:
             self.assertIsInstance(e, common.JPushFailure)
 
