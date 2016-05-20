@@ -1,42 +1,26 @@
-.. image:: https://travis-ci.org/jpush/jpush-api-python-client.svg?branch=master
-    :target: https://travis-ci.org/jpush/jpush-api-python-client
-.. image:: https://badge.fury.io/gh/jpush%2Fjpush-api-python-client.svg
-    :target: http://badge.fury.io/gh/jpush%2Fjpush-api-python-client
-.. image:: https://badge.fury.io/py/jpush.svg
-    :target: http://badge.fury.io/py/jpush
-.. image:: https://pypip.in/download/jpush/badge.svg
-    :target: https://pypi.python.org/pypi/jpush/
-    :alt: Downloads
-
 =======================
 JPush API Python Client
 =======================
 
 JPush's officially supported Python client library for accessing JPush APIs. 
 
-JPush Rest API Documents: `http://docs.jpush.io/server/rest_api_v3_push/ <http://docs.jpush.io/server/rest_api_v3_push/>`_
+JPush Rest API Documents: http://docs.jpush.io/server/rest_api_v3_push/
 
-You can download the latest release file here: `Releases <https://github.com/jpush/jpush-api-python-client/releases>`_
+You can download the latest release file here: https://github.com/jpush/jpush-api-python-client/releases
 
 ------------
 Installation
 ------------
 To install jpush-api-python-client, simply:
 
-.. code-block:: sh
-
     $ sudo pip install jpush
 
 or alternatively install via easy_install:
-
-.. code-block:: sh
 
     $ sudo easy_install jpush
 
 
 or from source:
-
-.. code-block:: sh
 
     $ sudo python setup.py install
 
@@ -48,14 +32,12 @@ with Python.
 
 To run jpush-api-python-client tests, simply:
 
-.. code-block:: sh
-
     $ nosetests tests/push tests/devices --verbosity=2 
 
 --------
 Examples
 --------
-    You can see more examples in `examples <https://github.com/jpush/jpush-api-python-client/blob/master/examples>`_
+    You can see more examples in https://github.com/jpush/jpush-api-python-client/blob/master/examples
 
 Simple iOS Push
 ---------------
@@ -85,8 +67,3 @@ Questions
 --------
 The best place to ask questions is our community site:
 http://community.jpush.cn/
-
---------
-Thanks to
---------
-`crystal-wei <https://github.com/crystal-wei>`_ for reporting the jpush-api-python-client issues;

@@ -1,5 +1,5 @@
 import jpush as jpush
-from examples.conf import app_key, master_secret
+from conf import app_key, master_secret
 from jpush import common
 
 _jpush = jpush.JPush(app_key, master_secret)
@@ -18,6 +18,6 @@ except common.Unauthorized:
 except common.APIConnectionException:
     raise common.APIConnectionException("conn")
 except common.JPushFailure:
-    print "JPushFailure"
+    print ("JPushFailure")
 except:
-    print "Exception"
+    print ("Exception")

@@ -5,6 +5,14 @@
 
 对应的 REST API 文档：<http://docs.jpush.io/server/rest_api_v3_push/>
 
+## 兼容版本
++  Python 2.7
++  Python 3 还没有兼容，以后会兼容。
+
+建议 Python3 的开发者继续使用 jpush 3.1.2，pip 地址：
+
+>   https://pypi.python.org/pypi?:action=display&name=jpush&version=3.1.2
+
 ## 环境配置
 
 pip 方式：
@@ -44,9 +52,9 @@ except common.Unauthorized:
 except common.APIConnectionException:
     raise common.APIConnectionException("conn error")
 except common.JPushFailure:
-    print "JPushFailure"
+    print ("JPushFailure")
 except:
-    print "Exception"
+    print ("Exception")
 ```
 ## 日志说明
 logging level 默认的是 WARNING ，为了方便调试建议设置为 DEBUG
