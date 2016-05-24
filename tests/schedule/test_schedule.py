@@ -70,5 +70,5 @@ class TestEntity(unittest.TestCase):
             result = schedule.delete_schedule("e9c553d0-0850-11e6-b6d4-0021f652c102")
             self.assertNotEqual(result.status_code, 200)
         except common.JPushFailure as e:
-            self.assertIsInstance(e, common.JPushFailure)
+            self.assertIsInstance(e, jpush.common.JPushFailure)
 
