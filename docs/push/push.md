@@ -146,11 +146,11 @@ notification(alert=None, ios=None, android=None, winphone=None)
 
 * ios
 
->  ios payload 字典 查看 [ios payload]()
+>  ios payload 字典 查看 [ios payload](https://github.com/jpush/jpush-api-python-client/blob/master/docs/push/push.md#ios-payload)
 
 * android
 
->  android payload 字典 查看 [android payload]()
+>  android payload 字典 查看 [android payload](https://github.com/jpush/jpush-api-python-client/blob/master/docs/push/push.md#android-payload)
 
 
 返回值
