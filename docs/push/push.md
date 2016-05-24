@@ -269,12 +269,15 @@ android(alert, title=None, builder_id=None, extras=None)
 
 
 返回值
+
 > android payload 字典
 
 ####  message 设置
+
 ```
 message(msg_content, title=None, content_type=None, extras=None)
 ```
+
 参数说明
 
 <div class="table-d" align="center" >
@@ -317,6 +320,7 @@ message(msg_content, title=None, content_type=None, extras=None)
 >message payload
 
 ####  smsmessage 设置
+
 ```
 smsmessage(content,delay_time)
 ```
@@ -349,10 +353,13 @@ smsmessage(content,delay_time)
 *  返回值
 
 > smsmessage payload
+
 ####  platform 设置
+
 ```
 platform(*types)
 ```
+
 *  参数说明
 
 JPush 当前支持 Android, iOS, Windows Phone 三个平台的推送。其关键字分别为："android", "ios","winphone"。
@@ -362,9 +369,11 @@ JPush 当前支持 Android, iOS, Windows Phone 三个平台的推送。其关键
 > platform tuple
 
 ####  options 设置
+
 ```
 options(options)
 ```
+
 *  参数说明
 
 <div class="table-d" align="center" >
