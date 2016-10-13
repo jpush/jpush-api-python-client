@@ -10,20 +10,22 @@ class Schedule(object):
     def __init__(self, jpush):
         self._jpush = jpush
 
-    def send(self, method, url, body, content_type=None, version=3):
-        response = self._jpush._request(method, body, url, content_type, version=3)
-        return ScheduleResponse(response)
+    def send(self, method, body,url,base_url=None):
+        """Send the request
+        """
+        response = self._jpush._request(method, body,url,common.PUSH_BASEURL)
+        return response
 
     def post_schedule(self, schedulepayload):
         url=common.BASE_SCHEDULEURL
         body = json.dumps(schedulepayload)
-        result = self.send("POST", url, body)
+        result = self.send("POST", body, url)
         return result
 
     def get_schedule_by_id(self, schedule_id):
         url=common.BASE_SCHEDULEURL + schedule_id
         body = None
-        result = self.send("GET", url, body)
+        result = self.send("GET", body, url)
         return result
 
     def get_schedule_list(self, page_id):
@@ -32,19 +34,19 @@ class Schedule(object):
         else:
             url = common.BASE_LISTURL
         body = None
-        result = self.send("GET", url, body)
+        result = self.send("GET",body,url)
         return result
 
     def put_schedule(self, schedulepayload, schedule_id):
         url = common.BASE_SCHEDULEURL + schedule_id
         body = json.dumps(schedulepayload)
-        result = self.send("PUT", url, body)
+        result = self.send("PUT", body,url)
         return result
 
     def delete_schedule(self,schedule_id):
         url = common.BASE_SCHEDULEURL + schedule_id
         body = None
-        result = self.send("DELETE", url, body)
+        result = self.send("DELETE",body,url)
         return result
 
 

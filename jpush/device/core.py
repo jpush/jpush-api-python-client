@@ -1,7 +1,11 @@
 #!/usr/bin/env python
 from jpush import common
 import json
+import base64
+from hyper import HTTP20Connection
+import logging
 
+logger = logging.getLogger('jpush')
 
 class Device(object):
     """Device info query/update..
@@ -11,19 +15,33 @@ class Device(object):
         self._jpush = jpush 
         self.entity = None
 
-    def send(self, method, url, body, content_type=None, version=3):
-        """Send the request
-        
-        """
-        response = self._jpush._request(method, body, url, content_type, version=3)
-        return DeviceResponse(response)
+
+    def _request(self, method, body, url,base_url=None):
+        headers = {}
+        headers['user-agent'] = 'jpush-api-python-client'
+        headers['connection'] = 'keep-alive'
+        headers['content-type'] = 'application/json;charset:utf-8'
+
+        logger.debug("Making %s request to %s. Headers:\n\t%s\nBody:\n\t%s",
+                     method, url, '\n\t'.join('%s: %s' % (key, value) for (key, value) in headers.items()), body)
+        base64string = base64.encodestring('%s:%s' % (self.key, self.secret))[:-1]
+        authheader = "Basic %s" % base64string
+        headers['Authorization'] = authheader
+        conn = HTTP20Connection(host=base_url, secure=True)
+
+        response = conn.request(method,url,headers=headers,body=body)
+        resp = conn.get_response(response)
+        logger.debug(resp.status)
+        logger.debug(resp.read())
+        return resp
+
 
     def get_taglist(self):
         """Get deviceinfo with registration id.
         """
         url = common.TAGLIST_URL
         body = None
-        info = self.send("GET", url, body)
+        info = self._jpush._request('GET',body,url,base_url=common.DEVICE_BASEURL)
         return info
 
     def get_deviceinfo(self, registration_id):
@@ -31,7 +49,7 @@ class Device(object):
         """
         url = common.DEVICE_URL + registration_id + "/"
         body = None
-        info = self.send("GET", url, body)
+        info = self._jpush._request('GET', body, url, base_url=common.DEVICE_BASEURL)
         return info
 
     def set_deviceinfo(self, registration_id, entity):
@@ -39,7 +57,7 @@ class Device(object):
         """
         url = common.DEVICE_URL + registration_id + "/"
         body = json.dumps(entity)
-        info = self.send("POST", url, body)
+        info = self._jpush._request('POST', body, url, base_url=common.DEVICE_BASEURL)
         return info
 
     def set_devicemobile(self, registration_id, entity):
@@ -47,7 +65,7 @@ class Device(object):
         """
         url = common.DEVICE_URL + registration_id + "/"
         body = json.dumps(entity)
-        info = self.send("POST", url, body)
+        info = self._jpush._request('POST', body, url, base_url=common.DEVICE_BASEURL)
         return info
 
     def delete_tag(self, tag, platform=None):
@@ -57,7 +75,7 @@ class Device(object):
         body = None
         if platform:
             body = platform
-        info = self.send("DELETE", url, body)
+        info = self._jpush._request('DELETE', body, url, base_url=common.DEVICE_BASEURL)
         return info
 
     def update_tagusers(self, tag, entity):
@@ -65,7 +83,7 @@ class Device(object):
         """
         url = common.TAG_URL + tag + "/"
         body = json.dumps(entity)
-        info = self.send("POST", url, body)
+        info = self._jpush._request('POST', body, url, base_url=common.DEVICE_BASEURL)
         return info
 
     def check_taguserexist(self, tag, registration_id):
@@ -73,7 +91,7 @@ class Device(object):
         """
         url = common.TAG_URL + tag + "/registration_ids/" + registration_id
         body = registration_id
-        info = self.send("GET", url, body)
+        info = self._jpush._request('GET', body, url, base_url=common.DEVICE_BASEURL)
         return info
 
     def delete_alias(self, alias, platform=None):
@@ -83,7 +101,7 @@ class Device(object):
         body = None
         if platform:
             body = platform
-        info = self.send("DELETE", url, body)
+        info = self._jpush._request('DELETE', body, url, base_url=common.DEVICE_BASEURL)
         return info
 
     def get_aliasuser(self, alias, platform=None):
@@ -93,7 +111,7 @@ class Device(object):
         body = None
         if platform:
             body = platform
-        info = self.send("GET", url, body)
+        info = self._jpush._request('GET', body, url, base_url=common.DEVICE_BASEURL)
         return info
 
 

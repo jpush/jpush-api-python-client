@@ -1,8 +1,9 @@
 import json
 import logging
 import warnings
-
+import base64
 import requests
+from hyper import HTTP20Connection
 from . import common
 from .push import Push
 from .device import Device
@@ -20,7 +21,7 @@ class JPush(object):
         self.session = requests.Session()
         self.session.auth = (key, secret)
 
-    def _request(self, method, body, url, content_type=None, version=None, params=None):
+    def _request(self, method, body, url,base_url=None):
         headers = {}
         headers['user-agent'] = 'jpush-api-python-client'
         headers['connection'] = 'keep-alive'
@@ -28,21 +29,18 @@ class JPush(object):
 
         logger.debug("Making %s request to %s. Headers:\n\t%s\nBody:\n\t%s",
                      method, url, '\n\t'.join('%s: %s' % (key, value) for (key, value) in headers.items()), body)
-        try:
-            response = self.session.request(method, url, data=body, params=params, headers=headers, timeout=30)
-        except requests.exceptions.ConnectTimeout:
-            raise common.APIConnectionException("Connection to api.jpush.cn timed out.")
-        except:
-            raise common.APIConnectionException("Connection to api.jpush.cn error.")
+        base64string = base64.encodestring('%s:%s' % (self.key, self.secret))[:-1]
+        authheader = "Basic %s" % base64string
+        headers['Authorization'] = authheader
+        conn = HTTP20Connection(host=base_url, secure=True)
 
-        logger.debug("Received %s response. Headers:\n\t%s\nBody:\n\t%s", response.status_code, '\n\t'.join(
-                '%s: %s' % (key, value) for (key, value) in response.headers.items()), response.content)
-
-        if response.status_code == 401:
-            raise common.Unauthorized("Please check your AppKey and Master Secret")
-        elif not (200 <= response.status_code < 300):
-            raise common.JPushFailure.from_response(response)
-        return response
+        response = conn.request(method,url,headers=headers,body=body)
+        resp = conn.get_response(response)
+        #add status_code to test
+        resp.status_code=resp.status
+        logger.debug(resp.status)
+        logger.debug(resp.read())
+        return resp
 
     def push(self, payload):
         """Push this payload to the specified recipients.
@@ -50,11 +48,8 @@ class JPush(object):
         Payload: a dictionary the contents to send, e.g.:
             {'aps': {'alert': 'Hello'}, 'android': {'alert': 'Hello'}}
         """
-        warnings.warn(
-            "JPush.push() is deprecated. See documentation on upgrading.",
-            DeprecationWarning)
         body = json.dumps(payload)
-        self._request('POST', body, common.PUSH_URL, 'application/json', version=1)
+        self._request('POST', body, common.PUSH_URL, common.PUSH_BASEURL)
 
     def  set_logging(self, level):
         level_list= ["CRITICAL", "ERROR", "WARNING", "INFO", "DEBUG", "NOTSET"]

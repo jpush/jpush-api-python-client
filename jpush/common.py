@@ -2,23 +2,23 @@ import json
 import logging
 import requests
 
-BASE_URL = "https://api.jpush.cn/"
-PUSH_URL = BASE_URL + 'v3/push'
-VALIDATE_PUSH_URL = BASE_URL + 'v3/push/validate'
+PUSH_BASEURL = "api.jpush.cn"
+PUSH_URL = '/v3/push'
+VALIDATE_PUSH_URL = '/v3/push/validate'
 
-DEVICE_BASEURL = "https://device.jpush.cn/"
-DEVICE_URL = DEVICE_BASEURL + "v3/devices/"
-TAG_URL = DEVICE_BASEURL + "v3/tags/"
+DEVICE_BASEURL = "device.jpush.cn"
+DEVICE_URL = "/v3/devices/"
+TAG_URL = "/v3/tags/"
 TAGLIST_URL = TAG_URL
-ALIAS_URL = DEVICE_BASEURL + "v3/aliases/"
+ALIAS_URL = "/v3/aliases/"
 
-REPORT_BASEURL="https://report.jpush.cn/"
-RECEIVED_URL=REPORT_BASEURL+"v3/received?msg_ids="
-MESSAGES_URL=REPORT_BASEURL+"v3/messages?msg_ids="
-USERS_URL=REPORT_BASEURL+"v3/users?"
+REPORT_BASEURL="report.jpush.cn"
+RECEIVED_URL="/v3/received?msg_ids="
+MESSAGES_URL="/v3/messages?msg_ids="
+USERS_URL="/v3/users?"
 
-BASE_SCHEDULEURL="https://api.jpush.cn/v3/schedules/"
-BASE_LISTURL="https://api.jpush.cn/v3/schedules?page="
+BASE_SCHEDULEURL="/v3/schedules/"
+BASE_LISTURL="/v3/schedules?page="
 logger = logging.getLogger('jpush')
 
 

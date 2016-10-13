@@ -45,8 +45,8 @@ class Push(object):
 
         """
         body = json.dumps(self.payload)
-        response = self._jpush._request('POST', body, common.PUSH_URL, 'application/json', version=3)
-        return PushResponse(response)
+        response = self._jpush._request('POST',body,common.PUSH_URL,base_url=common.PUSH_BASEURL)
+        return response
 
     def send_validate(self):
         """Send the notification to validate.
@@ -58,28 +58,8 @@ class Push(object):
 
         """
         body = json.dumps(self.payload)
-        response = self._jpush._request('POST', body, common.VALIDATE_PUSH_URL, 'application/json', version=3)
-        return PushResponse(response)
+        response = self._jpush._request('POST', body, common.VALIDATE_PUSH_URL, base_url=common.PUSH_BASEURL)
+        return response
 
 
-class PushResponse(object):
-    """Response to a successful push notification send.
 
-    Right now this is a fairly simple wrapper around the json payload response,
-    but making it an object gives us some flexibility to add functionality
-    later.
-
-    """
-    payload = None
-    status_code = None
-
-    def __init__(self, response):
-        self.status_code = response.status_code
-        data = response.json()
-        self.payload = data
-
-    def get_status_code(self):
-        return self.status_code
-
-    def __str__(self):
-        return "Response Payload: {0}".format(self.payload)

@@ -17,25 +17,25 @@ push=push.payload
 
 class TestEntity(unittest.TestCase):
     def test_post_schedule(self):
-        trigger = jpush.schedulepayload.trigger("2016-07-17 12:00:00")
+        trigger = jpush.schedulepayload.trigger("2016-12-17 12:00:00")
         schedulepayload = jpush.schedulepayload.schedulepayload("name", True, trigger, push)
         result = schedule.post_schedule(schedulepayload)
         self.assertEqual(result.status_code, 200)
 
     def test_post_schedule_periodical(self):
-        trigger = jpush.schedulepayload.trigger("12:00:00",start="2016-07-17 12:00:00", end="2016-09-17 12:00:00",
+        trigger = jpush.schedulepayload.trigger("12:00:00",start="2016-07-17 12:00:00", end="2016-12-17 12:00:00",
                                                 time_unit = "WEEK", frequency = 1, point = ["WED","FRI"])
         schedulepayload = jpush.schedulepayload.schedulepayload("periodical", True, trigger, push)
         result = schedule.post_schedule(schedulepayload)
         self.assertEqual(result.status_code, 200)
 
     def test_get_schedule_by_id(self):
-        result = schedule.get_schedule_by_id("3fc6e2fa-15a6-11e6-83d4-0021f653c902")
+        result = schedule.get_schedule_by_id("a7d5ceea-8e98-11e6-8ea0-0021f652c102")
         self.assertEqual(result.status_code, 200)
 
     def test_get_schedule_by_invalid_id(self):
         try:
-            result = schedule.get_schedule_by_id("3fc6e2fa-15a6-11e6-83d4-0021f653c222")
+            result = schedule.get_schedule_by_id("3fc6e2fa-15a6-11e6-03d4-0021f653c222")
             self.assertNotEqual(result.status_code, 200)
         except common.JPushFailure as e:
             self.assertIsInstance(e, common.JPushFailure)
@@ -48,7 +48,7 @@ class TestEntity(unittest.TestCase):
             pass
 
     def test_put_invalid_schedule(self):
-        trigger = jpush.schedulepayload.trigger("2016-07-17 12:00:00")
+        trigger = jpush.schedulepayload.trigger("2016-12-17 12:00:00")
         schedulepayload = jpush.schedulepayload.schedulepayload("update a new name", True, trigger, push)
         try:
             result = schedule.put_schedule(schedulepayload, "3fc6e2fa-15a6-11e6-83d4-0021f653c902")
@@ -57,7 +57,7 @@ class TestEntity(unittest.TestCase):
             pass
 
     def test_put_schedule(self):
-        trigger = jpush.schedulepayload.trigger("2016-07-17 12:00:00")
+        trigger = jpush.schedulepayload.trigger("2016-12-17 12:00:00")
         schedulepayload = jpush.schedulepayload.schedulepayload("update_a_new_name", True, trigger, push)
         try:
             result = schedule.put_schedule(schedulepayload, "3fc6e2fa-15a6-11e6-83d4-0021f653c902")
@@ -67,7 +67,7 @@ class TestEntity(unittest.TestCase):
 
     def test_delete_schedule(self):
         try:
-            result = schedule.delete_schedule("e9c553d0-0850-11e6-b6d4-0021f652c102")
+            result = schedule.delete_schedule("59272e6a-8e98-11e6-85a9-0021f653c902")
             self.assertNotEqual(result.status_code, 200)
         except common.JPushFailure as e:
             self.assertIsInstance(e, jpush.common.JPushFailure)

@@ -4,5 +4,5 @@ _jpush = jpush.JPush(app_key, master_secret)
 _jpush.set_logging("DEBUG")
 device = _jpush.create_device()
 tag = "ddd"
-registration_id = '090c1f59f89'
-device.check_taguserexist(tag, registration_id)
+reg_id = '160a3797c80d93ce897'
+device.check_taguserexist(tag, reg_id)

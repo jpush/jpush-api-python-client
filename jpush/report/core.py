@@ -9,28 +9,28 @@ class Report(object):
     def __init__(self, jpush):
         self._jpush = jpush
 
-    def send(self, method, url, body, content_type=None, version=3):
+    def send(self, method, body,url,base_url=None):
         """Send the request
         """
-        response = self._jpush._request(method, body,url,content_type,version=3)
-        return ReportResponse(response)
+        response = self._jpush._request(method, body,url,common.REPORT_BASEURL)
+        return response
 
     def get_received(self,msg_ids):
         url=common.RECEIVED_URL+msg_ids
         body = None
-        received = self.send("GET", url, body)
+        received = self.send("GET", body, url ,common.REPORT_BASEURL)
         return received
 
     def get_messages(self, msg_ids):
         url = common.MESSAGES_URL + msg_ids
         body = None
-        messages = self.send("GET", url, body)
+        messages = self.send("GET", body, url, common.REPORT_BASEURL)
         return messages
 
     def get_users(self, time_unit,start,duration):
         url = common.USERS_URL + "time_unit="+time_unit+"&start="+start+"&duration="+duration
         body = None
-        users = self.send("GET", url, body)
+        users = self.send("GET", body, url, common.REPORT_BASEURL)
         return users
 
 
