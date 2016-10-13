@@ -47,7 +47,7 @@ def ios(alert=None, badge=None, sound=None, content_available=False,
     """
     payload = {}
     if alert is not None:
-        if not isinstance(alert, str) or isinstance(alert, dict):
+        if not (isinstance(alert, str) or isinstance(alert, dict)):
             raise ValueError("iOS alert must be a string or dictionary")
         payload['alert'] = alert
     if badge is not None:
