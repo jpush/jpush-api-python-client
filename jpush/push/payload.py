@@ -1,7 +1,16 @@
 import re
+import sys
 
 # Valid autobadge values: auto, +N, -N
 VALID_AUTOBADGE = re.compile(r'^(auto|[+-][\d]+)$')
+
+
+PY2 = sys.version_info[0] == 2
+
+if not PY2:
+    string_types = (str,)
+else:
+    string_types = (str, unicode)
 
 
 def notification(alert=None, ios=None, android=None, winphone=None):
@@ -47,7 +56,7 @@ def ios(alert=None, badge=None, sound=None, content_available=False,
     """
     payload = {}
     if alert is not None:
-        if not isinstance(alert, str) or isinstance(alert, dict):
+        if not (isinstance(alert, string_types) or isinstance(alert, dict)):
             raise ValueError("iOS alert must be a string or dictionary")
         payload['alert'] = alert
     if badge is not None:
