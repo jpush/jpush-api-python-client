@@ -10,12 +10,6 @@ push.audience = jpush.audience(
     jpush.tag("tag1", "tag2"),
     alias1
 )
-'''
-push.audience = jpush.audience(
-            jpush.tag("tag1", "tag2"),
-            jpush.alias("alias1", "alias2")
-        )
-'''
 
 push.notification = jpush.notification(alert="Hello world with audience!")
 push.platform = jpush.all_
