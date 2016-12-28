@@ -70,9 +70,9 @@ def ios(alert=None, badge=None, sound=None, content_available=False,
 def android(alert, title=None, builder_id=None, extras=None):
     """Android specific platform override payload.
 
-    All keyword arguments are optional.
-
-    :keyword alert: String alert text.
+    :keyword alert: String alert text.If you set alert to a empty string,then the payload
+    will not display on notification bar.
+    more info:https://docs.jiguang.cn/jpush/server/push/rest_api_v3_push/#notification
     :keyword title: String
     :keyword builder_id: Integer
     :keyword extras: A set of key/value pairs to include in the push payload
