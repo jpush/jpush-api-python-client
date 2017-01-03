@@ -36,7 +36,7 @@ def notification(alert=None, ios=None, android=None, winphone=None):
     return payload
 
 
-def ios(alert=None, badge=None, sound=None, content_available=False,
+def ios(alert=None, badge='+1', sound=None, content_available=False,
         extras=None, sound_disable=False):
     """iOS/APNS specific platform override payload.
 
