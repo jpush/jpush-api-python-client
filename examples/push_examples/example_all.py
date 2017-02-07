@@ -9,7 +9,7 @@ push = _jpush.create_push()
 # the default logging level is WARNING,if you set the logging level to "DEBUG",the it will show the debug logging
 _jpush.set_logging("DEBUG")
 push.audience = jpush.all_
-push.notification = jpush.notification(alert="hello python jpush api")
+push.notification = jpush.notification(alert="!hello python jpush api")
 push.platform = jpush.all_
 try:
     response=push.send()
