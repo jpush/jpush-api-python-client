@@ -77,7 +77,7 @@ def ios(alert=None, badge='+1', sound=None, content_available=False,
     return payload
 
 def android(alert, title=None, builder_id=None, extras=None,
-        priority=None, category=None, style=None, big_text=None, inbox=None, big_pic_path=None):
+        priority=None, category=None, style=None, alert_type=None,big_text=None, inbox=None, big_pic_path=None):
     """Android specific platform override payload.
 
     :keyword alert: String alert text.If you set alert to a empty string,then the payload
@@ -102,6 +102,8 @@ def android(alert, title=None, builder_id=None, extras=None,
         payload['category'] = category
     if style is not None:
         payload['style'] = style
+    if alert_type is not None:
+        payload['alert_type'] = alert_type
     if big_text is not None:
         payload['big_text'] = big_text
     if inbox is not None:
