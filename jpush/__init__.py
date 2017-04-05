@@ -71,7 +71,7 @@ __all__ = [
     schedulepayload,
 ]
 
-__version__ = '3.2.4'
+__version__ = '3.2.5'
 VERSION = tuple(map(int,  __version__.split('.')))
 
 # Silence urllib3 INFO logging by default
