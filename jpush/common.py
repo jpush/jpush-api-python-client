@@ -2,7 +2,7 @@ import json
 import logging
 import requests
 
-BASE_URL = " https://api.jpush.cn/"
+BASE_URL = "https://api.jpush.cn/"
 PUSH_URL = BASE_URL + 'v3/push'
 VALIDATE_PUSH_URL = BASE_URL + 'v3/push/validate'
 
