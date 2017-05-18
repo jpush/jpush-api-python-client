@@ -196,7 +196,7 @@ def audience(*types):
     audience = {}
     for t in types:
         for key in t:
-            if key not in ('tag', 'tag_and', 'alias', 'registration_id'):
+            if key not in ('tag', 'tag_and', 'tag_not', 'alias', 'registration_id'):
                 raise ValueError("Invalid audience '%s'" % t)
             audience[key] = t[key]
     return audience

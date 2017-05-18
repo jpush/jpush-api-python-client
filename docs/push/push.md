@@ -55,6 +55,18 @@ tags 例如：tag_and("tag1", "tag2")
 返回值
 > payload 字典
 
+##### tag_not 设置
+```
+tag_not(*tag_nots)
+```
+
+参数说明
+
+tags 例如：tag_not("tag1", "tag2")
+
+返回值
+> payload 字典
+
 ##### alias 设置
 ```
 alias(*alias)

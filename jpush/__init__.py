@@ -7,6 +7,7 @@ from .push import (
     all_,
     tag,
     tag_and,
+    tag_not,
     alias,
     registration_id,
     notification,
@@ -48,6 +49,7 @@ __all__ = [
     Push,
     tag,
     tag_and,
+    tag_not,
     alias,
     registration_id,
     notification,
@@ -71,7 +73,7 @@ __all__ = [
     schedulepayload,
 ]
 
-__version__ = '3.2.5'
+__version__ = '3.2.6'
 VERSION = tuple(map(int,  __version__.split('.')))
 
 # Silence urllib3 INFO logging by default

@@ -3,6 +3,7 @@ from .core import Push
 from .audience import (
     tag,
     tag_and,
+    tag_not,
     alias,
     registration_id,
 )
@@ -32,6 +33,7 @@ __all__ = [
     Push,
     tag,
     tag_and,
+    tag_not,
     alias,
     registration_id,
     notification,
