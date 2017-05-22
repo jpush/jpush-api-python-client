@@ -72,14 +72,14 @@ _jpush.set_logging("DEBUG")
 
 ## HTTP 状态码
 
-参考文档：<http://docs.jpush.io/server/http_status_code/>
+参考文档：<http://docs.jiguang.cn/jpush/server/push/http_status_code/>
 
-Push  API 状态码 参考文档：<http://docs.jpush.io/server/rest_api_v3_push/>　
+Push v3 API 状态码 参考文档：<http://docs.jiguang.cn/jpush/server/push/rest_api_v3_push/>　
 
-Report API  状态码 参考文档：<http://docs.jpush.io/server/rest_api_v3_report/>
+Report API  状态码 参考文档：<http://docs.jiguang.cn/jpush/server/push/rest_api_v3_report/>
 
-Device API 状态码 参考文档：<http://docs.jpush.io/server/rest_api_v3_device/>
+Device API 状态码 参考文档：<http://docs.jiguang.cn/jpush/server/push/rest_api_v3_device/>
 
-Schedule API 状态码 参考文档：<http://docs.jpush.io/server/rest_api_push_schedule/>　
+Push Schedule API 状态码 参考文档：<http://docs.jiguang.cn/jpush/server/push/rest_api_push_schedule/>　
 
 [Release页面](https://github.com/jpush/jpush-api-python-client/releases) 有详细的版本发布记录与下载。
