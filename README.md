@@ -3,7 +3,7 @@
 ## 概述
 这是 JPush REST API 的 Python 版本封装开发包，是由极光推送官方提供的，一般支持最新的 API 功能。
 
-对应的 REST API 文档：<http://docs.jpush.io/server/rest_api_v3_push/>
+对应的 REST API 文档：<https://docs.jiguang.cn/jpush/server/push/server_overview/>
 
 ## 兼容版本
 +  Python 2.7
