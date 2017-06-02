@@ -1,8 +1,11 @@
+# coding=utf-8
 import json
 import logging
+import sys
 import warnings
 
 import requests
+from ._compat import reraise
 from . import common
 from .push import Push
 from .device import Device
@@ -32,8 +35,10 @@ class JPush(object):
             response = self.session.request(method, url, data=body, params=params, headers=headers, timeout=30)
         except requests.exceptions.ConnectTimeout:
             raise common.APIConnectionException("Connection to api.jpush.cn timed out.")
-        except:
-            raise common.APIConnectionException("Connection to api.jpush.cn error.")
+        except Exception:
+            # keep the original traceback
+            new_exc = common.APIConnectionException("Connection to api.jpush.cn error.")
+            reraise(new_exc, None, sys.exc_info()[-1])
 
         logger.debug("Received %s response. Headers:\n\t%s\nBody:\n\t%s", response.status_code, '\n\t'.join(
                 '%s: %s' % (key, value) for (key, value) in response.headers.items()), response.content)
