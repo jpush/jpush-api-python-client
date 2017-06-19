@@ -54,20 +54,8 @@ class TestEntity(unittest.TestCase):
         result = device.delete_tag(tag, platform)
         self.assertEqual(result.status_code, 200)
 
-    def test_tag_exist(self):
-        tag = "ddd"
-        registration_id = '090c1f59f89'
-        result = device.check_taguserexist(tag, registration_id)
-        self.assertEqual(result.status_code, 200)
-
     def test_tag_list(self):
         result = device.get_taglist()
-        self.assertEqual(result.status_code, 200)
-
-    def test_update_tagusers(self):
-        tag = "ddd"
-        entity = jpush.device_regid(jpush.add("090c1f59f89"))
-        result = device.update_tagusers(tag, entity)
         self.assertEqual(result.status_code, 200)
 
     def test_set_device_mobile(self):
