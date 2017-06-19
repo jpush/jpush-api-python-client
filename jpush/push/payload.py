@@ -37,7 +37,7 @@ def notification(alert=None, ios=None, android=None, winphone=None):
 
 
 def ios(alert=None, badge='+1', sound=None, content_available=False,
-        extras=None, sound_disable=False):
+    mutable_content=False, category=None, extras=None, sound_disable=False):
     """iOS/APNS specific platform override payload.
 
     :keyword alert: iOS format alert, as either a string or dictionary.
@@ -72,6 +72,10 @@ def ios(alert=None, badge='+1', sound=None, content_available=False,
             payload['sound'] = 'default'
     if content_available:
         payload['content-available'] = 1
+    if mutable_content:
+        payload['mutable-content'] = 1
+    if category:
+        payload['category'] = category
     if extras is not None:
         payload['extras'] = extras
     return payload
