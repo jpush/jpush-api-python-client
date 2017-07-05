@@ -1,7 +1,16 @@
 import re
+import sys
 
 # Valid autobadge values: auto, +N, -N
 VALID_AUTOBADGE = re.compile(r'^(auto|[+-][\d]+)$')
+
+
+PY2 = sys.version_info[0] == 2
+
+if not PY2:
+    string_types = (str,)
+else:
+    string_types = (str, unicode)
 
 
 def notification(alert=None, ios=None, android=None, winphone=None):
@@ -27,7 +36,7 @@ def notification(alert=None, ios=None, android=None, winphone=None):
     return payload
 
 
-def ios(alert=None, badge=None, sound=None, content_available=False,
+def ios(alert=None, badge='+1', sound=None, content_available=False,
         extras=None, sound_disable=False):
     """iOS/APNS specific platform override payload.
 
@@ -47,7 +56,7 @@ def ios(alert=None, badge=None, sound=None, content_available=False,
     """
     payload = {}
     if alert is not None:
-        if not isinstance(alert, str) or isinstance(alert, dict):
+        if not isinstance(alert, (string_types, dict)):
             raise ValueError("iOS alert must be a string or dictionary")
         payload['alert'] = alert
     if badge is not None:
@@ -67,11 +76,13 @@ def ios(alert=None, badge=None, sound=None, content_available=False,
         payload['extras'] = extras
     return payload
 
-def android(alert, title=None, builder_id=None, extras=None):
+def android(alert, title=None, builder_id=None, extras=None,
+        priority=None, category=None, style=None, alert_type=None,big_text=None, inbox=None, big_pic_path=None):
     """Android specific platform override payload.
 
-    All keyword arguments are optional.
-
+    :keyword alert: String alert text.If you set alert to a empty string,then the payload
+    will not display on notification bar.
+    more info:https://docs.jiguang.cn/jpush/server/push/rest_api_v3_push/#notification
     :keyword alert: String alert text.
     :keyword title: String
     :keyword builder_id: Integer
@@ -85,6 +96,20 @@ def android(alert, title=None, builder_id=None, extras=None):
         payload['title'] = title
     if builder_id is not None:
         payload['builder_id'] = builder_id
+    if priority is not None:
+        payload['priority'] = priority
+    if category is not None:
+        payload['category'] = category
+    if style is not None:
+        payload['style'] = style
+    if alert_type is not None:
+        payload['alert_type'] = alert_type
+    if big_text is not None:
+        payload['big_text'] = big_text
+    if inbox is not None:
+        payload['inbox'] = inbox
+    if big_pic_path is not None:
+        payload['big_pic_path'] = big_pic_path
     if extras is not None:
         payload['extras'] = extras
     return payload
@@ -171,7 +196,7 @@ def audience(*types):
     audience = {}
     for t in types:
         for key in t:
-            if key not in ('tag', 'tag_and', 'alias', 'registration_id'):
+            if key not in ('tag', 'tag_and', 'tag_not', 'alias', 'registration_id'):
                 raise ValueError("Invalid audience '%s'" % t)
             audience[key] = t[key]
     return audience

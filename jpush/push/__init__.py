@@ -3,6 +3,7 @@ from .core import Push
 from .audience import (
     tag,
     tag_and,
+    tag_not,
     alias,
     registration_id,
 )
@@ -19,7 +20,7 @@ from .payload import (
     smsmessage,
 )
 
-# Common selector for audience & platform 
+# Common selector for audience & platform
 
 all_ = "all"
 """Select all, to do a broadcast.
@@ -32,6 +33,7 @@ __all__ = [
     Push,
     tag,
     tag_and,
+    tag_not,
     alias,
     registration_id,
     notification,

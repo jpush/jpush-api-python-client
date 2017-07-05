@@ -12,6 +12,11 @@ def tag_and(*tag_ands):
     vtag_and = [t for t in tag_ands]
     return {"tag_and": vtag_and}
 
+def tag_not(*tag_nots):
+    """Select a (list of) tag_not(s)."""
+    vtag_not = [t for t in tag_nots]
+    return {"tag_not": vtag_not}
+
 def alias(*alias):
     """Select a (list of) alias(es)."""
     valias = [t for t in alias]
