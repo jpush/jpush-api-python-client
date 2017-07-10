@@ -26,3 +26,13 @@ def registration_id(*reg_ids):
     """Select a (list of) registration_id(s)."""
     vregistration_id = [t for t in reg_ids]
     return {"registration_id": vregistration_id}
+
+def segment(*segments):
+    """Select a (list of) segment(s)."""
+    vsegment = [t for t in segments]
+    return {"segment": vsegment}
+
+def abtest(*abtests):
+    """Select a (list of) abtest(s)."""
+    vabtest = [t for t in reg_ids]
+    return {"abtest": vabtest}

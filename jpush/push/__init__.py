@@ -6,6 +6,8 @@ from .audience import (
     tag_not,
     alias,
     registration_id,
+    segment,
+    abtest
 )
 
 from .payload import (
@@ -13,6 +15,7 @@ from .payload import (
     ios,
     winphone,
     platform,
+    cid,
     notification,
     message,
     audience,
@@ -36,9 +39,12 @@ __all__ = [
     tag_not,
     alias,
     registration_id,
+    segment,
+    abtest,
     notification,
     message,
     platform,
+    cid,
     audience,
     options,
     smsmessage,

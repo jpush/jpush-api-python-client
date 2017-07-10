@@ -166,6 +166,11 @@ def smsmessage(content,delay_time):
     return payload
 
 
+def cid(cid):
+    payload = {}
+    payload["cid"]=cid
+    return payload
+
 def platform(*types):
     """Create a platform specifier.
 
@@ -200,7 +205,7 @@ def audience(*types):
     audience = {}
     for t in types:
         for key in t:
-            if key not in ('tag', 'tag_and', 'tag_not', 'alias', 'registration_id'):
+            if key not in ('tag', 'tag_and', 'tag_not', 'alias', 'registration_id', 'segment', 'abtest'):
                 raise ValueError("Invalid audience '%s'" % t)
             audience[key] = t[key]
     return audience

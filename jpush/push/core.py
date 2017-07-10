@@ -13,6 +13,7 @@ class Push(object):
         self.audience = None
         self.notification = None
         self.platform = None
+        self.cid = None
         self.options = None
         self.message = None
         self.smsmessage=None
@@ -25,6 +26,8 @@ class Push(object):
         }
         if (self.notification is None) and (self.message is None):
             raise ValueError("Notification and message cannot be both empty")
+        if self.cid is not None:
+            data['cid'] = self.cid
         if self.notification is not None:
             data['notification'] = self.notification
         if self.smsmessage is not None:
