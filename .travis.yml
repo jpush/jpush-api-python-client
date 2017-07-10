@@ -5,10 +5,12 @@ python:
 # - "3.2"
 # - "3.3"
 # - "3.4"
+- "3.5"
+- "3.6"
 
 # command to install dependencies
 install:
   - pip install .
 
 # command to run tests
-script: nosetests tests/push tests/devices --verbosity=2 
+script: nosetests tests/* --verbosity=2

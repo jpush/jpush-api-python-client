@@ -3,6 +3,7 @@ from jpush import schedule
 import jpush as jpush
 from jpush import common
 from tests.conf import app_key, master_secret
+import datetime
 
 _jpush = jpush.JPush(app_key, master_secret)
 schedule = _jpush.create_schedule()
@@ -14,61 +15,31 @@ push.notification = jpush.notification(alert="Hello, world!")
 push.platform = jpush.all_
 push=push.payload
 
+now = datetime.datetime.now()
+start_time = (now + datetime.timedelta(days=10)).strftime("%Y-%m-%d %H:%M:%S")
+end_time = (now +datetime.timedelta(days=20)).strftime("%Y-%m-%d %H:%M:%S")
 
 class TestEntity(unittest.TestCase):
+
     def test_post_schedule(self):
-        trigger = jpush.schedulepayload.trigger("2016-07-17 12:00:00")
+        trigger = jpush.schedulepayload.trigger(start_time)
         schedulepayload = jpush.schedulepayload.schedulepayload("name", True, trigger, push)
         result = schedule.post_schedule(schedulepayload)
         self.assertEqual(result.status_code, 200)
 
-    def test_post_schedule_periodical(self):
-        trigger = jpush.schedulepayload.trigger("12:00:00",start="2016-07-17 12:00:00", end="2016-09-17 12:00:00",
-                                                time_unit = "WEEK", frequency = 1, point = ["WED","FRI"])
-        schedulepayload = jpush.schedulepayload.schedulepayload("periodical", True, trigger, push)
-        result = schedule.post_schedule(schedulepayload)
-        self.assertEqual(result.status_code, 200)
-
     def test_get_schedule_by_id(self):
-        result = schedule.get_schedule_by_id("3fc6e2fa-15a6-11e6-83d4-0021f653c902")
+        schedule_id = schedule.get_schedule_list("1").payload['schedules'][0]['schedule_id']
+        result = schedule.get_schedule_by_id(schedule_id)
         self.assertEqual(result.status_code, 200)
-
-    def test_get_schedule_by_invalid_id(self):
-        try:
-            result = schedule.get_schedule_by_id("3fc6e2fa-15a6-11e6-83d4-0021f653c222")
-            self.assertNotEqual(result.status_code, 200)
-        except common.JPushFailure as e:
-            self.assertIsInstance(e, common.JPushFailure)
 
     def test_get_schedule_list(self):
-        try:
-            result = schedule.schedule.get_schedule_list("1")
-            self.assertEqual(result.status_code, 200)
-        except:
-            pass
-
-    def test_put_invalid_schedule(self):
-        trigger = jpush.schedulepayload.trigger("2016-07-17 12:00:00")
-        schedulepayload = jpush.schedulepayload.schedulepayload("update a new name", True, trigger, push)
-        try:
-            result = schedule.put_schedule(schedulepayload, "3fc6e2fa-15a6-11e6-83d4-0021f653c902")
-            self.assertEqual(result.status_code, 400)
-        except:
-            pass
+        result = schedule.get_schedule_list("1")
+        self.assertEqual(result.status_code, 200)
 
     def test_put_schedule(self):
-        trigger = jpush.schedulepayload.trigger("2016-07-17 12:00:00")
+        task = schedule.get_schedule_list("1").payload['schedules'][0]
+        schedule_id = task['schedule_id']
+        trigger = jpush.schedulepayload.trigger(task['trigger']['single']['time'])
         schedulepayload = jpush.schedulepayload.schedulepayload("update_a_new_name", True, trigger, push)
-        try:
-            result = schedule.put_schedule(schedulepayload, "3fc6e2fa-15a6-11e6-83d4-0021f653c902")
-            self.assertEqual(result.status_code, 200)
-        except:
-            pass
-
-    def test_delete_schedule(self):
-        try:
-            result = schedule.delete_schedule("e9c553d0-0850-11e6-b6d4-0021f652c102")
-            self.assertNotEqual(result.status_code, 200)
-        except common.JPushFailure as e:
-            self.assertIsInstance(e, jpush.common.JPushFailure)
-
+        result = schedule.put_schedule(schedulepayload, schedule_id)
+        self.assertEqual(result.status_code, 200)
