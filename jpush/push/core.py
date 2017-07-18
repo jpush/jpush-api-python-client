@@ -66,6 +66,16 @@ class Push(object):
         response = self._jpush._request('POST', body, common.VALIDATE_PUSH_URL, 'application/json', version=3)
         return PushResponse(response)
 
+    def get_cid(self, count, type = None):
+        body = None
+        url = common.VALIDATE_PUSH_URL + '/cid'
+        params = {
+            'count': count,
+            'type': type
+        }
+        response = self._jpush._request('GET', body, common.VALIDATE_PUSH_URL, 'application/json', version=3, params = params)
+        return PushResponse(response)
+
 
 class PushResponse(object):
     """Response to a successful push notification send.
