@@ -89,3 +89,12 @@ class JPush(object):
     def create_schedule(self):
         """Create a Schedule."""
         return Schedule(self)
+
+class GroupPush(JPush):
+
+    def __init__(self, key, secret):
+        super().__init__('group-' + key, secret)
+
+    def create_push(self):
+        """Create a Group Push notification."""
+        return Push(self, url = common.GROUP_PUSH_URL)

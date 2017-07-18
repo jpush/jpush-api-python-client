@@ -8,7 +8,7 @@ logger = logging.getLogger('jpush')
 class Push(object):
     """A push notification. Set audience, message, etc, and send."""
 
-    def __init__(self, jpush):
+    def __init__(self, jpush, url = common.PUSH_URL):
         self._jpush = jpush
         self.audience = None
         self.notification = None
@@ -17,6 +17,7 @@ class Push(object):
         self.options = None
         self.message = None
         self.smsmessage=None
+        self.url = url
 
     @property
     def payload(self):
@@ -48,7 +49,8 @@ class Push(object):
 
         """
         body = json.dumps(self.payload)
-        response = self._jpush._request('POST', body, common.PUSH_URL, 'application/json', version=3)
+        url = self.url
+        response = self._jpush._request('POST', body, url, 'application/json', version=3)
         return PushResponse(response)
 
     def send_validate(self):

@@ -5,6 +5,7 @@ import requests
 BASE_URL = "https://api.jpush.cn/"
 PUSH_URL = BASE_URL + 'v3/push'
 VALIDATE_PUSH_URL = BASE_URL + 'v3/push/validate'
+GROUP_PUSH_URL = BASE_URL + 'v3/grouppush'
 
 DEVICE_BASEURL = "https://device.jpush.cn/"
 DEVICE_URL = DEVICE_BASEURL + "v3/devices/"
