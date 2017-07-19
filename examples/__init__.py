@@ -10,10 +10,12 @@ from . import device_example
 from . import push_example
 from . import report_example
 from . import schedule_example
+from . import group_push_example
 
 __all__ = [
     device_example,
     push_example,
     report_example,
-    schedule_example
+    schedule_example,
+    group_push_example
 ]

@@ -16,6 +16,7 @@ logger = logging.getLogger('jpush')
 class JPush(object):
     def __init__(self, key, secret):
         self.key = key
+        print(key)
         self.secret = secret
         self.session = requests.Session()
         self.session.auth = (key, secret)
