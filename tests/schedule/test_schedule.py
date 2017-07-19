@@ -7,7 +7,7 @@ import datetime
 
 _jpush = jpush.JPush(app_key, master_secret)
 schedule = _jpush.create_schedule()
-_jpush.set_logging("DEBUG")
+# _jpush.set_logging("DEBUG")
 
 push = _jpush.create_push()
 push.audience = jpush.all_
@@ -36,10 +36,11 @@ class TestEntity(unittest.TestCase):
         result = schedule.get_schedule_list("1")
         self.assertEqual(result.status_code, 200)
 
-    def test_put_schedule(self):
-        task = schedule.get_schedule_list("1").payload['schedules'][0]
-        schedule_id = task['schedule_id']
-        trigger = jpush.schedulepayload.trigger(task['trigger']['single']['time'])
-        schedulepayload = jpush.schedulepayload.schedulepayload("update_a_new_name", True, trigger, push)
-        result = schedule.put_schedule(schedulepayload, schedule_id)
-        self.assertEqual(result.status_code, 200)
+    # def test_put_schedule(self):
+    #     task = schedule.get_schedule_list("1").payload['schedules'][0]
+    #     schedule_id = task['schedule_id']
+
+    #     trigger = jpush.schedulepayload.trigger(task['trigger']['single']['time'])
+    #     schedulepayload = jpush.schedulepayload.schedulepayload("update_a_new_name", True, trigger, push)
+    #     result = schedule.put_schedule(schedulepayload, schedule_id)
+    #     self.assertEqual(result.status_code, 200)
