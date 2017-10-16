@@ -1,27 +1,22 @@
 # JPush API Python Client
 
 ## 概述
+
 这是 JPush REST API 的 Python 版本封装开发包，是由极光推送官方提供的，一般支持最新的 API 功能。
 
 对应的 REST API 文档：<https://docs.jiguang.cn/jpush/server/push/server_overview/>
 
 ## 兼容版本
+
 +  Python 2.7
 +  Python 3
 
 ## 环境配置
 
-pip 方式：
+使用源码安装：
+
 ```
-sudo pip install jpush
-```
-easy_install 方式：
-```
-sudo easy_install jpush
-```
-使用源码方式：
-```
-sudo python setup.py install
+$ python setup.py install
 ```
 
 

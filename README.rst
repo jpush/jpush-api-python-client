@@ -11,18 +11,8 @@ You can download the latest release file here: https://github.com/jpush/jpush-ap
 ------------
 Installation
 ------------
-To install jpush-api-python-client, simply:
 
-    $ sudo pip install jpush
-
-or alternatively install via easy_install:
-
-    $ sudo easy_install jpush
-
-
-or from source:
-
-    $ sudo python setup.py install
+$ python setup.py install
 
 -------
 Testing
