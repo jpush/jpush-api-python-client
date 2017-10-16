@@ -34,5 +34,5 @@ def segment(*segments):
 
 def abtest(*abtests):
     """Select a (list of) abtest(s)."""
-    vabtest = [t for t in reg_ids]
+    vabtest = [t for t in abtests]
     return {"abtest": vabtest}
