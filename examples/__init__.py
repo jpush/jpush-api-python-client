@@ -11,11 +11,13 @@ from . import push_example
 from . import report_example
 from . import schedule_example
 from . import group_push_example
+from . import huawei_example
 
 __all__ = [
     device_example,
     push_example,
     report_example,
     schedule_example,
-    group_push_example
+    group_push_example,
+    huawei_example
 ]
