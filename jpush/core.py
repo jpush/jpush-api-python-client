@@ -93,7 +93,7 @@ class JPush(object):
 class GroupPush(JPush):
 
     def __init__(self, key, secret):
-        super().__init__('group-' + key, secret)
+        JPush.__init__(self, 'group-' + key, secret)
 
     def create_push(self):
         """Create a Group Push notification."""
