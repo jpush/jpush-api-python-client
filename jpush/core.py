@@ -14,9 +14,10 @@ logger = logging.getLogger('jpush')
 
 
 class JPush(object):
-    def __init__(self, key, secret):
+    def __init__(self, key, secret, timeout=30):
         self.key = key
         self.secret = secret
+        self.timeout = timeout
         self.session = requests.Session()
         self.session.auth = (key, secret)
 
@@ -29,7 +30,8 @@ class JPush(object):
         logger.debug("Making %s request to %s. Headers:\n\t%s\nBody:\n\t%s",
                      method, url, '\n\t'.join('%s: %s' % (key, value) for (key, value) in headers.items()), body)
         try:
-            response = self.session.request(method, url, data=body, params=params, headers=headers, timeout=30)
+            response = self.session.request(method, url, data=body, params=params,
+                                            headers=headers, timeout=self.timeout)
         except requests.exceptions.ConnectTimeout:
             raise common.APIConnectionException("Connection to api.jpush.cn timed out.")
         except:
