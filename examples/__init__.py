@@ -4,18 +4,20 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')
 
 import jpush
 
-from .conf import app_key, master_secret
+from .conf import app_key, master_secret, dev_key, dev_secret
 
 from . import device_example
 from . import push_example
 from . import report_example
 from . import schedule_example
 from . import group_push_example
+from . import admin_example
 
 __all__ = [
     device_example,
     push_example,
     report_example,
     schedule_example,
-    group_push_example
+    group_push_example,
+    admin_example
 ]

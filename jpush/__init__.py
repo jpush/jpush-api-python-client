@@ -1,5 +1,5 @@
 """Python package for using the JPush API"""
-from .core import JPush, GroupPush
+from .core import JPush, GroupPush, Admin
 from .common import JPushFailure, Unauthorized
 
 from .push import (
@@ -44,6 +44,7 @@ from .schedule import (
 __all__ = [
     JPush,
     GroupPush,
+    Admin,
     JPushFailure,
     Unauthorized,
     all_,

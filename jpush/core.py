@@ -100,3 +100,42 @@ class GroupPush(JPush):
     def create_push(self):
         """Create a Group Push notification."""
         return Push(self, url = common.GROUP_PUSH_URL)
+
+class Admin(JPush):
+    def __init__(self, key, secret):
+        JPush.__init__(self, key, secret)
+
+    def create_app(self, app_name, android_package, group_name=None):
+        url = 'https://admin.jpush.cn/v1/app'
+        entity = {
+            'app_name': app_name,
+            'android_package': android_package,
+            'group_name': group_name
+        }
+        body = json.dumps(entity)
+        response = self._request('post', body, url, content_type=None, version=3)
+        return AdminResponse(response)
+
+    def delete_app(self, app_key):
+        url = 'https://admin.jpush.cn/v1/app/' + app_key + '/delete'
+        response = self._request('post', None, url, content_type=None, version=3)
+        return AdminResponse(response)
+
+class AdminResponse(object):
+
+    payload = None
+    status_code = None
+
+    def __init__(self, response):
+        self.status_code = response.status_code
+        if 0 != len(response.content):
+            data = response.json()
+            self.payload = data
+        elif 200 == response.status_code:
+            self.payload = "success"
+
+    def get_status_code(self):
+        return self.status_code
+
+    def __str__(self):
+        return "Admin response Payload: {0}".format(self.payload)
