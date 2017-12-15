@@ -1,0 +1,6 @@
+# please put your app_key and master_secret here
+app_key = u'xxxxxx'
+master_secret = u'xxxxxx'
+
+dev_key = u'xxxxxx'
+dev_secret = u'xxxxxx'
