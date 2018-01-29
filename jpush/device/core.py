@@ -8,12 +8,12 @@ class Device(object):
 
     """
     def __init__(self, jpush):
-        self._jpush = jpush 
+        self._jpush = jpush
         self.entity = None
 
     def send(self, method, url, body, content_type=None, version=3):
         """Send the request
-        
+
         """
         response = self._jpush._request(method, body, url, content_type, version=3)
         return DeviceResponse(response)
@@ -21,7 +21,7 @@ class Device(object):
     def get_taglist(self):
         """Get deviceinfo with registration id.
         """
-        url = common.TAGLIST_URL
+        url = common.TAG_URL
         body = None
         info = self.send("GET", url, body)
         return info

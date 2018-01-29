@@ -10,7 +10,7 @@ def delete_schedule():
 def get_schedule():
     schedule.get_schedule_by_id("e9c553d0-0850-11e6-b6d4-0021f652c102")
 
-def get_schedule():
+def get_schedule_list():
     schedule.get_schedule_list("1")
 
 def post_schedule():

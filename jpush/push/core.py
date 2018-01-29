@@ -8,7 +8,7 @@ logger = logging.getLogger('jpush')
 class Push(object):
     """A push notification. Set audience, message, etc, and send."""
 
-    def __init__(self, jpush, url = common.PUSH_URL):
+    def __init__(self, jpush, end_point = 'push'):
         self._jpush = jpush
         self.audience = None
         self.notification = None
@@ -17,7 +17,7 @@ class Push(object):
         self.options = None
         self.message = None
         self.smsmessage=None
-        self.url = url
+        self.end_point = end_point
 
     @property
     def payload(self):
@@ -49,7 +49,7 @@ class Push(object):
 
         """
         body = json.dumps(self.payload)
-        url = self.url
+        url = common.PUSH_URL + self.end_point
         response = self._jpush._request('POST', body, url, 'application/json', version=3)
         return PushResponse(response)
 
@@ -63,17 +63,18 @@ class Push(object):
 
         """
         body = json.dumps(self.payload)
-        response = self._jpush._request('POST', body, common.VALIDATE_PUSH_URL, 'application/json', version=3)
+        url = common.PUSH_URL + 'push/validate'
+        response = self._jpush._request('POST', body, url, 'application/json', version=3)
         return PushResponse(response)
 
     def get_cid(self, count, type = None):
         body = None
-        url = common.VALIDATE_PUSH_URL + '/cid'
+        url = common.PUSH_URL + 'push/cid'
         params = {
             'count': count,
             'type': type
         }
-        response = self._jpush._request('GET', body, common.VALIDATE_PUSH_URL, 'application/json', version=3, params = params)
+        response = self._jpush._request('GET', body, url, 'application/json', version=3, params = params)
         return PushResponse(response)
 
 

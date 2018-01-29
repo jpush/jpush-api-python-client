@@ -56,7 +56,7 @@ class JPush(object):
             "JPush.push() is deprecated. See documentation on upgrading.",
             DeprecationWarning)
         body = json.dumps(payload)
-        self._request('POST', body, common.PUSH_URL, 'application/json', version=1)
+        self._request('POST', body, common.PUSH_URL + 'push', 'application/json', version=1)
 
     def  set_logging(self, level):
         level_list= ["CRITICAL", "ERROR", "WARNING", "INFO", "DEBUG", "NOTSET"]
@@ -99,7 +99,7 @@ class GroupPush(JPush):
 
     def create_push(self):
         """Create a Group Push notification."""
-        return Push(self, url = common.GROUP_PUSH_URL)
+        return Push(self, end_point = 'grouppush')
 
 class Admin(JPush):
     def __init__(self, key, secret):
