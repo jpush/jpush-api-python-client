@@ -14,10 +14,11 @@ logger = logging.getLogger('jpush')
 
 
 class JPush(object):
-    def __init__(self, key, secret, timeout=30):
+    def __init__(self, key, secret, timeout=30, zone = 'default'):
         self.key = key
         self.secret = secret
         self.timeout = timeout
+        self.zone = zone
         self.session = requests.Session()
         self.session.auth = (key, secret)
 
@@ -56,7 +57,8 @@ class JPush(object):
             "JPush.push() is deprecated. See documentation on upgrading.",
             DeprecationWarning)
         body = json.dumps(payload)
-        self._request('POST', body, common.PUSH_URL + 'push', 'application/json', version=1)
+        url = common.get_url('push', self.zone) + 'push'
+        self._request('POST', body, url, 'application/json', version=1)
 
     def  set_logging(self, level):
         level_list= ["CRITICAL", "ERROR", "WARNING", "INFO", "DEBUG", "NOTSET"]

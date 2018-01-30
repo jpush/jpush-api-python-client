@@ -7,9 +7,10 @@ class Device(object):
     """Device info query/update..
 
     """
-    def __init__(self, jpush):
+    def __init__(self, jpush, zone = None):
         self._jpush = jpush
         self.entity = None
+        self.zone = zone or jpush.zone
 
     def send(self, method, url, body, content_type=None, version=3):
         """Send the request
@@ -21,7 +22,7 @@ class Device(object):
     def get_taglist(self):
         """Get deviceinfo with registration id.
         """
-        url = common.TAG_URL
+        url = common.get_url('tag', self.zone)
         body = None
         info = self.send("GET", url, body)
         return info
@@ -29,7 +30,7 @@ class Device(object):
     def get_deviceinfo(self, registration_id):
         """Get deviceinfo with registration id.
         """
-        url = common.DEVICE_URL + registration_id + "/"
+        url = common.get_url('device', self.zone) + registration_id
         body = None
         info = self.send("GET", url, body)
         return info
@@ -37,7 +38,7 @@ class Device(object):
     def set_deviceinfo(self, registration_id, entity):
         """Update deviceinfo with registration id.
         """
-        url = common.DEVICE_URL + registration_id + "/"
+        url = common.get_url('device', self.zone) + registration_id
         body = json.dumps(entity)
         info = self.send("POST", url, body)
         return info
@@ -45,7 +46,7 @@ class Device(object):
     def set_devicemobile(self, registration_id, entity):
         """Update deviceinfo with registration id.
         """
-        url = common.DEVICE_URL + registration_id + "/"
+        url = common.get_url('device', self.zone) + registration_id
         body = json.dumps(entity)
         info = self.send("POST", url, body)
         return info
@@ -53,7 +54,7 @@ class Device(object):
     def delete_tag(self, tag, platform=None):
         """Delete registration id tag.
         """
-        url = common.TAG_URL + tag + "/"
+        url = common.get_url('tag', self.zone) + tag
         body = None
         if platform:
             body = platform
@@ -63,7 +64,7 @@ class Device(object):
     def update_tagusers(self, tag, entity):
         """Add/Remove specified tag users.
         """
-        url = common.TAG_URL + tag + "/"
+        url = common.get_url('tag', self.zone) + tag
         body = json.dumps(entity)
         info = self.send("POST", url, body)
         return info
@@ -71,7 +72,7 @@ class Device(object):
     def check_taguserexist(self, tag, registration_id):
         """Check registration id whether in tag.
         """
-        url = common.TAG_URL + tag + "/registration_ids/" + registration_id
+        url = common.get_url('tag', self.zone) + tag + "/registration_ids/" + registration_id
         body = registration_id
         info = self.send("GET", url, body)
         return info
@@ -79,7 +80,7 @@ class Device(object):
     def delete_alias(self, alias, platform=None):
         """Delete appkey alias.
         """
-        url = common.ALIAS_URL + alias + "/"
+        url = common.get_url('alias', self.zone) + alias
         body = None
         if platform:
             body = platform
@@ -89,7 +90,7 @@ class Device(object):
     def get_aliasuser(self, alias, platform=None):
         """Get appkey alias users.
         """
-        url = common.ALIAS_URL + alias + "/"
+        url = common.get_url('alias', self.zone) + alias
         body = None
         if platform:
             body = platform

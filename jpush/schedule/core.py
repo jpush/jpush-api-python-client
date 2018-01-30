@@ -7,40 +7,41 @@ logger = logging.getLogger('jpush')
 
 class Schedule(object):
     """JPush Report API V3"""
-    def __init__(self, jpush):
+    def __init__(self, jpush, zone = None):
         self._jpush = jpush
+        self.zone = zone or jpush.zone
 
     def send(self, method, url, body, content_type=None, version=3, params = None):
         response = self._jpush._request(method, body, url, content_type, version=3, params = params)
         return ScheduleResponse(response)
 
     def post_schedule(self, schedulepayload):
-        url=common.SCHEDULE_URL
+        url = common.get_url('schedule', self.zone)
         body = json.dumps(schedulepayload)
         result = self.send("POST", url, body)
         return result
 
     def get_schedule_by_id(self, schedule_id):
-        url=common.SCHEDULE_URL + schedule_id
+        url = common.get_url('schedule', self.zone) + schedule_id
         body = None
         result = self.send("GET", url, body)
         return result
 
     def get_schedule_list(self, page = 1):
-        url = common.SCHEDULE_URL
+        url = common.get_url('schedule', self.zone)
         params = { 'page': page }
         body = None
         result = self.send("GET", url, body, params = params)
         return result
 
     def put_schedule(self, schedulepayload, schedule_id):
-        url = common.SCHEDULE_URL + schedule_id
+        url = common.get_url('schedule', self.zone) + schedule_id
         body = json.dumps(schedulepayload)
         result = self.send("PUT", url, body)
         return result
 
     def delete_schedule(self,schedule_id):
-        url = common.SCHEDULE_URL + schedule_id
+        url = common.get_url('schedule', self.zone) + schedule_id
         body = None
         result = self.send("DELETE", url, body)
         return result

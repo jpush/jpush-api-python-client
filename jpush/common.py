@@ -2,16 +2,31 @@ import json
 import logging
 import requests
 
-PUSH_URL    = 'https://api.jpush.cn/v3/'
-REPORT_URL  = 'https://report.jpush.cn/v3/'
-DEVICE_URL  = 'https://device.jpush.cn/v3/devices/'
-ALIAS_URL   = 'https://device.jpush.cn/v3/aliases/'
-TAG_URL     ='https://device.jpush.cn/v3/tags/'
-SCHEDULE_URL = 'https://api.jpush.cn/v3/schedules/'
-ADMIN_URL   ='https://admin.jpush.cn/v1/'
+ZONES = {
+    'DEFAULT': {
+        'PUSH': 'https://api.jpush.cn/v3/',
+        'REPORT': 'https://report.jpush.cn/v3/',
+        'DEVICE': 'https://device.jpush.cn/v3/devices/',
+        'ALIAS': 'https://device.jpush.cn/v3/aliases/',
+        'TAG': 'https://device.jpush.cn/v3/tags/',
+        'SCHEDULE': 'https://api.jpush.cn/v3/schedules/',
+        'ADMIN': 'https://admin.jpush.cn/v1/'
+    },
+    'BJ':{
+        'PUSH': 'https://bjapi.push.jiguang.cn/v3/',
+        'REPORT': 'https://bjapi.push.jiguang.cn/v3/report/',
+        'DEVICE': 'https://bjapi.push.jiguang.cn/v3/device/',
+        'ALIAS': 'https://bjapi.push.jiguang.cn/v3/device/aliases/',
+        'TAG': 'https://bjapi.push.jiguang.cn/v3/device/tags/',
+        'SCHEDULE': 'https://bjapi.push.jiguang.cn/v3/push/schedules/',
+        'ADMIN': 'https://admin.jpush.cn/v1/'
+    }
+}
 
 logger = logging.getLogger('jpush')
 
+def get_url(key, zone='default'):
+    return ZONES[zone.upper()][key.upper()]
 
 class Unauthorized(Exception):
     """Raised when we get a 401 from the server"""

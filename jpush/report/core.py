@@ -6,8 +6,9 @@ logger = logging.getLogger('jpush')
 
 class Report(object):
     """JPush Report API V3"""
-    def __init__(self, jpush):
+    def __init__(self, jpush, zone = None):
         self._jpush = jpush
+        self.zone = zone or jpush.zone
 
     def send(self, method, url, body, content_type=None, version=3, params = None):
         """Send the request
@@ -16,21 +17,21 @@ class Report(object):
         return ReportResponse(response)
 
     def get_received(self,msg_ids):
-        url = common.REPORT_URL + 'received'
+        url = common.get_url('report', self.zone) + 'received'
         params = { 'msg_ids': msg_ids }
         body = None
         received = self.send("GET", url, body, params = params)
         return received
 
     def get_messages(self, msg_ids):
-        url = common.REPORT_URL + 'messages'
+        url = common.get_url('report', self.zone) + 'messages'
         params = { 'msg_ids': msg_ids }
         body = None
         messages = self.send("GET", url, body, params = params)
         return messages
 
     def get_users(self, time_unit,start,duration):
-        url = common.REPORT_URL + 'users'
+        url = common.get_url('report', self.zone) + 'users'
         params = {
             'time_unit': time_unit,
             'start': start,
