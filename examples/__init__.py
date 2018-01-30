@@ -12,6 +12,7 @@ from . import report_example
 from . import schedule_example
 from . import group_push_example
 from . import admin_example
+from . import zone_example
 
 __all__ = [
     device_example,
@@ -19,5 +20,6 @@ __all__ = [
     report_example,
     schedule_example,
     group_push_example,
-    admin_example
+    admin_example,
+    zone_example,
 ]
