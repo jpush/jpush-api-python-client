@@ -10,7 +10,7 @@ class Report(object):
         self._jpush = jpush
         self.zone = zone or jpush.zone
 
-    def send(self, method, url, body, content_type=None, version=3, params = None):
+    def send(self, method, url, body = None, content_type=None, version=3, params = None):
         """Send the request
         """
         response = self._jpush._request(method, body,url,content_type,version=3, params = params)
@@ -19,15 +19,13 @@ class Report(object):
     def get_received(self,msg_ids):
         url = common.get_url('report', self.zone) + 'received'
         params = { 'msg_ids': msg_ids }
-        body = None
-        received = self.send("GET", url, body, params = params)
+        received = self.send("GET", url, params = params)
         return received
 
     def get_messages(self, msg_ids):
         url = common.get_url('report', self.zone) + 'messages'
         params = { 'msg_ids': msg_ids }
-        body = None
-        messages = self.send("GET", url, body, params = params)
+        messages = self.send("GET", url, params = params)
         return messages
 
     def get_users(self, time_unit,start,duration):
@@ -37,8 +35,7 @@ class Report(object):
             'start': start,
             'duration': duration
         }
-        body = None
-        users = self.send("GET", url, body, params = params)
+        users = self.send("GET", url, params = params)
         return users
 
 
