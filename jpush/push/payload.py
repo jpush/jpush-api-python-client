@@ -158,11 +158,12 @@ def message(msg_content, title=None, content_type=None, extras=None):
         payload['extras'] = extras
     return payload
 
-
-def smsmessage(content,delay_time):
+def smsmessage(delay_time, temp_id, temp_para = None):
     payload = {}
-    payload["content"]=content
     payload["delay_time"]=delay_time
+    payload["temp_id"]=temp_id
+    if temp_para is not None:
+        payload['temp_para'] = temp_para
     return payload
 
 

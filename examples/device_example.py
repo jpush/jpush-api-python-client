@@ -52,3 +52,7 @@ def update_device_mobile():
     reg_id = '1507bfd3f7c466c355c'
     entity = jpush.device_mobile("18588232140")
     device.set_devicemobile(reg_id, entity)
+
+def get_device_status():
+    reg_id = '1507bfd3f7c466c355c'
+    device.get_device_status(reg_id)

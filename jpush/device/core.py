@@ -88,6 +88,18 @@ class Device(object):
         info = self.send("GET", url, params = params)
         return info
 
+    def get_device_status(self, reg_ids):
+        """Get Online Status of User (VIP Exclusive Interface)
+        """
+        url = common.get_url('device', self.zone) + 'status'
+
+        if isinstance(reg_ids, str):
+           reg_ids = [ reg_ids ]
+
+        entity = { 'registration_ids': reg_ids }
+        body = json.dumps(entity)
+        info = self.send("POST", url, body)
+        return info
 
 class DeviceResponse(object):
     """Response to a successful device request send.
