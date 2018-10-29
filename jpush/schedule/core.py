@@ -43,7 +43,7 @@ class Schedule(object):
         result = self.send("DELETE", url)
         return result
 
-   def get_msg_ids(self, schedule_id):
+    def get_msg_ids(self, schedule_id):
         url = common.BASE_SCHEDULEURL + schedule_id + '/msg_ids'
         body = None
         result = self.send("GET", url, body)
