@@ -12,3 +12,6 @@ def receivede():
 
 def users():
     report.get_users("DAY","2016-04-10","3")
+
+def status():
+    report.get_status_messages('3289406737', ['xxx'])

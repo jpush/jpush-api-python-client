@@ -22,6 +22,19 @@ class Report(object):
         received = self.send("GET", url, params = params)
         return received
 
+    def get_status_messages(self, msg_id, reg_ids, date=None):
+        url = common.get_url('report', self.zone) + 'status/messages'
+        if not isinstance(reg_ids, list):
+            reg_ids = [reg_ids]
+        body = {
+            'msg_id': msg_id,
+            'registration_ids': reg_ids
+        }
+        if date is not None:
+            body['date'] = date
+        sm = self.send("POST", url, body = body)
+        return sm
+
     def get_messages(self, msg_ids):
         url = common.get_url('report', self.zone) + 'messages'
         params = { 'msg_ids': msg_ids }
