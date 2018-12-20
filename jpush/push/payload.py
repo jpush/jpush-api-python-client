@@ -37,7 +37,7 @@ def notification(alert=None, ios=None, android=None, winphone=None):
 
 
 def ios(alert=None, badge='+1', sound=None, content_available=False,
-    mutable_content=False, category=None, extras=None, sound_disable=False):
+    mutable_content=False, category=None, extras=None, sound_disable=False, thread_id=None):
     """iOS/APNS specific platform override payload.
 
     :keyword alert: iOS format alert, as either a string or dictionary.
@@ -76,12 +76,15 @@ def ios(alert=None, badge='+1', sound=None, content_available=False,
         payload['mutable-content'] = 1
     if category:
         payload['category'] = category
+    if thread_id:
+        payload['thread-id'] = thread_id
     if extras is not None:
         payload['extras'] = extras
     return payload
 
 def android(alert, title=None, builder_id=None, extras=None,
-        priority=None, category=None, style=None, alert_type=None,big_text=None, inbox=None, big_pic_path=None):
+        priority=None, category=None, style=None, alert_type=None,
+        big_text=None, inbox=None, big_pic_path=None, large_icon=None, intent=None):
     """Android specific platform override payload.
 
     :keyword alert: String alert text.If you set alert to a empty string,then the payload
@@ -114,6 +117,10 @@ def android(alert, title=None, builder_id=None, extras=None,
         payload['inbox'] = inbox
     if big_pic_path is not None:
         payload['big_pic_path'] = big_pic_path
+    if large_icon is not None:
+        payload['large_icon'] = large_icon
+    if intent is not None:
+        payload['intent'] = intent
     if extras is not None:
         payload['extras'] = extras
     return payload
