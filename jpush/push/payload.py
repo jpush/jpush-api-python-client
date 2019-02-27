@@ -45,13 +45,13 @@ def ios(alert=None, badge='+1', sound=None, content_available=False,
     :keyword sound: An string sound file to play.
     :keyword content_available: If True, pass on the content-available command
         for Newsstand iOS applications.
-    :keyword extra: A set of key/value pairs to include in the push payload
+    :keyword extras: A set of key/value pairs to include in the push payload
         sent to the device.
     :keyword sound_disalbe: Disable sound to implement slient push.
 
     >>> ios(alert='Hello!', sound='cat.caf',
-    ...     extra={'articleid': '12345'})
-    {'sound': 'cat.caf', 'extra': {'articleid': '12345'}, 'alert': 'Hello!'}
+    ...     extras={'articleid': '12345'})
+    {'sound': 'cat.caf', 'extras': {'articleid': '12345'}, 'alert': 'Hello!'}
 
     """
     payload = {}
