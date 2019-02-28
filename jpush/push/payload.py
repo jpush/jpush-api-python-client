@@ -165,12 +165,16 @@ def message(msg_content, title=None, content_type=None, extras=None):
         payload['extras'] = extras
     return payload
 
-def smsmessage(delay_time, temp_id, temp_para = None):
+def smsmessage(delay_time, temp_id, temp_para = None, signid = None, active_filter = True):
     payload = {}
     payload["delay_time"]=delay_time
     payload["temp_id"]=temp_id
     if temp_para is not None:
         payload['temp_para'] = temp_para
+    if signid is not None:
+        payload['signid'] = signid
+    if not active_filter:
+        payload['active_filter'] = False
     return payload
 
 
