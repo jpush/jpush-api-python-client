@@ -91,6 +91,7 @@ class APIConnectionException(Exception):
 class APIRequestException(Exception):
     def __init__(self, value):
         self.value = value
+        super(Exception, self).__init__(value)
 
     def __str__(self):
         return repr(self.value)

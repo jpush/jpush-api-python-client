@@ -36,7 +36,7 @@ class JPush(object):
         except requests.exceptions.ConnectTimeout:
             raise common.APIConnectionException("Connection to api.jpush.cn timed out.")
         except Exception:
-            raise common.APIConnectionException("Connection to api.jpush.cn error.")
+            raise common.APIRequestException("Connection to api.jpush.cn error.")
 
         logger.debug("Received %s response. Headers:\n\t%s\nBody:\n\t%s", response.status_code, '\n\t'.join(
                 '%s: %s' % (key, value) for (key, value) in response.headers.items()), response.content)
