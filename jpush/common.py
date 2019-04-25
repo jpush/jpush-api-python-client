@@ -81,6 +81,8 @@ class JPushFailure(Exception):
 class APIConnectionException(Exception):
     def __init__(self, value):
         self.value = value
+        # 修复celery的错误，参考https://github.com/celery/celery/issues/3623
+        super(Exception, self).__init__(value)
 
     def __str__(self):
         return repr(self.value)
