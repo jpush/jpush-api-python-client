@@ -1,4 +1,5 @@
-from . import jpush, app_key, master_secret
+from conf import app_key, master_secret
+import jpush
 
 _jpush = jpush.JPush(app_key, master_secret)
 _jpush.set_logging("DEBUG")

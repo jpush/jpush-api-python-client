@@ -60,7 +60,7 @@ class JPush(object):
         url = common.get_url('push', self.zone) + 'push'
         self._request('POST', body, url, 'application/json', version=1)
 
-    def  set_logging(self, level):
+    def set_logging(self, level):
         level_list= ["CRITICAL", "ERROR", "WARNING", "INFO", "DEBUG", "NOTSET"]
         if level in level_list:
             if(level == "CRITICAL"):

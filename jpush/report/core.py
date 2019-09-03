@@ -22,8 +22,14 @@ class Report(object):
         received = self.send("GET", url, params = params)
         return received
 
-    def get_status_messages(self, msg_id, reg_ids, date=None):
-        url = common.get_url('report', self.zone) + 'status/messages'
+    def get_received_detail(self, msg_ids):
+        url = common.get_url('report', self.zone) + 'received/detail'
+        params = {'msg_ids': msg_ids}
+        response = self.send("GET", url, params = params)
+        return response
+
+    def get_status_message(self, msg_id, reg_ids, date=None):
+        url = common.get_url('report', self.zone) + 'status/message'
         if not isinstance(reg_ids, list):
             reg_ids = [reg_ids]
         body = {
@@ -40,6 +46,12 @@ class Report(object):
         params = { 'msg_ids': msg_ids }
         messages = self.send("GET", url, params = params)
         return messages
+
+    def get_messages_detail(self, msg_ids):
+        url = common.get_url('report', self.zone) + 'messages/detail'
+        params = {'msg_ids': msg_ids}
+        response = self.send("GET", url, params = params)
+        return response
 
     def get_users(self, time_unit,start,duration):
         url = common.get_url('report', self.zone) + 'users'
