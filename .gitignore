@@ -4,3 +4,4 @@ dist/
 jpush.egg-info/
 .idea/
 examples/conf.py
+/tests/conf.py

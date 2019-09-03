@@ -80,6 +80,28 @@ class Push(object):
         response = self._jpush._request('GET', body, url, 'application/json', version=3, params = params)
         return PushResponse(response)
 
+    def batch_push_by_regid(self, single_payload_list):
+        cid_response = self.get_cid(len(single_payload_list), 'push')
+        cidlist = cid_response.payload['cidlist']
+        batch_payload = {"pushlist":{}}
+        for index in range(len(single_payload_list)):
+            batch_payload["pushlist"][cidlist[index]] = single_payload_list[index]
+        body = json.dumps(batch_payload)
+        url = common.get_url('push', self.zone) + 'push/batch/regid/single'
+        response = self._jpush._request('POST', body, url, 'application/json', version=3)
+        return PushResponse(response)
+
+    def batch_push_by_alias(self, single_payload_list):
+        cid_response = self.get_cid(len(single_payload_list), 'push')
+        cidlist = cid_response.payload['cidlist']
+        batch_payload = {"pushlist":{}}
+        for index in range(len(single_payload_list)):
+            batch_payload["pushlist"][cidlist[index]] = single_payload_list[index]
+        body = json.dumps(batch_payload)
+        url = common.get_url('push', self.zone) + 'push/batch/alias/single'
+        response = self._jpush._request('POST', body, url, 'application/json', version=3)
+        return PushResponse(response)
+
 
 class PushResponse(object):
     """Response to a successful push notification send.
