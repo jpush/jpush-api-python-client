@@ -19,7 +19,7 @@ setup(
     keywords=('JPush', 'JPush API', 'Android Push', 'iOS Push'),
     license='MIT License',
     long_description=open("README.rst", "r").read(),
-
+    long_description_content_type="text/markdown",
     url='https://github.com/jpush/jpush-api-python-client',
     author='jpush',
     author_email='support@jpush.cn',
