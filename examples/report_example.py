@@ -21,7 +21,9 @@ def users():
     report.get_users("DAY","2016-04-10","3")
 
 def status():
-    report.get_status_message('3289406737', ['xxx'])
+    msgid = '3289406737'
+    regid = 'xxx'
+    report.get_status_message(int(msgid), [regid])
 
 messages_detail()
 received_detail()
