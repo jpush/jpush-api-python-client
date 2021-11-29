@@ -29,6 +29,7 @@ class Report(object):
         return response
 
     def get_status_message(self, msg_id, reg_ids, date=None):
+        import json
         url = common.get_url('report', self.zone) + 'status/message'
         if not isinstance(reg_ids, list):
             reg_ids = [reg_ids]
@@ -38,6 +39,7 @@ class Report(object):
         }
         if date is not None:
             body['date'] = date
+        body = json.dumps(body)
         sm = self.send("POST", url, body = body)
         return sm
 
