@@ -167,6 +167,38 @@ def message(msg_content, title=None, content_type=None, extras=None):
         payload['extras'] = extras
     return payload
 
+def notification_3rd(content, title=None, channel_id=None, uri_activity=None, uri_action=None, badge_add_num=None, badge_class=None, sound=None, extras=None):
+    payload = {
+        'content': content,
+    }
+    if title is not None:
+        payload['title'] = title
+    if title is not None:
+        payload['channel_id'] = channel_id
+    if title is not None:
+        payload['uri_activity'] = uri_activity
+    if title is not None:
+        payload['uri_action'] = uri_action
+    if title is not None:
+        payload['badge_add_num'] = badge_add_num
+    if title is not None:
+        payload['badge_class'] = badge_class
+    if title is not None:
+        payload['sound'] = sound
+    if title is not None:
+        payload['extras'] = extras
+    return payload
+
+def callback(url=None, params=None, type=None):
+    payload = {}
+    if url is not None:
+        payload['url'] = url
+    if params is not None:
+        payload['params'] = params
+    if type is not None:
+        payload['type'] = type
+
+
 def smsmessage(delay_time, temp_id, temp_para = None, signid = None, active_filter = True):
     payload = {}
     payload["delay_time"]=delay_time

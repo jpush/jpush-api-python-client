@@ -19,6 +19,8 @@ from .push import (
     options,
     message,
     smsmessage,
+    notification_3rd,
+    callback,
 )
 
 from .device import (
@@ -73,6 +75,8 @@ __all__ = [
     ReportResponse,
     Schedule,
     schedulepayload,
+    notification_3rd,
+    callback,
 ]
 
 __version__ = '3.3.9'

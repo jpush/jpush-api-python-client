@@ -19,6 +19,8 @@ class Push(object):
         self.smsmessage=None
         self.end_point = end_point
         self.zone = zone or jpush.zone
+        self.notification_3rd = None
+        self.callback = None
 
     @property
     def payload(self):
@@ -38,6 +40,10 @@ class Push(object):
             data['options'] = self.options
         if self.message is not None:
             data['message'] = self.message
+        if self.notification_3rd is not None:
+            data['notification_3rd'] = self.notification_3rd
+        if self.callback is not None:
+            data['callback'] = self.callback
         return data
 
     def send(self):

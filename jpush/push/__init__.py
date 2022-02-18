@@ -21,6 +21,8 @@ from .payload import (
     audience,
     options,
     smsmessage,
+    notification_3rd,
+    callback,
 )
 
 # Common selector for audience & platform
@@ -48,4 +50,6 @@ __all__ = [
     audience,
     options,
     smsmessage,
+    notification_3rd,
+    callback,
 ]
