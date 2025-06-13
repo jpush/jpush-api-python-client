@@ -33,6 +33,12 @@ class TestMessage(unittest.TestCase):
             jpush.notification(winphone=jpush.winphone(alert="Hello", extras={'k3':'v3'})),
             {'winphone': {'extras': {'k3': 'v3'}, 'alert': 'Hello'}}
         )
+        
+    def test_hmos(self):
+        self.assertEqual(
+            jpush.notification(hmos=jpush.hmos(alert="Hello", title="Title", extras={'k4':'v4'})),
+            {'hmos': {'extras': {'k4': 'v4'}, 'alert': 'Hello', 'title': 'Title'}}
+        )
 
     def test_push(self):
         _jpush = jpush.JPush(app_key, master_secret)

@@ -58,8 +58,9 @@ def notification():
 
     ios = jpush.ios(alert="Hello, IOS JPush!", sound="a.caf", extras={'k1':'v1'})
     android = jpush.android(alert="Hello, Android msg", priority=1, style=1, alert_type=1,big_text='jjjjjjjjjj', extras={'k1':'v1'})
+    hmos = jpush.hmos(alert="Hello, HMOS JPush!", category="category", large_icon="large_icon", intent={"url":"action.system.home"}, extras={'k1':'v1'}, style="style", inbox="inbox")
 
-    push.notification = jpush.notification(alert="Hello, JPush!", android=android, ios=ios)
+    push.notification = jpush.notification(alert="Hello, JPush!", android=android, ios=ios, hmos=hmos)
 
     # pprint (push.payload)
     result = push.send()
@@ -77,7 +78,8 @@ def platfrom_msg():
     push.audience = jpush.all_
     ios_msg = jpush.ios(alert="Hello, IOS JPush!", badge="+1", sound="a.caf", extras={'k1':'v1'})
     android_msg = jpush.android(alert="Hello, android msg")
-    push.notification = jpush.notification(alert="Hello, JPush!", android=android_msg, ios=ios_msg)
+    hmos_msg = jpush.hmos(alert="Hello, HMOS JPush msg")
+    push.notification = jpush.notification(alert="Hello, JPush!", android=android_msg, ios=ios_msg, hmos=hmos_msg)
     push.message=jpush.message("content",extras={'k2':'v2','k3':'v3'})
     push.platform = jpush.all_
     push.send()
@@ -88,7 +90,8 @@ def silent():
     push.audience = jpush.all_
     ios_msg = jpush.ios(alert="Hello, IOS JPush!", badge="+1", extras={'k1':'v1'}, sound_disable=True)
     android_msg = jpush.android(alert="Hello, android msg")
-    push.notification = jpush.notification(alert="Hello, JPush!", android=android_msg, ios=ios_msg)
+    hmos_msg = jpush.hmos(alert="Hello, HMOS JPush msg")
+    push.notification = jpush.notification(alert="Hello, JPush!", android=android_msg, ios=ios_msg, hmos=hmos_msg)
     push.platform = jpush.all_
     push.send()
 

@@ -6,7 +6,7 @@ device = _jpush.create_device()
 
 def alias_user():
     alias = "alias1"
-    platform = "android,ios"
+    platform = "android,ios,hmos"
     device.get_aliasuser(alias, platform)
 
 def ctrl_tag():
@@ -20,12 +20,12 @@ def get_device():
 
 def delete_alias():
     alias = "alias1"
-    platform = "android,ios"
+    platform = "android,ios,hmos"
     device.delete_alias(alias, platform)
 
 def delete_tag():
     tag = "ddd"
-    platform = "android,ios"
+    platform = "android,ios,hmos"
     device.delete_tag(tag, platform)
 
 def check_tag():

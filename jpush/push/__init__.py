@@ -14,6 +14,7 @@ from .payload import (
     android,
     ios,
     winphone,
+    hmos,
     platform,
     cid,
     notification,

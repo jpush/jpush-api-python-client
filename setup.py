@@ -4,7 +4,7 @@ import ast
 try:
     from setuptools import setup
 except (ImportError):
-    from distutils.core import setup
+    from distutils.core import setup  
 
 _version_re = re.compile(r'__version__\s+=\s+(.*)')
 
@@ -16,7 +16,7 @@ setup(
     name='jpush',
     version=version,
     description='JPush\'s officially supported Python client library',
-    keywords=('JPush', 'JPush API', 'Android Push', 'iOS Push'),
+    keywords=('JPush', 'JPush API', 'Android Push', 'iOS Push', 'HMOS Push'),
     license='MIT License',
     long_description=open("README.rst", "r").read(),
     long_description_content_type="text/markdown",

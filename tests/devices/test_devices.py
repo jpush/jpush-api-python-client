@@ -19,7 +19,7 @@ class TestEntity(unittest.TestCase):
 
     def test_aliasuser(self):
         alias = "alias1"
-        platform = "android,ios"
+        platform = "android,ios,hmos"
         result = device.get_aliasuser(alias, platform)
         self.assertEqual(result.status_code, 200)
 
@@ -44,13 +44,13 @@ class TestEntity(unittest.TestCase):
 
     def test_remove_alias(self):
         alias = "alias1"
-        platform = "android,ios"
+        platform = "android,ios,hmos"
         result = device.delete_alias(alias, platform)
         self.assertEqual(result.status_code, 200)
 
     def test_remove_tags(self):
         tag = "ddd"
-        platform = "android,ios"
+        platform = "android,ios,hmos"
         result = device.delete_tag(tag, platform)
         self.assertEqual(result.status_code, 200)
 

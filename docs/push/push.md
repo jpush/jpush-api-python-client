@@ -250,7 +250,7 @@ ios(alert=None, badge='+1', sound=None， content_available=False, mutable_conte
 
 返回值
 
-> ios payload 字典
+> android payload 字典
 
 #####  android payload
 ```
