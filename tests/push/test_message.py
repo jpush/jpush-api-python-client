@@ -40,6 +40,65 @@ class TestMessage(unittest.TestCase):
             {'hmos': {'extras': {'k4': 'v4'}, 'alert': 'Hello', 'title': 'Title'}}
         )
 
+    def test_ios_interruption_level(self):
+        self.assertEqual(
+            jpush.ios(alert="Hello", badge="+1", sound_disable=True,
+                      interruption_level="time-sensitive"),
+            {'alert': 'Hello', 'badge': '+1', 'interruption-level': 'time-sensitive'}
+        )
+
+    def test_android_new_fields(self):
+        self.assertEqual(
+            jpush.android(
+                alert="Hello",
+                badge_add_num=1,
+                badge_class="com.example.MainActivity",
+                display_foreground="1",
+                custom_buttons=[{"name": "ok", "action_type": 3}],
+            ),
+            {
+                'alert': 'Hello',
+                'badge_add_num': 1,
+                'badge_class': 'com.example.MainActivity',
+                'display_foreground': '1',
+                'custom_buttons': [{"name": "ok", "action_type": 3}],
+            }
+        )
+
+    def test_hmos_new_fields(self):
+        self.assertEqual(
+            jpush.hmos(
+                alert="Hello",
+                category="IM",
+                intent={"url": "scheme://test"},
+                badge_add_num=1,
+                push_type=0,
+                sound="service_notice.wav",
+                test_message=False,
+            ),
+            {
+                'alert': 'Hello',
+                'category': 'IM',
+                'intent': {"url": "scheme://test"},
+                'badge_add_num': 1,
+                'push_type': 0,
+                'sound': 'service_notice.wav',
+                'test_message': False,
+            }
+        )
+
+    def test_quickapp_and_voip(self):
+        self.assertEqual(
+            jpush.notification(
+                quickapp=jpush.quickapp(alert="Hi", title="QA", page="/page1"),
+                voip={"key": "value"},
+            ),
+            {
+                'quickapp': {'alert': 'Hi', 'title': 'QA', 'page': '/page1'},
+                'voip': {'key': 'value'},
+            }
+        )
+
     def test_push(self):
         _jpush = jpush.JPush(app_key, master_secret)
         push = _jpush.create_push()
