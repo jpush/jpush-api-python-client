@@ -56,9 +56,16 @@ def notification():
     push.audience = jpush.all_
     push.platform = jpush.all_
 
-    ios = jpush.ios(alert="Hello, IOS JPush!", sound="a.caf", extras={'k1':'v1'})
-    android = jpush.android(alert="Hello, Android msg", priority=1, style=1, alert_type=1,big_text='jjjjjjjjjj', extras={'k1':'v1'})
-    hmos = jpush.hmos(alert="Hello, HMOS JPush!", category="category", large_icon="large_icon", intent={"url":"action.system.home"}, extras={'k1':'v1'}, style="style", inbox="inbox")
+    ios = jpush.ios(alert="Hello, IOS JPush!", sound="a.caf", extras={'k1':'v1'},
+                    interruption_level="active")
+    android = jpush.android(
+        alert="Hello, Android msg", priority=1, style=1, alert_type=1,
+        big_text='jjjjjjjjjj', extras={'k1':'v1'}, badge_add_num=1,
+        display_foreground="1")
+    hmos = jpush.hmos(
+        alert="Hello, HMOS JPush!", category="IM", large_icon="large_icon",
+        intent={"url": "action.system.home"}, extras={'k1': 'v1'}, style=0,
+        badge_add_num=1, push_type=0)
 
     push.notification = jpush.notification(alert="Hello, JPush!", android=android, ios=ios, hmos=hmos)
 

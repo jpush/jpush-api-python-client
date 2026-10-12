@@ -15,6 +15,8 @@ from .push import (
     android,
     hmos,
     winphone,
+    quickapp,
+    voip,
     platform,
     audience,
     options,
@@ -60,6 +62,8 @@ __all__ = [
     android,
     hmos,
     winphone,
+    quickapp,
+    voip,
     message,
     smsmessage,
     platform,
@@ -77,7 +81,7 @@ __all__ = [
     schedulepayload,
 ]
 
-__version__ = '3.4.0'
+__version__ = '3.4.1'
 VERSION = tuple(map(int,  __version__.split('.')))
 
 # Silence urllib3 INFO logging by default

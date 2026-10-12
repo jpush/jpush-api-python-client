@@ -15,6 +15,8 @@ from .payload import (
     ios,
     winphone,
     hmos,
+    quickapp,
+    voip,
     platform,
     cid,
     notification,
@@ -49,4 +51,6 @@ __all__ = [
     audience,
     options,
     smsmessage,
+    quickapp,
+    voip,
 ]
